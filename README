@@ -1,0 +1,6 @@
+first run Downloader:
+	download all captions from youtube urls listed in dataset.csv and conver from vtt format to srt
+Afer run Parser:
+	Take each srt file and finf the text without tags, stat and end time for each talk
+	make a dictionary with all sentences, the senteces are splitted form the caption file
+ 
