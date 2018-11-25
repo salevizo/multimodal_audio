@@ -3,4 +3,13 @@ first run Downloader:
 Afer run Parser:
 	Take each srt file and finf the text without tags, stat and end time for each talk
 	make a dictionary with all sentences, the senteces are splitted form the caption file
- 
+
+
+#INSTALL YOUTUBE-DL# 
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+#INSTAL PYAUDIO-ANALYSIS#
+pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
+git clone https://github.com/tyiannak/pyAudioAnalysis.git
+pip install -e .
