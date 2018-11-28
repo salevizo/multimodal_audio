@@ -1,0 +1,919 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02,202 --> 00:00:05,605 align:start position:0%
+ 
+ 
+&gt;&gt;<00:00:02,235><c> J</c><00:00:02,268><c>im</c><00:00:02,302><c>my</c><00:00:02,335><c>: </c><00:00:02,368><c>WE</c><00:00:02,402><c>'R</c><00:00:02,435><c>E </c><00:00:02,469><c>BA</c><00:00:02,502><c>CK</c><00:00:02,535><c> W</c><00:00:02,569><c>IT</c><00:00:02,602><c>H </c><00:00:02,635><c>KO</c><00:00:02,669><c>BE</c><00:00:02,702><c> </c>
+
+00:00:05,605 --> 00:00:05,672 align:start position:0%
+ 
+&gt;&gt; Jimmy: WE'RE BACK WITH KOBE 
+ 
+
+00:00:05,672 --> 00:00:05,838 align:start position:0%
+ 
+&gt;&gt; Jimmy: WE'RE BACK WITH KOBE 
+BR<00:00:05,705><c>YA</c><00:00:05,738><c>NT</c><00:00:05,772><c>.</c>
+
+00:00:05,838 --> 00:00:05,905 align:start position:0%
+&gt;&gt; Jimmy: WE'RE BACK WITH KOBE 
+BRYANT.
+ 
+
+00:00:05,905 --> 00:00:06,239 align:start position:0%
+&gt;&gt; Jimmy: WE'RE BACK WITH KOBE 
+BRYANT.
+TH<00:00:05,939><c>IS</c><00:00:05,972><c> I</c><00:00:06,005><c>S </c><00:00:06,039><c>HI</c><00:00:06,072><c>S </c><00:00:06,105><c>BO</c><00:00:06,139><c>OK</c><00:00:06,172><c>.</c>
+
+00:00:06,239 --> 00:00:06,306 align:start position:0%
+BRYANT.
+THIS IS HIS BOOK.
+ 
+
+00:00:06,306 --> 00:00:07,573 align:start position:0%
+BRYANT.
+THIS IS HIS BOOK.
+IT<00:00:06,339><c>'S</c><00:00:06,372><c> C</c><00:00:06,406><c>AL</c><00:00:06,439><c>LE</c><00:00:06,472><c>D </c><00:00:06,506><c>"T</c><00:00:06,539><c>HE</c><00:00:06,573><c> M</c><00:00:06,606><c>AM</c><00:00:06,639><c>BA</c><00:00:06,673><c> </c>
+
+00:00:07,573 --> 00:00:07,640 align:start position:0%
+THIS IS HIS BOOK.
+IT'S CALLED "THE MAMBA 
+ 
+
+00:00:07,640 --> 00:00:10,610 align:start position:0%
+THIS IS HIS BOOK.
+IT'S CALLED "THE MAMBA 
+ME<00:00:07,673><c>NT</c><00:00:07,706><c>AL</c><00:00:07,740><c>IT</c><00:00:07,773><c>Y.</c><00:00:07,806><c>"</c>
+
+00:00:10,610 --> 00:00:10,677 align:start position:0%
+IT'S CALLED "THE MAMBA 
+MENTALITY."
+ 
+
+00:00:10,677 --> 00:00:16,149 align:start position:0%
+IT'S CALLED "THE MAMBA 
+MENTALITY."
+WH<00:00:10,710><c>O </c><00:00:10,743><c>CA</c><00:00:10,777><c>ME</c><00:00:10,810><c> U</c><00:00:10,843><c>P </c><00:00:10,877><c>WI</c><00:00:10,910><c>TH</c><00:00:10,944><c> "</c><00:00:10,977><c>MA</c><00:00:11,010><c>MB</c><00:00:11,044><c>A </c>
+
+00:00:16,149 --> 00:00:16,216 align:start position:0%
+MENTALITY."
+WHO CAME UP WITH "MAMBA 
+ 
+
+00:00:16,216 --> 00:00:17,216 align:start position:0%
+MENTALITY."
+WHO CAME UP WITH "MAMBA 
+ME<00:00:16,249><c>NT</c><00:00:16,282><c>AL</c><00:00:16,316><c>IT</c><00:00:16,349><c>Y"</c><00:00:16,382><c> T</c><00:00:16,416><c>HE</c><00:00:16,449><c> P</c><00:00:16,483><c>HR</c><00:00:16,516><c>AS</c><00:00:16,549><c>E.</c>
+
+00:00:17,216 --> 00:00:17,283 align:start position:0%
+WHO CAME UP WITH "MAMBA 
+MENTALITY" THE PHRASE.
+ 
+
+00:00:17,283 --> 00:00:18,217 align:start position:0%
+WHO CAME UP WITH "MAMBA 
+MENTALITY" THE PHRASE.
+&gt;&gt;<00:00:17,316><c> I</c><00:00:17,349><c> D</c><00:00:17,383><c>ID</c><00:00:17,416><c>N'</c><00:00:17,449><c>T </c><00:00:17,483><c>KN</c><00:00:17,516><c>OW</c><00:00:17,550><c> W</c><00:00:17,583><c>HA</c><00:00:17,616><c>T </c><00:00:17,650><c>WA</c><00:00:17,683><c>S </c><00:00:17,716><c>GO</c><00:00:17,750><c>IN</c><00:00:17,783><c>G </c>
+
+00:00:18,217 --> 00:00:18,284 align:start position:0%
+MENTALITY" THE PHRASE.
+&gt;&gt; I DIDN'T KNOW WHAT WAS GOING 
+ 
+
+00:00:18,284 --> 00:00:19,786 align:start position:0%
+MENTALITY" THE PHRASE.
+&gt;&gt; I DIDN'T KNOW WHAT WAS GOING 
+ON<00:00:18,317><c> W</c><00:00:18,350><c>IT</c><00:00:18,384><c>H </c><00:00:18,417><c>TW</c><00:00:18,450><c>IT</c><00:00:18,484><c>TE</c><00:00:18,517><c>R </c><00:00:18,551><c>AN</c><00:00:18,584><c>D </c><00:00:18,617><c>I </c><00:00:18,651><c>ST</c><00:00:18,684><c>AR</c><00:00:18,717><c>TE</c><00:00:18,751><c>D </c>
+
+00:00:19,786 --> 00:00:19,853 align:start position:0%
+&gt;&gt; I DIDN'T KNOW WHAT WAS GOING 
+ON WITH TWITTER AND I STARTED 
+ 
+
+00:00:19,853 --> 00:00:23,723 align:start position:0%
+&gt;&gt; I DIDN'T KNOW WHAT WAS GOING 
+ON WITH TWITTER AND I STARTED 
+TH<00:00:19,886><c>RO</c><00:00:19,919><c>WI</c><00:00:19,953><c>NG</c><00:00:19,986><c> S</c><00:00:20,019><c>TU</c><00:00:20,053><c>FF</c><00:00:20,086><c> O</c><00:00:20,120><c>UT</c><00:00:20,153><c> T</c><00:00:20,186><c>HE</c><00:00:20,220><c>RE</c><00:00:20,253><c>, </c><00:00:20,286><c>BE</c><00:00:20,320><c>IN</c><00:00:20,353><c>G </c>
+
+00:00:23,723 --> 00:00:23,790 align:start position:0%
+ON WITH TWITTER AND I STARTED 
+THROWING STUFF OUT THERE, BEING 
+ 
+
+00:00:23,790 --> 00:00:25,925 align:start position:0%
+ON WITH TWITTER AND I STARTED 
+THROWING STUFF OUT THERE, BEING 
+MY<00:00:23,823><c> U</c><00:00:23,856><c>SU</c><00:00:23,890><c>AL</c><00:00:23,923><c> S</c><00:00:23,956><c>AR</c><00:00:23,990><c>CA</c><00:00:24,023><c>ST</c><00:00:24,057><c>IC</c><00:00:24,090><c> S</c><00:00:24,123><c>TU</c><00:00:24,157><c>FF</c><00:00:24,190><c> A</c><00:00:24,223><c>ND</c><00:00:24,257><c> I</c><00:00:24,290><c> </c>
+
+00:00:25,925 --> 00:00:25,992 align:start position:0%
+THROWING STUFF OUT THERE, BEING 
+MY USUAL SARCASTIC STUFF AND I 
+ 
+
+00:00:25,992 --> 00:00:27,860 align:start position:0%
+THROWING STUFF OUT THERE, BEING 
+MY USUAL SARCASTIC STUFF AND I 
+TH<00:00:26,025><c>RE</c><00:00:26,058><c>W </c><00:00:26,092><c>OU</c><00:00:26,125><c>T </c><00:00:26,158><c>MA</c><00:00:26,192><c>MB</c><00:00:26,225><c>A </c><00:00:26,259><c>ME</c><00:00:26,292><c>NT</c><00:00:26,325><c>AL</c><00:00:26,359><c>IT</c><00:00:26,392><c>Y.</c>
+
+00:00:27,860 --> 00:00:27,927 align:start position:0%
+MY USUAL SARCASTIC STUFF AND I 
+THREW OUT MAMBA MENTALITY.
+ 
+
+00:00:27,927 --> 00:00:29,595 align:start position:0%
+MY USUAL SARCASTIC STUFF AND I 
+THREW OUT MAMBA MENTALITY.
+&gt;&gt;<00:00:27,960><c> J</c><00:00:27,993><c>im</c><00:00:28,027><c>my</c><00:00:28,060><c>: </c><00:00:28,093><c>IT</c><00:00:28,127><c>'S</c><00:00:28,160><c> G</c><00:00:28,194><c>OO</c><00:00:28,227><c>D.</c>
+
+00:00:29,595 --> 00:00:29,662 align:start position:0%
+THREW OUT MAMBA MENTALITY.
+&gt;&gt; Jimmy: IT'S GOOD.
+ 
+
+00:00:29,662 --> 00:00:31,097 align:start position:0%
+THREW OUT MAMBA MENTALITY.
+&gt;&gt; Jimmy: IT'S GOOD.
+TH<00:00:29,695><c>E </c><00:00:29,728><c>CO</c><00:00:29,762><c>VE</c><00:00:29,795><c>R </c><00:00:29,828><c>PH</c><00:00:29,862><c>OT</c><00:00:29,895><c>O </c><00:00:29,929><c>IS</c><00:00:29,962><c> F</c><00:00:29,995><c>AN</c><00:00:30,029><c>TA</c><00:00:30,062><c>ST</c><00:00:30,095><c>IC</c><00:00:30,129><c>.</c>
+
+00:00:31,097 --> 00:00:31,164 align:start position:0%
+&gt;&gt; Jimmy: IT'S GOOD.
+THE COVER PHOTO IS FANTASTIC.
+ 
+
+00:00:31,164 --> 00:00:33,900 align:start position:0%
+&gt;&gt; Jimmy: IT'S GOOD.
+THE COVER PHOTO IS FANTASTIC.
+&gt;&gt;<00:00:31,197><c> A</c><00:00:31,230><c>ND</c><00:00:31,264><c>Y </c><00:00:31,297><c>BE</c><00:00:31,330><c>RN</c><00:00:31,364><c>ST</c><00:00:31,397><c>EI</c><00:00:31,431><c>N.</c>
+
+00:00:33,900 --> 00:00:33,967 align:start position:0%
+THE COVER PHOTO IS FANTASTIC.
+&gt;&gt; ANDY BERNSTEIN.
+ 
+
+00:00:33,967 --> 00:00:36,135 align:start position:0%
+THE COVER PHOTO IS FANTASTIC.
+&gt;&gt; ANDY BERNSTEIN.
+IF<00:00:34,000><c> Y</c><00:00:34,033><c>OU</c><00:00:34,067><c>'V</c><00:00:34,100><c>E </c><00:00:34,133><c>SE</c><00:00:34,167><c>EN</c><00:00:34,200><c> A</c><00:00:34,234><c>NY</c><00:00:34,267><c> P</c><00:00:34,300><c>IC</c><00:00:34,334><c>TU</c><00:00:34,367><c>RE</c><00:00:34,400><c> I</c><00:00:34,434><c>N </c>
+
+00:00:36,135 --> 00:00:36,202 align:start position:0%
+&gt;&gt; ANDY BERNSTEIN.
+IF YOU'VE SEEN ANY PICTURE IN 
+ 
+
+00:00:36,202 --> 00:00:37,070 align:start position:0%
+&gt;&gt; ANDY BERNSTEIN.
+IF YOU'VE SEEN ANY PICTURE IN 
+TH<00:00:36,235><c>E </c><00:00:36,268><c>NB</c><00:00:36,302><c>A </c><00:00:36,335><c>TH</c><00:00:36,368><c>AT</c><00:00:36,402><c> Y</c><00:00:36,435><c>OU</c><00:00:36,469><c> A</c><00:00:36,502><c>BS</c><00:00:36,535><c>OL</c><00:00:36,569><c>UT</c><00:00:36,602><c>EL</c><00:00:36,635><c>Y </c>
+
+00:00:37,070 --> 00:00:37,137 align:start position:0%
+IF YOU'VE SEEN ANY PICTURE IN 
+THE NBA THAT YOU ABSOLUTELY 
+ 
+
+00:00:37,137 --> 00:00:38,071 align:start position:0%
+IF YOU'VE SEEN ANY PICTURE IN 
+THE NBA THAT YOU ABSOLUTELY 
+LO<00:00:37,170><c>VE</c><00:00:37,203><c>, </c><00:00:37,237><c>HE</c><00:00:37,270><c> T</c><00:00:37,303><c>OO</c><00:00:37,337><c>K </c><00:00:37,370><c>TH</c><00:00:37,404><c>AT</c><00:00:37,437><c> P</c><00:00:37,470><c>IC</c><00:00:37,504><c>TU</c><00:00:37,537><c>RE</c><00:00:37,570><c>.</c>
+
+00:00:38,071 --> 00:00:38,138 align:start position:0%
+THE NBA THAT YOU ABSOLUTELY 
+LOVE, HE TOOK THAT PICTURE.
+ 
+
+00:00:38,138 --> 00:00:39,372 align:start position:0%
+THE NBA THAT YOU ABSOLUTELY 
+LOVE, HE TOOK THAT PICTURE.
+TH<00:00:38,171><c>IS</c><00:00:38,204><c> G</c><00:00:38,238><c>UY</c><00:00:38,271><c> I</c><00:00:38,304><c>S </c><00:00:38,338><c>A </c><00:00:38,371><c>LE</c><00:00:38,405><c>GE</c><00:00:38,438><c>ND</c><00:00:38,471><c>.</c>
+
+00:00:39,372 --> 00:00:39,439 align:start position:0%
+LOVE, HE TOOK THAT PICTURE.
+THIS GUY IS A LEGEND.
+ 
+
+00:00:39,439 --> 00:00:42,708 align:start position:0%
+LOVE, HE TOOK THAT PICTURE.
+THIS GUY IS A LEGEND.
+&gt;&gt;<00:00:39,472><c> J</c><00:00:39,505><c>im</c><00:00:39,539><c>my</c><00:00:39,572><c>: </c><00:00:39,605><c>IS</c><00:00:39,639><c> T</c><00:00:39,672><c>HI</c><00:00:39,706><c>S </c><00:00:39,739><c>A </c><00:00:39,772><c>RE</c><00:00:39,806><c>AL</c><00:00:39,839><c> D</c><00:00:39,872><c>RI</c><00:00:39,906><c>P </c><00:00:39,939><c>OF</c>
+
+00:00:42,708 --> 00:00:42,775 align:start position:0%
+THIS GUY IS A LEGEND.
+&gt;&gt; Jimmy: IS THIS A REAL DRIP OF
+ 
+
+00:00:42,775 --> 00:00:42,908 align:start position:0%
+THIS GUY IS A LEGEND.
+&gt;&gt; Jimmy: IS THIS A REAL DRIP OF
+SW<00:00:42,808><c>EA</c><00:00:42,841><c>T?</c>
+
+00:00:42,908 --> 00:00:42,975 align:start position:0%
+&gt;&gt; Jimmy: IS THIS A REAL DRIP OF
+SWEAT?
+ 
+
+00:00:42,975 --> 00:00:46,312 align:start position:0%
+&gt;&gt; Jimmy: IS THIS A REAL DRIP OF
+SWEAT?
+&gt;&gt;<00:00:43,008><c> T</c><00:00:43,042><c>HA</c><00:00:43,075><c>T'</c><00:00:43,108><c>S </c><00:00:43,142><c>--</c><00:00:43,175><c> Y</c><00:00:43,208><c>EA</c><00:00:43,242><c>H.</c>
+
+00:00:46,312 --> 00:00:46,379 align:start position:0%
+SWEAT?
+&gt;&gt; THAT'S -- YEAH.
+ 
+
+00:00:46,379 --> 00:00:47,480 align:start position:0%
+SWEAT?
+&gt;&gt; THAT'S -- YEAH.
+I <00:00:46,412><c>BE</c><00:00:46,445><c>LI</c><00:00:46,479><c>EV</c><00:00:46,512><c>E </c><00:00:46,545><c>TH</c><00:00:46,579><c>AT</c><00:00:46,612><c> I</c><00:00:46,646><c>S </c><00:00:46,679><c>A </c><00:00:46,712><c>RE</c><00:00:46,746><c>AL</c><00:00:46,779><c> D</c><00:00:46,812><c>RI</c><00:00:46,846><c>P </c><00:00:46,879><c>OF</c>
+
+00:00:47,480 --> 00:00:47,547 align:start position:0%
+&gt;&gt; THAT'S -- YEAH.
+I BELIEVE THAT IS A REAL DRIP OF
+ 
+
+00:00:47,547 --> 00:00:48,848 align:start position:0%
+&gt;&gt; THAT'S -- YEAH.
+I BELIEVE THAT IS A REAL DRIP OF
+SW<00:00:47,580><c>EA</c><00:00:47,613><c>T,</c><00:00:47,647><c> A</c><00:00:47,680><c>LT</c><00:00:47,713><c>HO</c><00:00:47,747><c>UG</c><00:00:47,780><c>H </c><00:00:47,814><c>I </c><00:00:47,847><c>DO</c><00:00:47,880><c> N</c><00:00:47,914><c>OT</c><00:00:47,947><c> </c>
+
+00:00:48,848 --> 00:00:48,915 align:start position:0%
+I BELIEVE THAT IS A REAL DRIP OF
+SWEAT, ALTHOUGH I DO NOT 
+ 
+
+00:00:48,915 --> 00:00:50,550 align:start position:0%
+I BELIEVE THAT IS A REAL DRIP OF
+SWEAT, ALTHOUGH I DO NOT 
+RE<00:00:48,948><c>ME</c><00:00:48,981><c>MB</c><00:00:49,015><c>ER</c><00:00:49,048><c> T</c><00:00:49,081><c>HE</c><00:00:49,115><c> E</c><00:00:49,148><c>XA</c><00:00:49,182><c>CT</c><00:00:49,215><c> M</c><00:00:49,248><c>OM</c><00:00:49,282><c>EN</c><00:00:49,315><c>T </c><00:00:49,348><c>TH</c><00:00:49,382><c>AT</c><00:00:49,415><c> I</c>
+
+00:00:50,550 --> 00:00:50,617 align:start position:0%
+SWEAT, ALTHOUGH I DO NOT 
+REMEMBER THE EXACT MOMENT THAT I
+ 
+
+00:00:50,617 --> 00:00:52,018 align:start position:0%
+SWEAT, ALTHOUGH I DO NOT 
+REMEMBER THE EXACT MOMENT THAT I
+BE<00:00:50,650><c>GA</c><00:00:50,683><c>N </c><00:00:50,717><c>TO</c><00:00:50,750><c> P</c><00:00:50,783><c>ER</c><00:00:50,817><c>SP</c><00:00:50,850><c>IR</c><00:00:50,884><c>E </c><00:00:50,917><c>DU</c><00:00:50,950><c>RI</c><00:00:50,984><c>NG</c><00:00:51,017><c> T</c><00:00:51,050><c>HA</c><00:00:51,084><c>T </c>
+
+00:00:52,018 --> 00:00:52,085 align:start position:0%
+REMEMBER THE EXACT MOMENT THAT I
+BEGAN TO PERSPIRE DURING THAT 
+ 
+
+00:00:52,085 --> 00:00:53,686 align:start position:0%
+REMEMBER THE EXACT MOMENT THAT I
+BEGAN TO PERSPIRE DURING THAT 
+PA<00:00:52,118><c>RT</c><00:00:52,151><c>IC</c><00:00:52,185><c>UL</c><00:00:52,218><c>AR</c><00:00:52,251><c> C</c><00:00:52,285><c>ON</c><00:00:52,318><c>TE</c><00:00:52,352><c>ST</c><00:00:52,385><c>, </c><00:00:52,418><c>BU</c><00:00:52,452><c>T </c><00:00:52,485><c>I </c><00:00:52,518><c>TH</c><00:00:52,552><c>IN</c><00:00:52,585><c>K </c>
+
+00:00:53,686 --> 00:00:53,753 align:start position:0%
+BEGAN TO PERSPIRE DURING THAT 
+PARTICULAR CONTEST, BUT I THINK 
+ 
+
+00:00:53,753 --> 00:00:54,220 align:start position:0%
+BEGAN TO PERSPIRE DURING THAT 
+PARTICULAR CONTEST, BUT I THINK 
+IT<00:00:53,786><c>'S</c><00:00:53,819><c> A</c><00:00:53,853><c>UT</c><00:00:53,886><c>HE</c><00:00:53,919><c>NT</c><00:00:53,953><c>IC</c><00:00:53,986><c>.</c>
+
+00:00:54,220 --> 00:00:54,287 align:start position:0%
+PARTICULAR CONTEST, BUT I THINK 
+IT'S AUTHENTIC.
+ 
+
+00:00:54,287 --> 00:00:54,987 align:start position:0%
+PARTICULAR CONTEST, BUT I THINK 
+IT'S AUTHENTIC.
+&gt;&gt;<00:00:54,320><c> J</c><00:00:54,353><c>im</c><00:00:54,387><c>my</c><00:00:54,420><c>: </c><00:00:54,453><c>ON</c><00:00:54,487><c>E </c><00:00:54,520><c>OF</c><00:00:54,554><c> T</c><00:00:54,587><c>HE</c><00:00:54,620><c> T</c><00:00:54,654><c>HI</c><00:00:54,687><c>NG</c><00:00:54,720><c>S </c><00:00:54,754><c>TH</c><00:00:54,787><c>AT</c>
+
+00:00:54,987 --> 00:00:55,054 align:start position:0%
+IT'S AUTHENTIC.
+&gt;&gt; Jimmy: ONE OF THE THINGS THAT
+ 
+
+00:00:55,054 --> 00:00:57,690 align:start position:0%
+IT'S AUTHENTIC.
+&gt;&gt; Jimmy: ONE OF THE THINGS THAT
+I <00:00:55,087><c>TH</c><00:00:55,120><c>OU</c><00:00:55,154><c>GH</c><00:00:55,187><c>T </c><00:00:55,220><c>WA</c><00:00:55,254><c>S </c><00:00:55,287><c>MO</c><00:00:55,321><c>ST</c><00:00:55,354><c> I</c><00:00:55,387><c>NT</c><00:00:55,421><c>ER</c><00:00:55,454><c>ES</c><00:00:55,487><c>TI</c><00:00:55,521><c>NG</c><00:00:55,554><c> </c>
+
+00:00:57,690 --> 00:00:57,757 align:start position:0%
+&gt;&gt; Jimmy: ONE OF THE THINGS THAT
+I THOUGHT WAS MOST INTERESTING 
+ 
+
+00:00:57,757 --> 00:00:58,724 align:start position:0%
+&gt;&gt; Jimmy: ONE OF THE THINGS THAT
+I THOUGHT WAS MOST INTERESTING 
+IN<00:00:57,790><c> T</c><00:00:57,823><c>HE</c><00:00:57,857><c> B</c><00:00:57,890><c>OO</c><00:00:57,923><c>K </c><00:00:57,957><c>IS</c><00:00:57,990><c> T</c><00:00:58,024><c>HA</c><00:00:58,057><c>T </c><00:00:58,090><c>YO</c><00:00:58,124><c>U </c><00:00:58,157><c>RE</c><00:00:58,190><c>AD</c><00:00:58,224><c> -</c><00:00:58,257><c>- </c>
+
+00:00:58,724 --> 00:00:58,791 align:start position:0%
+I THOUGHT WAS MOST INTERESTING 
+IN THE BOOK IS THAT YOU READ -- 
+ 
+
+00:00:58,791 --> 00:01:00,326 align:start position:0%
+I THOUGHT WAS MOST INTERESTING 
+IN THE BOOK IS THAT YOU READ -- 
+AN<00:00:58,824><c>D </c><00:00:58,857><c>TH</c><00:00:58,891><c>IS</c><00:00:58,924><c> G</c><00:00:58,957><c>OE</c><00:00:58,991><c>S </c><00:00:59,024><c>BA</c><00:00:59,058><c>CK</c><00:00:59,091><c> T</c><00:00:59,124><c>O </c><00:00:59,158><c>TH</c><00:00:59,191><c>E </c>
+
+00:01:00,326 --> 00:01:00,393 align:start position:0%
+IN THE BOOK IS THAT YOU READ -- 
+AND THIS GOES BACK TO THE 
+ 
+
+00:01:00,393 --> 00:01:01,427 align:start position:0%
+IN THE BOOK IS THAT YOU READ -- 
+AND THIS GOES BACK TO THE 
+LU<00:01:00,426><c>NA</c><00:01:00,459><c>TI</c><00:01:00,493><c>C </c><00:01:00,526><c>TH</c><00:01:00,559><c>IN</c><00:01:00,593><c>G.</c>
+
+00:01:01,427 --> 00:01:01,494 align:start position:0%
+AND THIS GOES BACK TO THE 
+LUNATIC THING.
+ 
+
+00:01:01,494 --> 00:01:04,063 align:start position:0%
+AND THIS GOES BACK TO THE 
+LUNATIC THING.
+YO<00:01:01,527><c>U </c><00:01:01,560><c>RE</c><00:01:01,594><c>AD</c><00:01:01,627><c> T</c><00:01:01,660><c>HE</c><00:01:01,694><c> R</c><00:01:01,727><c>EF</c><00:01:01,761><c>ER</c><00:01:01,794><c>EE</c><00:01:01,827><c>'S</c><00:01:01,861><c> O</c><00:01:01,894><c>FF</c><00:01:01,927><c>IC</c><00:01:01,961><c>IA</c><00:01:01,994><c>L </c>
+
+00:01:04,063 --> 00:01:04,130 align:start position:0%
+LUNATIC THING.
+YOU READ THE REFEREE'S OFFICIAL 
+ 
+
+00:01:04,130 --> 00:01:06,399 align:start position:0%
+LUNATIC THING.
+YOU READ THE REFEREE'S OFFICIAL 
+HA<00:01:04,163><c>ND</c><00:01:04,196><c>BO</c><00:01:04,230><c>OK</c><00:01:04,263><c> T</c><00:01:04,296><c>O </c><00:01:04,330><c>FI</c><00:01:04,363><c>ND</c><00:01:04,397><c> O</c><00:01:04,430><c>UT</c><00:01:04,463><c> W</c><00:01:04,497><c>HE</c><00:01:04,530><c>RE</c><00:01:04,563><c> T</c><00:01:04,597><c>HE</c><00:01:04,630><c> </c>
+
+00:01:06,399 --> 00:01:06,466 align:start position:0%
+YOU READ THE REFEREE'S OFFICIAL 
+HANDBOOK TO FIND OUT WHERE THE 
+ 
+
+00:01:06,466 --> 00:01:08,534 align:start position:0%
+YOU READ THE REFEREE'S OFFICIAL 
+HANDBOOK TO FIND OUT WHERE THE 
+RE<00:01:06,499><c>FE</c><00:01:06,532><c>RE</c><00:01:06,566><c>ES</c><00:01:06,599><c> A</c><00:01:06,632><c>RE</c><00:01:06,666><c> O</c><00:01:06,699><c>N </c><00:01:06,733><c>TH</c><00:01:06,766><c>E </c><00:01:06,799><c>CO</c><00:01:06,833><c>UR</c><00:01:06,866><c>T.</c>
+
+00:01:08,534 --> 00:01:08,601 align:start position:0%
+HANDBOOK TO FIND OUT WHERE THE 
+REFEREES ARE ON THE COURT.
+ 
+
+00:01:08,601 --> 00:01:09,202 align:start position:0%
+HANDBOOK TO FIND OUT WHERE THE 
+REFEREES ARE ON THE COURT.
+EX<00:01:08,634><c>PL</c><00:01:08,667><c>AI</c><00:01:08,701><c>N </c><00:01:08,734><c>TH</c><00:01:08,767><c>IS</c><00:01:08,801><c> I</c><00:01:08,834><c>DE</c><00:01:08,868><c>A.</c>
+
+00:01:09,202 --> 00:01:09,269 align:start position:0%
+REFEREES ARE ON THE COURT.
+EXPLAIN THIS IDEA.
+ 
+
+00:01:09,269 --> 00:01:11,204 align:start position:0%
+REFEREES ARE ON THE COURT.
+EXPLAIN THIS IDEA.
+&gt;&gt;<00:01:09,302><c> W</c><00:01:09,335><c>EL</c><00:01:09,369><c>L,</c><00:01:09,402><c> I</c><00:01:09,435><c>T'</c><00:01:09,469><c>S </c><00:01:09,502><c>A </c><00:01:09,536><c>RU</c><00:01:09,569><c>LE</c><00:01:09,602><c>BO</c><00:01:09,636><c>OK</c><00:01:09,669><c> A</c><00:01:09,702><c>ND</c><00:01:09,736><c> T</c><00:01:09,769><c>HE</c>
+
+00:01:11,204 --> 00:01:11,271 align:start position:0%
+EXPLAIN THIS IDEA.
+&gt;&gt; WELL, IT'S A RULEBOOK AND THE
+ 
+
+00:01:11,271 --> 00:01:12,572 align:start position:0%
+EXPLAIN THIS IDEA.
+&gt;&gt; WELL, IT'S A RULEBOOK AND THE
+OF<00:01:11,304><c>FI</c><00:01:11,337><c>CI</c><00:01:11,371><c>AL</c><00:01:11,404><c>S </c><00:01:11,437><c>HA</c><00:01:11,471><c>VE</c><00:01:11,504><c> T</c><00:01:11,538><c>O </c><00:01:11,571><c>BE</c><00:01:11,604><c> I</c><00:01:11,638><c>N </c><00:01:11,671><c>CE</c><00:01:11,704><c>RT</c><00:01:11,738><c>AI</c><00:01:11,771><c>N </c>
+
+00:01:12,572 --> 00:01:12,639 align:start position:0%
+&gt;&gt; WELL, IT'S A RULEBOOK AND THE
+OFFICIALS HAVE TO BE IN CERTAIN 
+ 
+
+00:01:12,639 --> 00:01:13,806 align:start position:0%
+&gt;&gt; WELL, IT'S A RULEBOOK AND THE
+OFFICIALS HAVE TO BE IN CERTAIN 
+PO<00:01:12,672><c>SI</c><00:01:12,705><c>TI</c><00:01:12,739><c>ON</c><00:01:12,772><c>S </c><00:01:12,805><c>SO</c><00:01:12,839><c> I</c><00:01:12,872><c>F </c><00:01:12,906><c>YO</c><00:01:12,939><c>U </c><00:01:12,972><c>WA</c><00:01:13,006><c>TC</c><00:01:13,039><c>H </c><00:01:13,072><c>A </c>
+
+00:01:13,806 --> 00:01:13,873 align:start position:0%
+OFFICIALS HAVE TO BE IN CERTAIN 
+POSITIONS SO IF YOU WATCH A 
+ 
+
+00:01:13,873 --> 00:01:14,774 align:start position:0%
+OFFICIALS HAVE TO BE IN CERTAIN 
+POSITIONS SO IF YOU WATCH A 
+GA<00:01:13,906><c>ME</c><00:01:13,939><c>, </c><00:01:13,973><c>YO</c><00:01:14,006><c>U'</c><00:01:14,039><c>LL</c><00:01:14,073><c> S</c><00:01:14,106><c>EE</c><00:01:14,140><c> O</c><00:01:14,173><c>FF</c><00:01:14,206><c>IC</c><00:01:14,240><c>IA</c><00:01:14,273><c>LS</c><00:01:14,306><c> </c>
+
+00:01:14,774 --> 00:01:14,841 align:start position:0%
+POSITIONS SO IF YOU WATCH A 
+GAME, YOU'LL SEE OFFICIALS 
+ 
+
+00:01:14,841 --> 00:01:17,677 align:start position:0%
+POSITIONS SO IF YOU WATCH A 
+GAME, YOU'LL SEE OFFICIALS 
+SL<00:01:14,874><c>ID</c><00:01:14,907><c>IN</c><00:01:14,941><c>G </c><00:01:14,974><c>IN</c><00:01:15,007><c> D</c><00:01:15,041><c>IF</c><00:01:15,074><c>FE</c><00:01:15,108><c>RE</c><00:01:15,141><c>NT</c><00:01:15,174><c> A</c><00:01:15,208><c>RE</c><00:01:15,241><c>AS</c><00:01:15,274><c>.</c>
+
+00:01:17,677 --> 00:01:17,744 align:start position:0%
+GAME, YOU'LL SEE OFFICIALS 
+SLIDING IN DIFFERENT AREAS.
+ 
+
+00:01:17,744 --> 00:01:18,811 align:start position:0%
+GAME, YOU'LL SEE OFFICIALS 
+SLIDING IN DIFFERENT AREAS.
+YO<00:01:17,777><c>U </c><00:01:17,810><c>HA</c><00:01:17,844><c>VE</c><00:01:17,877><c> Y</c><00:01:17,910><c>OU</c><00:01:17,944><c>R </c><00:01:17,977><c>SL</c><00:01:18,011><c>OT</c><00:01:18,044><c> O</c><00:01:18,077><c>FF</c><00:01:18,111><c>IC</c><00:01:18,144><c>IA</c><00:01:18,177><c>L </c><00:01:18,211><c>AN</c><00:01:18,244><c>D </c>
+
+00:01:18,811 --> 00:01:18,878 align:start position:0%
+SLIDING IN DIFFERENT AREAS.
+YOU HAVE YOUR SLOT OFFICIAL AND 
+ 
+
+00:01:18,878 --> 00:01:19,312 align:start position:0%
+SLIDING IN DIFFERENT AREAS.
+YOU HAVE YOUR SLOT OFFICIAL AND 
+SO<00:01:18,911><c> O</c><00:01:18,944><c>N.</c>
+
+00:01:19,312 --> 00:01:19,379 align:start position:0%
+YOU HAVE YOUR SLOT OFFICIAL AND 
+SO ON.
+ 
+
+00:01:19,379 --> 00:01:20,546 align:start position:0%
+YOU HAVE YOUR SLOT OFFICIAL AND 
+SO ON.
+AN<00:01:19,412><c>D </c><00:01:19,445><c>SO</c><00:01:19,479><c> I</c><00:01:19,512><c> R</c><00:01:19,545><c>EA</c><00:01:19,579><c>D </c><00:01:19,612><c>IT</c><00:01:19,646><c> T</c><00:01:19,679><c>O </c><00:01:19,712><c>UN</c><00:01:19,746><c>DE</c><00:01:19,779><c>RS</c><00:01:19,812><c>TA</c><00:01:19,846><c>ND</c><00:01:19,879><c> </c>
+
+00:01:20,546 --> 00:01:20,613 align:start position:0%
+SO ON.
+AND SO I READ IT TO UNDERSTAND 
+ 
+
+00:01:20,613 --> 00:01:21,781 align:start position:0%
+SO ON.
+AND SO I READ IT TO UNDERSTAND 
+WH<00:01:20,646><c>ER</c><00:01:20,679><c>E </c><00:01:20,713><c>TH</c><00:01:20,746><c>EY</c><00:01:20,779><c> N</c><00:01:20,813><c>EE</c><00:01:20,846><c>D </c><00:01:20,880><c>TO</c><00:01:20,913><c> B</c><00:01:20,946><c>E </c><00:01:20,980><c>IN</c><00:01:21,013><c> C</c><00:01:21,046><c>ER</c><00:01:21,080><c>TA</c><00:01:21,113><c>IN</c>
+
+00:01:21,781 --> 00:01:21,848 align:start position:0%
+AND SO I READ IT TO UNDERSTAND 
+WHERE THEY NEED TO BE IN CERTAIN
+ 
+
+00:01:21,848 --> 00:01:22,982 align:start position:0%
+AND SO I READ IT TO UNDERSTAND 
+WHERE THEY NEED TO BE IN CERTAIN
+MO<00:01:21,881><c>ME</c><00:01:21,914><c>NT</c><00:01:21,948><c>S </c><00:01:21,981><c>OF</c><00:01:22,014><c> T</c><00:01:22,048><c>IM</c><00:01:22,081><c>E </c><00:01:22,115><c>SO</c><00:01:22,148><c> I</c><00:01:22,181><c>F </c><00:01:22,215><c>I </c><00:01:22,248><c>NE</c><00:01:22,281><c>ED</c><00:01:22,315><c> T</c><00:01:22,348><c>O </c>
+
+00:01:22,982 --> 00:01:23,049 align:start position:0%
+WHERE THEY NEED TO BE IN CERTAIN
+MOMENTS OF TIME SO IF I NEED TO 
+ 
+
+00:01:23,049 --> 00:01:28,788 align:start position:0%
+WHERE THEY NEED TO BE IN CERTAIN
+MOMENTS OF TIME SO IF I NEED TO 
+GE<00:01:23,082><c>T </c><00:01:23,115><c>AW</c><00:01:23,149><c>AY</c><00:01:23,182><c> W</c><00:01:23,215><c>IT</c><00:01:23,249><c>H </c><00:01:23,282><c>A </c><00:01:23,316><c>FO</c><00:01:23,349><c>UL</c><00:01:23,382><c> -</c><00:01:23,416><c>- </c>
+
+00:01:28,788 --> 00:01:28,855 align:start position:0%
+MOMENTS OF TIME SO IF I NEED TO 
+GET AWAY WITH A FOUL -- 
+ 
+
+00:01:28,855 --> 00:01:29,288 align:start position:0%
+MOMENTS OF TIME SO IF I NEED TO 
+GET AWAY WITH A FOUL -- 
+[ <00:01:28,888><c>CH</c><00:01:28,921><c>EE</c><00:01:28,955><c>RS</c><00:01:28,988><c> A</c><00:01:29,021><c>ND</c><00:01:29,055><c> A</c><00:01:29,088><c>PP</c><00:01:29,122><c>LA</c><00:01:29,155><c>US</c><00:01:29,188><c>E </c><00:01:29,222><c>]</c>
+
+00:01:29,288 --> 00:01:29,355 align:start position:0%
+GET AWAY WITH A FOUL -- 
+[ CHEERS AND APPLAUSE ]
+ 
+
+00:01:29,355 --> 00:01:30,656 align:start position:0%
+GET AWAY WITH A FOUL -- 
+[ CHEERS AND APPLAUSE ]
+I <00:01:29,388><c>RU</c><00:01:29,422><c>SH</c><00:01:29,455><c> B</c><00:01:29,489><c>AC</c><00:01:29,522><c>K </c><00:01:29,555><c>TH</c><00:01:29,589><c>ER</c><00:01:29,622><c>E.</c>
+
+00:01:30,656 --> 00:01:30,723 align:start position:0%
+[ CHEERS AND APPLAUSE ]
+I RUSH BACK THERE.
+ 
+
+00:01:30,723 --> 00:01:33,493 align:start position:0%
+[ CHEERS AND APPLAUSE ]
+I RUSH BACK THERE.
+TH<00:01:30,756><c>E </c><00:01:30,789><c>SL</c><00:01:30,823><c>OT</c><00:01:30,856><c> O</c><00:01:30,889><c>FF</c><00:01:30,923><c>IC</c><00:01:30,956><c>IA</c><00:01:30,990><c>L'</c><00:01:31,023><c>S </c><00:01:31,056><c>NO</c><00:01:31,090><c>T </c><00:01:31,123><c>GO</c><00:01:31,156><c>IN</c><00:01:31,190><c>G </c><00:01:31,223><c>TO</c>
+
+00:01:33,493 --> 00:01:33,560 align:start position:0%
+I RUSH BACK THERE.
+THE SLOT OFFICIAL'S NOT GOING TO
+ 
+
+00:01:33,560 --> 00:01:34,127 align:start position:0%
+I RUSH BACK THERE.
+THE SLOT OFFICIAL'S NOT GOING TO
+SE<00:01:33,593><c>E </c><00:01:33,626><c>TH</c><00:01:33,660><c>IS</c><00:01:33,693><c> L</c><00:01:33,726><c>IT</c><00:01:33,760><c>TL</c><00:01:33,793><c>E </c><00:01:33,827><c>HO</c><00:01:33,860><c>LD</c><00:01:33,893><c> R</c><00:01:33,927><c>IG</c><00:01:33,960><c>HT</c><00:01:33,993><c> H</c><00:01:34,027><c>ER</c><00:01:34,060><c>E.</c>
+
+00:01:34,127 --> 00:01:34,194 align:start position:0%
+THE SLOT OFFICIAL'S NOT GOING TO
+SEE THIS LITTLE HOLD RIGHT HERE.
+ 
+
+00:01:34,194 --> 00:01:35,795 align:start position:0%
+THE SLOT OFFICIAL'S NOT GOING TO
+SEE THIS LITTLE HOLD RIGHT HERE.
+&gt;&gt;<00:01:34,227><c> J</c><00:01:34,260><c>im</c><00:01:34,294><c>my</c><00:01:34,327><c>: </c><00:01:34,360><c>HA</c><00:01:34,394><c>D </c><00:01:34,427><c>AN</c><00:01:34,461><c>Y </c><00:01:34,494><c>PL</c><00:01:34,527><c>AY</c><00:01:34,561><c>ER</c><00:01:34,594><c> Y</c><00:01:34,627><c>OU</c><00:01:34,661><c> </c>
+
+00:01:35,795 --> 00:01:35,862 align:start position:0%
+SEE THIS LITTLE HOLD RIGHT HERE.
+&gt;&gt; Jimmy: HAD ANY PLAYER YOU 
+ 
+
+00:01:35,862 --> 00:01:36,362 align:start position:0%
+SEE THIS LITTLE HOLD RIGHT HERE.
+&gt;&gt; Jimmy: HAD ANY PLAYER YOU 
+KN<00:01:35,895><c>OW</c><00:01:35,928><c> E</c><00:01:35,962><c>VE</c><00:01:35,995><c>R </c><00:01:36,028><c>DO</c><00:01:36,062><c>NE</c><00:01:36,095><c> T</c><00:01:36,129><c>HA</c><00:01:36,162><c>T </c><00:01:36,195><c>BE</c><00:01:36,229><c>FO</c><00:01:36,262><c>RE</c><00:01:36,295><c>?</c>
+
+00:01:36,362 --> 00:01:36,429 align:start position:0%
+&gt;&gt; Jimmy: HAD ANY PLAYER YOU 
+KNOW EVER DONE THAT BEFORE?
+ 
+
+00:01:36,429 --> 00:01:38,064 align:start position:0%
+&gt;&gt; Jimmy: HAD ANY PLAYER YOU 
+KNOW EVER DONE THAT BEFORE?
+&gt;&gt;<00:01:36,462><c> N</c><00:01:36,496><c>OT</c><00:01:36,529><c> T</c><00:01:36,562><c>HA</c><00:01:36,596><c>T </c><00:01:36,629><c>I </c><00:01:36,662><c>KN</c><00:01:36,696><c>OW</c><00:01:36,729><c> O</c><00:01:36,763><c>F.</c>
+
+00:01:38,064 --> 00:01:38,131 align:start position:0%
+KNOW EVER DONE THAT BEFORE?
+&gt;&gt; NOT THAT I KNOW OF.
+ 
+
+00:01:38,131 --> 00:01:38,898 align:start position:0%
+KNOW EVER DONE THAT BEFORE?
+&gt;&gt; NOT THAT I KNOW OF.
+&gt;&gt;<00:01:38,164><c> J</c><00:01:38,197><c>im</c><00:01:38,231><c>my</c><00:01:38,264><c>: </c><00:01:38,297><c>TH</c><00:01:38,331><c>AT</c><00:01:38,364><c> I</c><00:01:38,398><c>S </c><00:01:38,431><c>AB</c><00:01:38,464><c>SO</c><00:01:38,498><c>LU</c><00:01:38,531><c>TE</c><00:01:38,564><c>LY</c><00:01:38,598><c> </c>
+
+00:01:38,898 --> 00:01:38,965 align:start position:0%
+&gt;&gt; NOT THAT I KNOW OF.
+&gt;&gt; Jimmy: THAT IS ABSOLUTELY 
+ 
+
+00:01:38,965 --> 00:01:39,198 align:start position:0%
+&gt;&gt; NOT THAT I KNOW OF.
+&gt;&gt; Jimmy: THAT IS ABSOLUTELY 
+NU<00:01:38,998><c>TS</c><00:01:39,031><c>.</c>
+
+00:01:39,198 --> 00:01:39,265 align:start position:0%
+&gt;&gt; Jimmy: THAT IS ABSOLUTELY 
+NUTS.
+ 
+
+00:01:39,265 --> 00:01:40,967 align:start position:0%
+&gt;&gt; Jimmy: THAT IS ABSOLUTELY 
+NUTS.
+YO<00:01:39,298><c>U </c><00:01:39,331><c>AL</c><00:01:39,365><c>SO</c><00:01:39,398><c> W</c><00:01:39,431><c>RO</c><00:01:39,465><c>TE</c><00:01:39,498><c> S</c><00:01:39,532><c>OM</c><00:01:39,565><c>ET</c><00:01:39,598><c>HI</c><00:01:39,632><c>NG</c><00:01:39,665><c> T</c><00:01:39,698><c>HA</c><00:01:39,732><c>T </c><00:01:39,765><c>I </c>
+
+00:01:40,967 --> 00:01:41,034 align:start position:0%
+NUTS.
+YOU ALSO WROTE SOMETHING THAT I 
+ 
+
+00:01:41,034 --> 00:01:43,503 align:start position:0%
+NUTS.
+YOU ALSO WROTE SOMETHING THAT I 
+TH<00:01:41,067><c>OU</c><00:01:41,100><c>GH</c><00:01:41,134><c>T </c><00:01:41,167><c>WA</c><00:01:41,200><c>S </c><00:01:41,234><c>VE</c><00:01:41,267><c>RY</c><00:01:41,301><c>, </c><00:01:41,334><c>VE</c><00:01:41,367><c>RY</c><00:01:41,401><c> </c>
+
+00:01:43,503 --> 00:01:43,570 align:start position:0%
+YOU ALSO WROTE SOMETHING THAT I 
+THOUGHT WAS VERY, VERY 
+ 
+
+00:01:43,570 --> 00:01:43,803 align:start position:0%
+YOU ALSO WROTE SOMETHING THAT I 
+THOUGHT WAS VERY, VERY 
+IN<00:01:43,603><c>TE</c><00:01:43,636><c>RE</c><00:01:43,670><c>ST</c><00:01:43,703><c>IN</c><00:01:43,736><c>G.</c>
+
+00:01:43,803 --> 00:01:43,870 align:start position:0%
+THOUGHT WAS VERY, VERY 
+INTERESTING.
+ 
+
+00:01:43,870 --> 00:01:46,506 align:start position:0%
+THOUGHT WAS VERY, VERY 
+INTERESTING.
+YO<00:01:43,903><c>U </c><00:01:43,937><c>WR</c><00:01:43,970><c>OT</c><00:01:44,003><c>E,</c><00:01:44,037><c> "</c><00:01:44,070><c>A </c><00:01:44,103><c>BI</c><00:01:44,137><c>G </c><00:01:44,170><c>SH</c><00:01:44,204><c>OT</c><00:01:44,237><c> I</c><00:01:44,270><c>S </c><00:01:44,304><c>JU</c><00:01:44,337><c>ST</c><00:01:44,370><c> A</c>
+
+00:01:46,506 --> 00:01:46,573 align:start position:0%
+INTERESTING.
+YOU WROTE, "A BIG SHOT IS JUST A
+ 
+
+00:01:46,573 --> 00:01:47,607 align:start position:0%
+INTERESTING.
+YOU WROTE, "A BIG SHOT IS JUST A
+SH<00:01:46,606><c>OT</c><00:01:46,639><c>."</c>
+
+00:01:47,607 --> 00:01:47,674 align:start position:0%
+YOU WROTE, "A BIG SHOT IS JUST A
+SHOT."
+ 
+
+00:01:47,674 --> 00:01:48,508 align:start position:0%
+YOU WROTE, "A BIG SHOT IS JUST A
+SHOT."
+IS<00:01:47,707><c> T</c><00:01:47,740><c>HA</c><00:01:47,774><c>T </c><00:01:47,807><c>RI</c><00:01:47,840><c>GH</c><00:01:47,874><c>T?</c>
+
+00:01:48,508 --> 00:01:48,575 align:start position:0%
+SHOT."
+IS THAT RIGHT?
+ 
+
+00:01:48,575 --> 00:01:49,242 align:start position:0%
+SHOT."
+IS THAT RIGHT?
+&gt;&gt;<00:01:48,608><c> Y</c><00:01:48,641><c>EA</c><00:01:48,675><c>H.</c>
+
+00:01:49,242 --> 00:01:49,309 align:start position:0%
+IS THAT RIGHT?
+&gt;&gt; YEAH.
+ 
+
+00:01:49,309 --> 00:01:50,443 align:start position:0%
+IS THAT RIGHT?
+&gt;&gt; YEAH.
+WE<00:01:49,342><c> P</c><00:01:49,375><c>SY</c><00:01:49,409><c>CH</c><00:01:49,442><c> O</c><00:01:49,475><c>UR</c><00:01:49,509><c>SE</c><00:01:49,542><c>LV</c><00:01:49,576><c>ES</c><00:01:49,609><c> U</c><00:01:49,642><c>P </c><00:01:49,676><c>TO</c><00:01:49,709><c>O </c><00:01:49,742><c>MU</c><00:01:49,776><c>CH</c><00:01:49,809><c>.</c>
+
+00:01:50,443 --> 00:01:50,510 align:start position:0%
+&gt;&gt; YEAH.
+WE PSYCH OURSELVES UP TOO MUCH.
+ 
+
+00:01:50,510 --> 00:01:52,278 align:start position:0%
+&gt;&gt; YEAH.
+WE PSYCH OURSELVES UP TOO MUCH.
+IF<00:01:50,543><c> Y</c><00:01:50,576><c>OU</c><00:01:50,610><c> T</c><00:01:50,643><c>RY</c><00:01:50,676><c> T</c><00:01:50,710><c>O </c><00:01:50,743><c>TA</c><00:01:50,777><c>LK</c><00:01:50,810><c> Y</c><00:01:50,843><c>OU</c><00:01:50,877><c>RS</c><00:01:50,910><c>EL</c><00:01:50,943><c>F </c>
+
+00:01:52,278 --> 00:01:52,345 align:start position:0%
+WE PSYCH OURSELVES UP TOO MUCH.
+IF YOU TRY TO TALK YOURSELF 
+ 
+
+00:01:52,345 --> 00:01:53,446 align:start position:0%
+WE PSYCH OURSELVES UP TOO MUCH.
+IF YOU TRY TO TALK YOURSELF 
+IN<00:01:52,378><c>TO</c><00:01:52,411><c>, </c><00:01:52,445><c>TH</c><00:01:52,478><c>IS</c><00:01:52,511><c> I</c><00:01:52,545><c>S </c><00:01:52,578><c>A </c><00:01:52,612><c>BI</c><00:01:52,645><c>G </c><00:01:52,678><c>MO</c><00:01:52,712><c>ME</c><00:01:52,745><c>NT</c><00:01:52,778><c>, </c><00:01:52,812><c>IT</c><00:01:52,845><c>'S</c>
+
+00:01:53,446 --> 00:01:53,513 align:start position:0%
+IF YOU TRY TO TALK YOURSELF 
+INTO, THIS IS A BIG MOMENT, IT'S
+ 
+
+00:01:53,513 --> 00:01:55,481 align:start position:0%
+IF YOU TRY TO TALK YOURSELF 
+INTO, THIS IS A BIG MOMENT, IT'S
+A <00:01:53,546><c>BI</c><00:01:53,579><c>G </c><00:01:53,613><c>SH</c><00:01:53,646><c>OT</c><00:01:53,679><c>, </c><00:01:53,713><c>YO</c><00:01:53,746><c>U'</c><00:01:53,780><c>RE</c><00:01:53,813><c> P</c><00:01:53,846><c>UT</c><00:01:53,880><c>TI</c><00:01:53,913><c>NG</c><00:01:53,946><c> A</c><00:01:53,980><c> L</c><00:01:54,013><c>OT</c>
+
+00:01:55,481 --> 00:01:55,548 align:start position:0%
+INTO, THIS IS A BIG MOMENT, IT'S
+A BIG SHOT, YOU'RE PUTTING A LOT
+ 
+
+00:01:55,548 --> 00:01:56,616 align:start position:0%
+INTO, THIS IS A BIG MOMENT, IT'S
+A BIG SHOT, YOU'RE PUTTING A LOT
+OF<00:01:55,581><c> P</c><00:01:55,614><c>RE</c><00:01:55,648><c>SS</c><00:01:55,681><c>UR</c><00:01:55,714><c>E </c><00:01:55,748><c>ON</c><00:01:55,781><c> Y</c><00:01:55,815><c>OU</c><00:01:55,848><c>RS</c><00:01:55,881><c>EL</c><00:01:55,915><c>F.</c>
+
+00:01:56,616 --> 00:01:56,683 align:start position:0%
+A BIG SHOT, YOU'RE PUTTING A LOT
+OF PRESSURE ON YOURSELF.
+ 
+
+00:01:56,683 --> 00:01:57,850 align:start position:0%
+A BIG SHOT, YOU'RE PUTTING A LOT
+OF PRESSURE ON YOURSELF.
+YO<00:01:56,716><c>U'</c><00:01:56,749><c>VE</c><00:01:56,783><c> S</c><00:01:56,816><c>HO</c><00:01:56,849><c>T </c><00:01:56,883><c>TH</c><00:01:56,916><c>AT</c><00:01:56,950><c> S</c><00:01:56,983><c>HO</c><00:01:57,016><c>T </c><00:01:57,050><c>HU</c><00:01:57,083><c>ND</c><00:01:57,116><c>RE</c><00:01:57,150><c>DS</c><00:01:57,183><c> </c>
+
+00:01:57,850 --> 00:01:57,917 align:start position:0%
+OF PRESSURE ON YOURSELF.
+YOU'VE SHOT THAT SHOT HUNDREDS 
+ 
+
+00:01:57,917 --> 00:01:59,719 align:start position:0%
+OF PRESSURE ON YOURSELF.
+YOU'VE SHOT THAT SHOT HUNDREDS 
+AN<00:01:57,950><c>D </c><00:01:57,983><c>TH</c><00:01:58,017><c>OU</c><00:01:58,050><c>SA</c><00:01:58,083><c>ND</c><00:01:58,117><c>S </c><00:01:58,150><c>OF</c><00:01:58,184><c> T</c><00:01:58,217><c>IM</c><00:01:58,250><c>ES</c><00:01:58,284><c>, </c><00:01:58,317><c>JU</c><00:01:58,350><c>ST</c><00:01:58,384><c> </c>
+
+00:01:59,719 --> 00:01:59,786 align:start position:0%
+YOU'VE SHOT THAT SHOT HUNDREDS 
+AND THOUSANDS OF TIMES, JUST 
+ 
+
+00:01:59,786 --> 00:02:00,786 align:start position:0%
+YOU'VE SHOT THAT SHOT HUNDREDS 
+AND THOUSANDS OF TIMES, JUST 
+SH<00:01:59,819><c>OO</c><00:01:59,852><c>T </c><00:01:59,886><c>AN</c><00:01:59,919><c>OT</c><00:01:59,952><c>HE</c><00:01:59,986><c>R </c><00:02:00,019><c>ON</c><00:02:00,053><c>E.</c>
+
+00:02:00,786 --> 00:02:00,853 align:start position:0%
+AND THOUSANDS OF TIMES, JUST 
+SHOOT ANOTHER ONE.
+ 
+
+00:02:00,853 --> 00:02:01,654 align:start position:0%
+AND THOUSANDS OF TIMES, JUST 
+SHOOT ANOTHER ONE.
+&gt;&gt;<00:02:00,886><c> J</c><00:02:00,919><c>im</c><00:02:00,953><c>my</c><00:02:00,986><c>: </c><00:02:01,019><c>SO</c><00:02:01,053><c> W</c><00:02:01,086><c>HE</c><00:02:01,120><c>N </c><00:02:01,153><c>YO</c><00:02:01,186><c>U </c><00:02:01,220><c>WO</c><00:02:01,253><c>UL</c><00:02:01,286><c>D </c><00:02:01,320><c>TA</c><00:02:01,353><c>KE</c>
+
+00:02:01,654 --> 00:02:01,721 align:start position:0%
+SHOOT ANOTHER ONE.
+&gt;&gt; Jimmy: SO WHEN YOU WOULD TAKE
+ 
+
+00:02:01,721 --> 00:02:03,389 align:start position:0%
+SHOOT ANOTHER ONE.
+&gt;&gt; Jimmy: SO WHEN YOU WOULD TAKE
+TH<00:02:01,754><c>OS</c><00:02:01,787><c>E </c><00:02:01,821><c>SH</c><00:02:01,854><c>OT</c><00:02:01,887><c>S </c><00:02:01,921><c>IN</c><00:02:01,954><c> O</c><00:02:01,988><c>VE</c><00:02:02,021><c>RT</c><00:02:02,054><c>IM</c><00:02:02,088><c>E </c><00:02:02,121><c>OR</c><00:02:02,154><c> L</c><00:02:02,188><c>AS</c><00:02:02,221><c>T </c>
+
+00:02:03,389 --> 00:02:03,456 align:start position:0%
+&gt;&gt; Jimmy: SO WHEN YOU WOULD TAKE
+THOSE SHOTS IN OVERTIME OR LAST 
+ 
+
+00:02:03,456 --> 00:02:04,457 align:start position:0%
+&gt;&gt; Jimmy: SO WHEN YOU WOULD TAKE
+THOSE SHOTS IN OVERTIME OR LAST 
+SE<00:02:03,489><c>CO</c><00:02:03,522><c>ND</c><00:02:03,556><c> O</c><00:02:03,589><c>R </c><00:02:03,622><c>PL</c><00:02:03,656><c>AY</c><00:02:03,689><c>OF</c><00:02:03,723><c>FS</c><00:02:03,756><c>, </c><00:02:03,789><c>LO</c><00:02:03,823><c>NG</c><00:02:03,856><c> S</c><00:02:03,889><c>HO</c><00:02:03,923><c>TS</c><00:02:03,956><c>, </c>
+
+00:02:04,457 --> 00:02:04,524 align:start position:0%
+THOSE SHOTS IN OVERTIME OR LAST 
+SECOND OR PLAYOFFS, LONG SHOTS, 
+ 
+
+00:02:04,524 --> 00:02:06,225 align:start position:0%
+THOSE SHOTS IN OVERTIME OR LAST 
+SECOND OR PLAYOFFS, LONG SHOTS, 
+YO<00:02:04,557><c>U </c><00:02:04,590><c>DI</c><00:02:04,624><c>DN</c><00:02:04,657><c>'T</c><00:02:04,690><c> H</c><00:02:04,724><c>AV</c><00:02:04,757><c>E </c><00:02:04,791><c>AN</c><00:02:04,824><c>Y </c><00:02:04,857><c>EX</c><00:02:04,891><c>TR</c><00:02:04,924><c>A </c>
+
+00:02:06,225 --> 00:02:06,292 align:start position:0%
+SECOND OR PLAYOFFS, LONG SHOTS, 
+YOU DIDN'T HAVE ANY EXTRA 
+ 
+
+00:02:06,292 --> 00:02:07,760 align:start position:0%
+SECOND OR PLAYOFFS, LONG SHOTS, 
+YOU DIDN'T HAVE ANY EXTRA 
+AN<00:02:06,325><c>YT</c><00:02:06,358><c>HI</c><00:02:06,392><c>NG</c><00:02:06,425><c> O</c><00:02:06,458><c>N </c><00:02:06,492><c>YO</c><00:02:06,525><c>U?</c>
+
+00:02:07,760 --> 00:02:07,827 align:start position:0%
+YOU DIDN'T HAVE ANY EXTRA 
+ANYTHING ON YOU?
+ 
+
+00:02:07,827 --> 00:02:07,993 align:start position:0%
+YOU DIDN'T HAVE ANY EXTRA 
+ANYTHING ON YOU?
+&gt;&gt;<00:02:07,860><c> N</c><00:02:07,893><c>OP</c><00:02:07,927><c>E.</c>
+
+00:02:07,993 --> 00:02:08,060 align:start position:0%
+ANYTHING ON YOU?
+&gt;&gt; NOPE.
+ 
+
+00:02:08,060 --> 00:02:09,428 align:start position:0%
+ANYTHING ON YOU?
+&gt;&gt; NOPE.
+I'<00:02:08,094><c>VE</c><00:02:08,127><c> D</c><00:02:08,160><c>ON</c><00:02:08,194><c>E </c><00:02:08,227><c>IT</c><00:02:08,260><c> T</c><00:02:08,294><c>HO</c><00:02:08,327><c>US</c><00:02:08,360><c>AN</c><00:02:08,394><c>DS</c><00:02:08,427><c> O</c><00:02:08,461><c>F </c><00:02:08,494><c>TI</c><00:02:08,527><c>ME</c><00:02:08,561><c>S </c>
+
+00:02:09,428 --> 00:02:09,495 align:start position:0%
+&gt;&gt; NOPE.
+I'VE DONE IT THOUSANDS OF TIMES 
+ 
+
+00:02:09,495 --> 00:02:09,762 align:start position:0%
+&gt;&gt; NOPE.
+I'VE DONE IT THOUSANDS OF TIMES 
+BE<00:02:09,528><c>FO</c><00:02:09,561><c>RE</c><00:02:09,595><c>.</c>
+
+00:02:09,762 --> 00:02:09,829 align:start position:0%
+I'VE DONE IT THOUSANDS OF TIMES 
+BEFORE.
+ 
+
+00:02:09,829 --> 00:02:11,631 align:start position:0%
+I'VE DONE IT THOUSANDS OF TIMES 
+BEFORE.
+IT<00:02:09,862><c>'S</c><00:02:09,895><c> L</c><00:02:09,929><c>IK</c><00:02:09,962><c>E </c><00:02:09,995><c>YO</c><00:02:10,029><c>U </c><00:02:10,062><c>GE</c><00:02:10,096><c>TT</c><00:02:10,129><c>IN</c><00:02:10,162><c>G </c><00:02:10,196><c>UP</c><00:02:10,229><c> A</c><00:02:10,262><c>ND</c><00:02:10,296><c> </c>
+
+00:02:11,631 --> 00:02:11,698 align:start position:0%
+BEFORE.
+IT'S LIKE YOU GETTING UP AND 
+ 
+
+00:02:11,698 --> 00:02:14,700 align:start position:0%
+BEFORE.
+IT'S LIKE YOU GETTING UP AND 
+DO<00:02:11,731><c>IN</c><00:02:11,764><c>G </c><00:02:11,798><c>A </c><00:02:11,831><c>MO</c><00:02:11,864><c>NO</c><00:02:11,898><c>LO</c><00:02:11,931><c>GU</c><00:02:11,965><c>E.</c>
+
+00:02:14,700 --> 00:02:14,767 align:start position:0%
+IT'S LIKE YOU GETTING UP AND 
+DOING A MONOLOGUE.
+ 
+
+00:02:14,767 --> 00:02:15,100 align:start position:0%
+IT'S LIKE YOU GETTING UP AND 
+DOING A MONOLOGUE.
+&gt;&gt;<00:02:14,800><c> J</c><00:02:14,833><c>im</c><00:02:14,867><c>my</c><00:02:14,900><c>: </c><00:02:14,933><c>RE</c><00:02:14,967><c>AL</c><00:02:15,000><c>LY</c><00:02:15,034><c>?</c>
+
+00:02:15,100 --> 00:02:15,167 align:start position:0%
+DOING A MONOLOGUE.
+&gt;&gt; Jimmy: REALLY?
+ 
+
+00:02:15,167 --> 00:02:17,336 align:start position:0%
+DOING A MONOLOGUE.
+&gt;&gt; Jimmy: REALLY?
+&gt;&gt;<00:02:15,200><c> I</c><00:02:15,234><c>T'</c><00:02:15,267><c>S </c><00:02:15,300><c>LI</c><00:02:15,334><c>KE</c><00:02:15,367><c> B</c><00:02:15,401><c>RE</c><00:02:15,434><c>AT</c><00:02:15,467><c>HI</c><00:02:15,501><c>NG</c><00:02:15,534><c>.</c>
+
+00:02:17,336 --> 00:02:17,403 align:start position:0%
+&gt;&gt; Jimmy: REALLY?
+&gt;&gt; IT'S LIKE BREATHING.
+ 
+
+00:02:17,403 --> 00:02:18,771 align:start position:0%
+&gt;&gt; Jimmy: REALLY?
+&gt;&gt; IT'S LIKE BREATHING.
+YO<00:02:17,436><c>U </c><00:02:17,469><c>DO</c><00:02:17,503><c> I</c><00:02:17,536><c>T </c><00:02:17,569><c>SO</c><00:02:17,603><c> M</c><00:02:17,636><c>AN</c><00:02:17,670><c>Y </c><00:02:17,703><c>TI</c><00:02:17,736><c>ME</c><00:02:17,770><c>S,</c><00:02:17,803><c> Y</c><00:02:17,836><c>OU</c><00:02:17,870><c> </c>
+
+00:02:18,771 --> 00:02:18,838 align:start position:0%
+&gt;&gt; IT'S LIKE BREATHING.
+YOU DO IT SO MANY TIMES, YOU 
+ 
+
+00:02:18,838 --> 00:02:19,906 align:start position:0%
+&gt;&gt; IT'S LIKE BREATHING.
+YOU DO IT SO MANY TIMES, YOU 
+JU<00:02:18,871><c>ST</c><00:02:18,904><c> D</c><00:02:18,938><c>O </c><00:02:18,971><c>IT</c><00:02:19,004><c> A</c><00:02:19,038><c>GA</c><00:02:19,071><c>IN</c><00:02:19,105><c>.</c>
+
+00:02:19,906 --> 00:02:19,973 align:start position:0%
+YOU DO IT SO MANY TIMES, YOU 
+JUST DO IT AGAIN.
+ 
+
+00:02:19,973 --> 00:02:20,706 align:start position:0%
+YOU DO IT SO MANY TIMES, YOU 
+JUST DO IT AGAIN.
+&gt;&gt;<00:02:20,006><c> J</c><00:02:20,039><c>im</c><00:02:20,073><c>my</c><00:02:20,106><c>: </c><00:02:20,139><c>DO</c><00:02:20,173><c> Y</c><00:02:20,206><c>OU</c><00:02:20,240><c> F</c><00:02:20,273><c>EE</c><00:02:20,306><c>L </c><00:02:20,340><c>LI</c><00:02:20,373><c>KE</c><00:02:20,406><c> O</c><00:02:20,440><c>TH</c><00:02:20,473><c>ER</c>
+
+00:02:20,706 --> 00:02:20,773 align:start position:0%
+JUST DO IT AGAIN.
+&gt;&gt; Jimmy: DO YOU FEEL LIKE OTHER
+ 
+
+00:02:20,773 --> 00:02:21,707 align:start position:0%
+JUST DO IT AGAIN.
+&gt;&gt; Jimmy: DO YOU FEEL LIKE OTHER
+PL<00:02:20,806><c>AY</c><00:02:20,839><c>ER</c><00:02:20,873><c>S </c><00:02:20,906><c>AL</c><00:02:20,939><c>SO</c><00:02:20,973><c> F</c><00:02:21,006><c>EE</c><00:02:21,040><c>L </c><00:02:21,073><c>TH</c><00:02:21,106><c>AT</c><00:02:21,140><c> W</c><00:02:21,173><c>AY</c><00:02:21,206><c>?</c>
+
+00:02:21,707 --> 00:02:21,774 align:start position:0%
+&gt;&gt; Jimmy: DO YOU FEEL LIKE OTHER
+PLAYERS ALSO FEEL THAT WAY?
+ 
+
+00:02:21,774 --> 00:02:23,776 align:start position:0%
+&gt;&gt; Jimmy: DO YOU FEEL LIKE OTHER
+PLAYERS ALSO FEEL THAT WAY?
+&gt;&gt;<00:02:21,807><c> W</c><00:02:21,840><c>EL</c><00:02:21,874><c>L,</c><00:02:21,907><c> I</c><00:02:21,940><c>F </c><00:02:21,974><c>TH</c><00:02:22,007><c>EY</c><00:02:22,041><c> D</c><00:02:22,074><c>ON</c><00:02:22,107><c>'T</c><00:02:22,141><c> F</c><00:02:22,174><c>EE</c><00:02:22,207><c>L </c><00:02:22,241><c>TH</c><00:02:22,274><c>AT</c>
+
+00:02:23,776 --> 00:02:23,843 align:start position:0%
+PLAYERS ALSO FEEL THAT WAY?
+&gt;&gt; WELL, IF THEY DON'T FEEL THAT
+ 
+
+00:02:23,843 --> 00:02:25,278 align:start position:0%
+PLAYERS ALSO FEEL THAT WAY?
+&gt;&gt; WELL, IF THEY DON'T FEEL THAT
+WA<00:02:23,876><c>Y,</c><00:02:23,909><c> I</c><00:02:23,943><c>T </c><00:02:23,976><c>ME</c><00:02:24,009><c>AN</c><00:02:24,043><c>S </c><00:02:24,076><c>TH</c><00:02:24,110><c>EY</c><00:02:24,143><c>'R</c><00:02:24,176><c>E </c><00:02:24,210><c>NO</c><00:02:24,243><c>T </c>
+
+00:02:25,278 --> 00:02:25,345 align:start position:0%
+&gt;&gt; WELL, IF THEY DON'T FEEL THAT
+WAY, IT MEANS THEY'RE NOT 
+ 
+
+00:02:25,345 --> 00:02:26,279 align:start position:0%
+&gt;&gt; WELL, IF THEY DON'T FEEL THAT
+WAY, IT MEANS THEY'RE NOT 
+GE<00:02:25,378><c>TT</c><00:02:25,411><c>IN</c><00:02:25,445><c>G </c><00:02:25,478><c>EN</c><00:02:25,511><c>OU</c><00:02:25,545><c>GH</c><00:02:25,578><c> R</c><00:02:25,612><c>EP</c><00:02:25,645><c>S </c><00:02:25,678><c>IN</c><00:02:25,712><c>.</c>
+
+00:02:26,279 --> 00:02:26,346 align:start position:0%
+WAY, IT MEANS THEY'RE NOT 
+GETTING ENOUGH REPS IN.
+ 
+
+00:02:26,346 --> 00:02:34,887 align:start position:0%
+WAY, IT MEANS THEY'RE NOT 
+GETTING ENOUGH REPS IN.
+BE<00:02:26,379><c>CA</c><00:02:26,412><c>US</c><00:02:26,446><c>E </c><00:02:26,479><c>AF</c><00:02:26,512><c>TE</c><00:02:26,546><c>R </c><00:02:26,579><c>A </c><00:02:26,613><c>WH</c><00:02:26,646><c>IL</c><00:02:26,679><c>E,</c><00:02:26,713><c> I</c><00:02:26,746><c>T'</c><00:02:26,779><c>S </c><00:02:26,813><c>LI</c><00:02:26,846><c>KE</c>
+
