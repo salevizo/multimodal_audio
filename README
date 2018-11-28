@@ -1,8 +1,23 @@
-first run Downloader:
-	download all captions from youtube urls listed in dataset.csv and conver from vtt format to srt
-Afer run Parser:
-	Take each srt file and finf the text without tags, stat and end time for each talk
-	make a dictionary with all sentences, the senteces are splitted form the caption file
+First run Downloader.py. The functionality of this script is:
+
+	1. download all captions from youtube with youtube-dl, urls are listed in dataset.csv  (At that moment use only 5 videos in order to take some first results)
+	2. conver from vtt format to srt
+	3. Download with youtube-dl the mp3 files
+	4. Conver them to wav using the function from pyAudio Analysis
+	
+	
+Afer Run the script Parser_caption. The functionality of this script is:
+
+1.	Take each srt file. Remove tags, find start, end, interval time for each sentence (caption are splitted in time segments)
+2. For each interval , take the corresponding caption and find its pollarity.
+  text-blob and Vader are used for sentiment analysis. At the end find the average of these 2 classifiers to characterize this segment as positive/negative/neutral
+3. make a dictionary videoId, Pathfile,list of intervals , list of sentiments.
+4. Write the context of the dictionry at a csv file  captions_polarity.csv
+5. Make a csv file for each audio that contains (time segment, pollarity). The name of the file will be:pollarity_videoId, eg:polarity0.csv
+
+
+
+
 
 
 #INSTALL YOUTUBE-DL# 
