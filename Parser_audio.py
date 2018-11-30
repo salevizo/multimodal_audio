@@ -9,102 +9,108 @@ from pyAudioAnalysis.audioSegmentation import silenceRemoval as sR
 from pyAudioAnalysis.audioBasicIO import readAudioFile
 import pysrt
 import datetime
-
+import pickle
 from datetime import datetime
 
-dict={}
-i=0
 
+repo_path=''
+pyaudioanalysis_path=''
 
-def wavSegmentationFromSubs(relPath,subtitles):
+def create_folders(repo_path):
+    emotions=["positive","neutral","negative"]
+    os.chdir(repo_path)
+    for em_dir in emotions:
+        if (os.path.exists("audio/"+em_dir))==False:
+            #python understands octal so 0777 has to be 511 in decimal
+            os.mkdir("audio/"+em_dir)
+            os.chmod("audio/"+em_dir,511)
+            print 'Created directory audio/'+em_dir
+        else:
+            print 'Directory audio/'+em_dir+' exists.'
+        
+
+def retrieveSubs(subsPath,repo_path):
+    os.chdir(repo_path)
+    subtitles_pol_file=open(subsPath, 'rb')
+    # Loading the Subtitle
+    subtitles_pol = pickle.load(subtitles_pol_file)
+    return subtitles_pol
+
+def wavSegmentationFromSubs(relPath,subtitles,repo_path):
+    os.chdir(repo_path)
     audio_name= os.path.basename(os.path.normpath(relPath))
     dir_name=os.path.splitext(audio_name)[0]
     soundsPath=os.path.dirname(relPath)
-    #os.getcwd()
-    if (os.path.exists(soundsPath+"/"+dir_name))==False:
-        #python understands octal so 0777 has to be 511 in decimal
-        os.mkdir(soundsPath+"/"+dir_name)
-        os.chmod(soundsPath+"/"+dir_name,511)
-        print 'Created directory '+soundsPath+"/"+dir_name
-    else:
-        print 'Directory '+soundsPath+"/"+dir_name+' exists.'
-    os.chdir(soundsPath+"/"+dir_name)
     #load list
+    countpos=countneg=countneu=0
     for i, val in enumerate(subtitles):
-        d1 = datetime.strptime(str(val[2]), "%H:%M:%S.%f")
-        d2 = datetime.strptime(str(val[3]), "%H:%M:%S.%f")
+        if subtitles[i][1]==0:
+            dir_name="neutral"
+            countneu+=1
+        elif subtitles[i][1]<0:
+            dir_name="negative"
+            countneg+=1
+        else:
+            dir_name="positive"
+            countpos+=1
+        filePath=repo_path+"/"+soundsPath+"/"+audio_name
+        if i==(len(subtitles)-1):
+            break
+        #Problem with format of the time
+        os.chdir(repo_path+"/"+soundsPath+"/"+dir_name)
+        t1=str(subtitles[i][0]).replace(',','.')
+        t2=str(subtitles[i+1][0]).replace(',','.')
+        d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
+        d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-        os.system("ffmpeg -i {} -ss {} -t {} temp{}.wav " "-loglevel panic -y".format(soundsPath, val[2], sec,i))
-        #os.system("aplay temp.wav")
-        #a = raw_input()
-    print 'Done splitting wav file '+audio_name+'.'
+        mstr="ffmpeg -i {} -ss {} -t {} temp{}.wav -loglevel panic -y".format(filePath, t1, sec,i)
+        #print mstr
+        os.system("ffmpeg -i {} -ss {} -t {} temp{}.wav -loglevel panic -y".format(filePath, t1, sec,i))
+        
+    print 'Done splitting wav file '+audio_name+'. Audio had '+str(countpos)+' positive segments, '+str(countneg)+ " negative segments and "+str(countneu)+"neutral segments. "
+    
+
 
 def sentiments(filepath):
-    results=aT.fileRegression(filepath, "/home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/", "svm")
+    results=aT.fileRegression(filepath, pyaudioanalysis_path, "svm")
     return results
 
 
-def walktree(TopMostPath, callback):
-    '''recursively descend the directory tree rooted at TopMostPath,
-    calling the callback function for each regular file'''
-    global dict
-    for f in os.listdir(TopMostPath):
-        pathname = os.path.join(TopMostPath, f)
-        mode = os.stat(pathname)[ST_MODE]
-        if S_ISDIR(mode):
-            # It's a directory, recurse into it
-            walktree(pathname, callback)
-        elif S_ISREG(mode):
-             # It's a file, call the callback function
-             callback(pathname,f)
-        else:
-             # Unknown file type, print a message
-             print 'Skipping %s' % pathname
-
-def find_sentiment(file,f):
-    global i
-    if '.wav' in file:
-        results=sentiments(file)
-        dict[i]=((f,results))
-        i=i+1
         
 
 
-def main():
-    #fs, x = readAudioFile(input_file)
-    
-    #FOR LOOP FOR ALL SUBTITLES
-    
-    input_srt="/home/mscuser/multi/multimodal_audio/subtitles/Travis.srt"
-    # Loading the Subtitle
-    subs = pysrt.open(input_srt)
-    subtitles=[]
-    len_subs=len(subs)
-    for i in range(len_subs):
-        sub = subs[i]
-        # Subtitle text
-        text = sub.text
-        text_without_tags = sub.text_without_tags
+def main(argv):
 
-        # Start and End time
-        start = sub.start.to_time()
-        if start.second==0 and start.microsecond==0:
-            start=datetime.time(0,0,0,0)
-        end = sub.end.to_time()
-        subtitles.append([text,text_without_tags,start,end])
-        print len(subtitles)
-        print subtitles[i]
-        
-    print os.getcwd()
+    global repo_path
+    global pyaudioanalysis_path
     
-    #FOR LOOP FOR ALL   AUDIO FILE
-    audioFile="/home/mscuser/multi/multimodal_audio/sounds/Travis.wav"
-    wavSegmentationFromSubs(audioFile,subtitles)
+    #pyaudioanalysis_path='/home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/'
+    #repo_path='/home/mscuser/multi/multimodal_audio'
     
+    print 'Number of arguments:', len(sys.argv), 'arguments.'
+    print 'Argument List:', str(sys.argv)
+    #repo_path='/home/mscuser/multi/multimodal_audio'
+    repo_path=str(sys.argv[1])
+    pyaudioanalysis_path=str(sys.argv[2])
+    os.chdir(repo_path)
 
-    path = '/home/mscuser/multi/multimodal_audio'
-    walktree(path, find_sentiment)
-    print dict
+    '''load the pickle file that conatins info about the dataset'''
+    pkl_file = open('dataset_list.p', 'rb')
+    dataset = pickle.load(pkl_file)
+    pkl_file.close()
+    
+    create_folders(repo_path)
+    
+    subs=[]
+    for k in range(0,len(dataset)):
+        print dataset["Pickle"][k]
+        subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
+        wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path)
+        break
+
+
+    aT.featureAndTrain([repo_path+"/audio/positive",repo_path+"/audio/neutral",repo_path+"/audio/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes")
+
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

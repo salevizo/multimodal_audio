@@ -1,26 +1,72 @@
+Dataset.csv
+The file of the format is:
+Id,URL,Title,Audio,Captions,Polarity,Pickle
+1,https://www.youtube.com/watch?v=zkpelP3x0mw,Westley Allan Dodd - Last Interview before Execution,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
+We have defined a unique Id for each video. Mp3, wav, srt and vtt files will be saved with the VideoId and the appropriate extension
+	__________________________________________________________________________________
+	__________________________________________________________________________________
+	
+	
+	
+	*************************************************************************************************
+******************************COMMANDS TO RUN THE SCRIPTS:******************************
+
+python Downloader.py <repo_path>
+python Parser_caption.py <repo_path>
+python Parser_audio.py <repo_path> <pyaudioanalysis_path>
+
+
+Eg:
+python Downloader.py /home/mscuser/multi/multimodal_audio 
+python Parser_caption.py /home/mscuser/multi/multimodal_audio 
+python Parser_audio.py /home/mscuser/multi/multimodal_audio /home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/
+
+
+Define the variable repo_path, the local path of your repo
+Define the variable pyaudioanalysis_path, the local path of the pyaudio analysis repo
+	*************************************************************************************************	
+	
 First run Downloader.py. The functionality of this script is:
 
+_________________________________________________________________________________________
 	1. download all captions from youtube with youtube-dl, urls are listed in dataset.csv  (At that moment use only 5 videos in order to take some first results)
-	2. conver from vtt format to srt
-	3. Download with youtube-dl the mp3 files
-	4. Conver them to wav using the function from pyAudio Analysis
+ 2. subtitles will be downloaded at /subtitles subfolder
+	3.  mp3 will be downloaded at /audio subfolder
+	4. convert from vtt format to srt inside /subtitles subfolder
+	5. Conver them to wav inside /audio subfolder
+	__________________________________________________________________________________
+	__________________________________________________________________________________
 	
 	
-Afer Run the script Parser_caption. The functionality of this script is:
-
-1.	Take each srt file. Remove tags, find start, end, interval time for each sentence (caption are splitted in time segments)
-2. For each interval , take the corresponding caption and find its pollarity.
-  text-blob and Vader are used for sentiment analysis. At the end find the average of these 2 classifiers to characterize this segment as positive/negative/neutral
-3. make a dictionary videoId, Pathfile,list of intervals , list of sentiments.
-4. Write the context of the dictionry at a csv file  captions_polarity.csv
-5. Make a csv file for each audio that contains (time segment, pollarity). The name of the file will be:pollarity_videoId, eg:polarity0.csv
-
-
-
-
+	
+Afer Run the script Parser_caption.py The functionality of this script is:
+_______________________________________________________________
+1.	Take each srt file. Remove tags, find: start and end for each sentence (caption are splitted in time segments)
+2. Find the polarity of each segment. Remove segments with no text, eg: [Laughing]
+3. text-blob and Vader are used for sentiment analysis. At the end, the average of these 2 classifiers used to characterize a segment as positive/negative/neutral
+5. Make a csv file for each srt file that contains (time segment, pollarity). The name of the file will be:pollarity_videoId.csv, eg:polarity_0.csv and will be saved at /polarity_csv subfolder
+6. Make a pickle file for each srt wiht the same context of polarity_videoId.csv file. Save them at the subfolder /pickle_lists.
+_______________________________________________________________________________
+______________________________________________________________________________
 
 
-#INSTALL YOUTUBE-DL# 
+
+Afer Run the script Parser_audio.py The functionality of this script is:
+_______________________________________________________________
+1. Take each wav file (from subfolder audio) and split audio in segments, The duration of segments based on the caption segmnets.
+2. For the segments read the polarity files inside /pickle_lists subfolder. 
+3. After at each one of these segments assign the polarity that has been extracted from sentiment analysis
+4. Create 3 subfolders inside audio: 
+    Positive
+    Negative
+    Neutral
+   and add the correlated segments according their polarity.
+5. Use these 3 subfolders(positive,negative,neutral) as groundtruth and train a SVM classifier from pyaudioAnalysis (featureAndTrain)
+
+_______________________________________________________________________________
+______________________________________________________________________________
+
+#INSTALL YOUTUBE-DL and UPDATE it EVERY DAY#
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
 

@@ -5,6 +5,11 @@ from stat import *
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as wavfile
 from pyAudioAnalysis import audioSegmentation as aS
+import pickle
+import subprocess
+
+repo_path=''
+
 
 '''Convert vtt format to srt format'''
 
@@ -37,7 +42,7 @@ def vtt_to_srt(strNameFile):
     strData = ""
     strData = strData + convertContent(fileContents)
     strNameFile = strNameFile.replace(".vtt",".srt")
-    print "Convert vtt files to srt format at path < /home/mscuser/multi/multimodal_audio/subtitles> "
+    print "Convert vtt files to srt format at path " + str(repo_path) + "/subtitles> "
     #print(strNameFile)
     fileCreate(strNameFile, strData)
 
@@ -59,20 +64,44 @@ def walktree(TopMostPath, callback):
             print('Skipping %s' % pathname)
 
 def convertVTTtoSRT(file):
-    os.chdir('/home/mscuser/multi/multimodal_audio/subtitles')
+    os.chdir(repo_path +'/subtitles')
     if '.vtt' in file:
         vtt_to_srt(file)
 
 
-def main():
+def create_folders(folder_path):
+    os.chdir(repo_path)
+    if (os.path.exists(folder_path))==False:
+        #python understands octal so 0777 has to be 511 in decimal
+        os.mkdir(folder_path)
+        os.chmod(folder_path,511)
+        print 'Created ' + folder_path
+    else:
+        print 'Directory ' + folder_path +' exists.'
+
+
+def main(argv):
+    global repo_path
+    
+    print 'Number of arguments:', len(sys.argv), 'arguments.'
+    print 'Argument List:', str(sys.argv)
+    #repo_path='/home/mscuser/multi/multimodal_audio'
+    repo_path=str(sys.argv[1])
+    os.chdir(repo_path)
     '''urls of youtube videos'''
     urls=[]
+    ids=[]
     with open("dataset.csv", "rt") as f:
         reader = csv.reader(f, delimiter="\t")
         print "CSV contains the following urls:"
         for i, line in enumerate(reader):
-            print (line[0])
-            urls.append(line[0])
+            if i>0:
+                l=line[0].split(',')
+                urls.append(l[1])
+                ids.append(l[0])
+                print "Id:" + l[0] + " URL:" +str(l[1])
+    
+    print "-------------------------------------------------------------------------------------------------------------------"     
     f=open("dataset.csv", "rt")
     reader=csv.reader(f)
     headers = next(reader, None)
@@ -80,36 +109,53 @@ def main():
     for h in headers:
         dataset[h] = []
     for row in reader:
-        for h, v in zip(headers, row):
+        for h, v in zip(headers, row):            
             dataset[h].append(v)
+    print "-------------------------dataset_list.p will contain: --------------------------------------"     
+    print dataset
+    output = open('dataset_list.p', 'wb')
+    pickle.dump(dataset, output)
+    output.close()
+    
     print "-------------------------------------------------------------------------------------------------------------------"
-    '''download available captions in english'''
-    print "Vtt subtitles for the above urls will be downloaded at the path < /home/mscuser/multi/multimodal_audio/subtitles> "
-    for url in urls:
-        strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en ' + url
-        os.chdir('/home/mscuser/multi/multimodal_audio/subtitles')
+    '''download available captions in english inside subtitles with format 1.en.vtt, 2.en.vtt etc'''
+    print "Vtt subtitles for the above urls will be downloaded at the path " +str(repo_path)+ "/subtitles> "
+    create_folders(repo_path +'/subtitles')
+    for idx,url in enumerate(urls):
+        strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en --output '+ids[idx]+".vtt " + url
+        #print strcaption
+        os.chdir(repo_path +'/subtitles')
         os.system(strcaption)
+        
     print "-------------------------------------------------------------------------------------------------------------------"
-    print "mp3 file for the above urls will be downloaded at the path < /home/mscuser/multi/multimodal_audio/audio> "
-    for url in urls:
+    '''download available mp3 in english inside audio with format 1.mp3, 2.mp3t etc'''
+    create_folders(repo_path +'/audio')
+    print "mp3 file for the above urls will be downloaded at the path " + str(repo_path) + "/audio> "
+    for idx,url in enumerate(urls):
         strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en ' + url
-        os.chdir('/home/mscuser/multi/multimodal_audio/audio')
-        strmp3='youtube-dl --extract-audio --audio-format mp3 ' + url
+        os.chdir(repo_path + '/audio')
+        strmp3='youtube-dl --extract-audio --audio-format mp3  --output '+ids[idx]+".mp3 " + url
+        #print strmp3
         os.system(strmp3)
    
     print "-------------------------------------------------------------------------------------------------------------------"
-    ''' download  the audio, subtitles and convert them to srt format'''
-    path = '/home/mscuser/multi/multimodal_audio/sounds'
+
+    path = repo_path+"/subtitles"
     walktree(path, convertVTTtoSRT)
     
-    '''Convert mp3 to wav
-    call function: dirMp3toWav from pyaudioAnalysis with args:16000 -c 1'''
-    cmd='python /home/cer/Desktop/multimodal/pyAudioAnalysis/pyAudioAnalysis/audioAnalysis.py dirMp3toWav -i /home/cer/Desktop/multimodal/multimodal_audio/sounds -r 16000 -c 1'
-    os.system(cmd)
+    '''Convert mp3 to wav'''
+    os.chdir(repo_path + '/audio')
+    audio_files=os.listdir(repo_path + '/audio')
+    print audio_files
+    for mp3_ in audio_files:
+        name=mp3_.split('.')
+        subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
+
+
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
 
 
 

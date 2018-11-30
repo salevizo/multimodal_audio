@@ -1,6 +1,6 @@
-URL,Relative Path,Title,Captions Polarity Csv,Pickle,id
-https://www.youtube.com/watch?v=zkpelP3x0mw,audio/1.wav,Westley Allan Dodd - Last Interview before Execution,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p,1
-https://www.youtube.com/watch?v=w3SXzjAfJLk,audio/2.wav,Confronts Serial Killer & Causes Him To Walk Out Of The Interview!,polarity_csv/polarity_2.csv,pickle_lists/polarity_2.p,2
-https://www.youtube.com/watch?v=QV9nArq7phA,audio/3.wav,Travis Scott Shows Off His Broadway Musical Abilities,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p,3
-https://www.youtube.com/watch?v=OtgLfXqBt1o,audio/4.wav,Highlights from Theresa May's LBC phone-in,polarity_csv/polarity_4.csv,pickle_listspolarity_4.p,4
-https://www.youtube.com/watch?v=FQ6PR2LsnZw,audio/5.wav,ISRAEL POLITICS: Interview with Seth Frantzman,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p,5
+Id,URL,Title,Audio,Captions,Polarity,Pickle
+1,https://www.youtube.com/watch?v=zkpelP3x0mw,Westley Allan Dodd - Last Interview before Execution,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
+2,https://www.youtube.com/watch?v=w3SXzjAfJLk,Confronts Serial Killer & Causes Him To Walk Out Of The Interview!,audio/2.wav,subtitles/2.srt,polarity_csv/polarity_2.csv,pickle_lists/polarity_2.p
+3,https://www.youtube.com/watch?v=QV9nArq7phA,Travis Scott Shows Off His Broadway Musical Abilities,audio/3.wav,subtitles/3.srt,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p
+4,https://www.youtube.com/watch?v=OtgLfXqBt1o,Highlights from Theresa May's LBC phone-in,audio/4.wav,subtitles/4.srt,polarity_csv/polarity_4.csv,pickle_listspolarity_4.p
+5,https://www.youtube.com/watch?v=FQ6PR2LsnZw,ISRAEL POLITICS: Interview with Seth Frantzman,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p

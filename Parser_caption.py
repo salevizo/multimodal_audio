@@ -1,37 +1,32 @@
 import pysrt
 from datetime import date, datetime, timedelta, time
-import pysrt
 from textblob import TextBlob
 import matplotlib
 from matplotlib import style
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-
 import csv
 import os, re, sys
 from stat import *
-
+import re
+import pickle
 import numpy as np
 import datetime
-
+import csv
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.sentiment.util import *
 from nltk import tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import csv
-
 from nltk.corpus import sentiwordnet as swn
-
-import re
-
-import pickle
+import sys
 
 
-#dict={id, path, , intervals, sentiments}
+
+
 dict={}
 i=interval_segments=sentiment_segments=0
+repo_path=''
 
 
 
@@ -65,7 +60,7 @@ def get_sentiment(file):
     # Reading Subtitleget_sentiment
     subs = pysrt.open(file, encoding='iso-8859-1')
     n = len(subs)
-    print "Initial segments for Srt file:" +file+ "are: " + str(n)
+    print "Initial segments for Srt file:" +file+ " are: " + str(n)
     # List to store the time periods
     intervals = []
     sentiments_text_blob = []
@@ -97,7 +92,7 @@ def get_sentiment(file):
 
     #find the avrage of the 2 different sentiment analysis
     avg_sentiments=[(a_i + b_i)/float(2) for a_i, b_i in zip(sentiments_vader, sentiments_text_blob)]
-    print "Segments for file: "+file+" after removing segments without text are:" + str(len(avg_sentiments))
+    print "Segments for file: "+file+" after removing segments without text are: " + str(len(avg_sentiments))
     print "------------------------------------------------------------------------------------------------"
     return (intervals, sentiments_text_blob)
 
@@ -127,56 +122,73 @@ def walktree(TopMostPath, callback):
              
              
 def sentiment(file): 
-    global i 
     global interval_segments, sentiment_segments
     #the srt files we need to train our model
     if '.srt' in file:
+        #take the name of the file you extract sentiments
+        name=str(file)
+        name=name.split('/')
+        name=name[-1]
+        name=name.split('.')
+        name=name[0]
+        #print name
         interval_segments, sentiment_segments = get_sentiment(file)
         #DICTIONARY PATH,INTERVALS,SENTIMENTS
-        dict[i]={}
-        dict[i]['Id']=i
-        dict[i]['path']=file
-        dict[i]['intervals']=interval_segments
-        dict[i]['sentiments']=sentiment_segments
-        i=i+1
+        dict[int(name)]={}
+        dict[int(name)]['Id']=int(name)
+        dict[int(name)]['intervals']=interval_segments
+        dict[int(name)]['sentiments']=sentiment_segments
+       
         
+def create_folders(folder_path):
+    os.chdir(repo_path)
+    if (os.path.exists(folder_path))==False:
+        #python understands octal so 0777 has to be 511 in decimal
+        os.mkdir(folder_path)
+        os.chmod(folder_path,511)
+        print 'Created ' + folder_path
+    else:
+        print 'Directory ' + folder_path +' exists.'
 
 
+def main(argv):
 
-def main():
+    global repo_path
+    
+    print 'Number of arguments:', len(sys.argv), 'arguments.'
+    print 'Argument List:', str(sys.argv)
+    #repo_path='/home/mscuser/multi/multimodal_audio'
+    repo_path=str(sys.argv[1])
+    print repo_path
     '''vader lexicon'''
     nltk.downloader.download('vader_lexicon')
     
     '''Remove segments at which only tags are writtesn as caption text'''
-   
 
-    path = '/home/mscuser/multi/multimodal_audio'
-    walktree(path, sentiment)
+    walktree(repo_path, sentiment)
 
-    ''''Make a csv for all videos that contains:videoid, path, list of interval segments, list of sentiments'''
-    for i in range(len(dict)):
-        with open('captions_polarity.csv', 'wb') as f:
-            writer = csv.writer(f)
-            for key, value in dict.items():
-                writer.writerow([key, value])
+
                 
                 
     '''Make a csv for each video that contains: segment interval, pollarity for all segments of the video. The name of the file is polarity follwed by videoId. eg:polarity0'''
+    create_folders(repo_path +'/polarity_csv')
+    os.chdir(repo_path + '/polarity_csv')
     for dicts in range(len(dict)):
-        new_csv='polarity'+str(dict[dicts]['Id']) +'.csv'
+        new_csv='polarity_'+str(dict[dicts+1]['Id']) +'.csv'
         with open(new_csv, 'wb') as f:
             writer = csv.writer(f)
-            for j in range(len(dict[dicts]['intervals'])):
-                context=(dict[dicts]['intervals'][j],dict[dicts]['sentiments'][j])
+            for j in range(len(dict[dicts+1]['intervals'])):
+                context=(dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j])
                 writer.writerows([context])
                 
     '''Write to pickle file'''
-    favorite_color = { "lion": "yellow", "kitty": "red" }
+    create_folders(repo_path +'/pickle_lists')
+    os.chdir(repo_path + '/pickle_lists')
     for dicts in range(len(dict)):
         context=[]
-        pickle_name='polarity'+str(dict[dicts]['Id']) +'.p'
-        for j in range(len(dict[dicts]['intervals'])):
-            context.append((dict[dicts]['intervals'][j],dict[dicts]['sentiments'][j]))
+        pickle_name='polarity_'+str(dict[dicts+1]['Id']) +'.p'
+        for j in range(len(dict[dicts+1]['intervals'])):
+            context.append((dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j]))
         pickle.dump( context, open( pickle_name, "wb" ) )
     
   
@@ -184,4 +196,4 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
