@@ -20,6 +20,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import sentiwordnet as swn
 import sys
+import spacy
+from spacy.tokens import Doc
 
 
 
@@ -53,6 +55,14 @@ def vader_sentiment(text):
     polarity=sid.polarity_scores(text)['compound']
     return polarity
 
+"""Returns sentiment polarity is a value between -1.0 and +1.0  """
+
+def pattern_sentiment(text):
+  
+    from pattern.en import sentiment
+    polarity=sentiment(text)[0]
+    return polarity
+
 
 
 def get_sentiment(file):
@@ -64,11 +74,12 @@ def get_sentiment(file):
     # Reading Subtitleget_sentiment
     subs = pysrt.open(file, encoding='iso-8859-1')
     n = len(subs)
-    print "Initial segments for Srt file:" +file+ " are: " + str(n)
+    print("Initial segments for Srt file:" +file+ " are: " + str(n))
     # List to store the time periods
     intervals = []
     sentiments_text_blob = []
     sentiments_vader = []
+    sentiments_pattern = []
     subs_len=-1
     pattern = re.compile("\[(.*?)\]|\-\[(.*?)\]")
     # Collect and combine all the text in each time interval
@@ -96,13 +107,17 @@ def get_sentiment(file):
                 # Sentiment Analysis with Vader
                 sentiment_vader=vader_sentiment(text)
                 sentiments_vader.append(sentiment_vader)
+
+                 # Sentiment Analysis with pattern
+                sentiment_pattern=pattern_sentiment(text)
+                sentiments_pattern.append(sentiment_pattern)
             #else:
                 #print "exclude this segment. It duration is too small: " + str(segment)
 
     #find the avrage of the 2 different sentiment analysis
-    avg_sentiments=[(a_i + b_i)/float(2) for a_i, b_i in zip(sentiments_vader, sentiments_text_blob)]
-    print "Segments for file: "+file+" after removing segments without text are: " + str(len(avg_sentiments))
-    print "------------------------------------------------------------------------------------------------"
+    avg_sentiments=[(a_i + b_i + c_i)/float(2) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]
+    print("Segments for file: "+file+" after removing segments without text are: " + str(len(avg_sentiments)))
+    print("------------------------------------------------------------------------------------------------")
     return (intervals, sentiments_text_blob)
 
 
@@ -127,7 +142,7 @@ def walktree(TopMostPath, callback):
              callback(pathname)
         else:
              # Unknown file type, print a message
-             print 'Skipping %s' % pathname
+             print('Skipping %s' % pathname)
              
              
 def sentiment(file): 
@@ -155,20 +170,25 @@ def create_folders(folder_path):
         #python understands octal so 0777 has to be 511 in decimal
         os.mkdir(folder_path)
         os.chmod(folder_path,511)
-        print 'Created ' + folder_path
+        print('Created ' + folder_path)
     else:
-        print 'Directory ' + folder_path +' exists.'
+        print('Directory ' + folder_path +' exists.')
 
 
 def main(argv):
 
     global repo_path
-    
-    print 'Number of arguments:', len(sys.argv), 'arguments.'
-    print 'Argument List:', str(sys.argv)
-    #repo_path='/home/mscuser/multi/multimodal_audio'
-    repo_path=str(sys.argv[1])
-    print repo_path
+    if len(sys.argv)==2:
+        print("Write in user specified path...")
+        print('Number of arguments:', len(sys.argv), 'arguments.')
+        print('Argument List:', str(sys.argv))
+        #repo_path='/home/mscuser/multi/multimodal_audio'
+        repo_path=str(sys.argv[1])
+    else:
+        repo_path = str(os.getcwd()) #able to work withou path . default write in the same directory
+        print("Writing in the current path: ",repo_path)
+
+    print(repo_path)
     '''vader lexicon'''
     nltk.downloader.download('vader_lexicon')
     
@@ -184,12 +204,21 @@ def main(argv):
     os.chdir(repo_path + '/polarity_csv')
     for dicts in range(len(dict)):
         new_csv='polarity_'+str(dict[dicts+1]['Id']) +'.csv'
-        with open(new_csv, 'wb') as f:
-            writer = csv.writer(f)
-            for j in range(len(dict[dicts+1]['intervals'])):
-                context=(dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j])
-                writer.writerows([context])
-                
+        if sys.version_info >= (3, 0):
+            with open(new_csv, 'w') as f:
+                #w -----------> python3
+                writer = csv.writer(f)
+                for j in range(len(dict[dicts+1]['intervals'])):
+                    context=(dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j])
+                    writer.writerows([context])
+        else:
+             with open(new_csv, 'wb') as f:
+                #wb -----------> python2
+                writer = csv.writer(f)
+                for j in range(len(dict[dicts+1]['intervals'])):
+                    context=(dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j])
+                    writer.writerows([context])
+                    
     '''Write to pickle file'''
     create_folders(repo_path +'/pickle_lists')
     os.chdir(repo_path + '/pickle_lists')
@@ -205,4 +234,6 @@ def main(argv):
     
 
 if __name__ == "__main__":
+   
     main(sys.argv[1:])
+ 

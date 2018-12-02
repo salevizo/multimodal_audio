@@ -35,14 +35,17 @@ def fileCreate(strNameFile, strData):
 def readTextFile(strNameFile):
     f = open(strNameFile, "r")
     print("file being read: " + strNameFile + "\n")
-    return f.read().decode("windows-1252").encode('ascii', 'ignore')
+    if sys.version_info >=(3, 0):
+        return f.read()
+    else:
+        return f.read().decode("windows-1252").encode('ascii', 'ignore') #----> python2
 
 def vtt_to_srt(strNameFile):
     fileContents = readTextFile(strNameFile)
     strData = ""
     strData = strData + convertContent(fileContents)
     strNameFile = strNameFile.replace(".vtt",".srt")
-    print "Convert vtt files to srt format at path " + str(repo_path) + "/subtitles> "
+    print("Convert vtt files to srt format at path " + str(repo_path) + "/subtitles> ")
     #print(strNameFile)
     fileCreate(strNameFile, strData)
 
@@ -75,33 +78,38 @@ def create_folders(folder_path):
         #python understands octal so 0777 has to be 511 in decimal
         os.mkdir(folder_path)
         os.chmod(folder_path,511)
-        print 'Created ' + folder_path
+        print('Created ' + folder_path)
     else:
-        print 'Directory ' + folder_path +' exists.'
+        print('Directory ' + folder_path +' exists.')
 
 
 def main(argv):
     global repo_path
-    
-    print 'Number of arguments:', len(sys.argv), 'arguments.'
-    print 'Argument List:', str(sys.argv)
-    #repo_path='/home/mscuser/multi/multimodal_audio'
-    repo_path=str(sys.argv[1])
+    if len(sys.argv)==2:
+        print("Write in user specified path...")
+        print('Number of arguments:', len(sys.argv), 'arguments.')
+        print('Argument List:', str(sys.argv))
+        #repo_path='/home/mscuser/multi/multimodal_audio'
+        repo_path=str(sys.argv[1])
+    else:
+        repo_path = str(os.getcwd()) #able to work withou path . default write in the same directory
+        print("Writing in the current path: ",repo_path)
+
     os.chdir(repo_path)
     '''urls of youtube videos'''
     urls=[]
     ids=[]
     with open("dataset.csv", "rt") as f:
         reader = csv.reader(f, delimiter="\t")
-        print "CSV contains the following urls:"
+        print("CSV contains the following urls:")
         for i, line in enumerate(reader):
             if i>0:
                 l=line[0].split(',')
                 urls.append(l[1])
                 ids.append(l[0])
-                print "Id:" + l[0] + " URL:" +str(l[1])
+                print("Id:" + l[0] + " URL:" +str(l[1]))
     
-    print "-------------------------------------------------------------------------------------------------------------------"     
+    print("-------------------------------------------------------------------------------------------------------------------"     )
     f=open("dataset.csv", "rt")
     reader=csv.reader(f)
     headers = next(reader, None)
@@ -111,15 +119,15 @@ def main(argv):
     for row in reader:
         for h, v in zip(headers, row):            
             dataset[h].append(v)
-    print "-------------------------dataset_list.p will contain: --------------------------------------"     
-    print dataset
+    print( "-------------------------dataset_list.p will contain: --------------------------------------"     )
+    print(dataset)
     output = open('dataset_list.p', 'wb')
     pickle.dump(dataset, output)
     output.close()
     
-    print "-------------------------------------------------------------------------------------------------------------------"
+    print("-------------------------------------------------------------------------------------------------------------------")
     '''download available captions in english inside subtitles with format 1.en.vtt, 2.en.vtt etc'''
-    print "Vtt subtitles for the above urls will be downloaded at the path " +str(repo_path)+ "/subtitles> "
+    print("Vtt subtitles for the above urls will be downloaded at the path " +str(repo_path)+ "/subtitles> ")
     create_folders(repo_path +'/subtitles')
     for idx,url in enumerate(urls):
         strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en --output '+ids[idx]+".vtt " + url
@@ -127,10 +135,10 @@ def main(argv):
         os.chdir(repo_path +'/subtitles')
         os.system(strcaption)
         
-    print "-------------------------------------------------------------------------------------------------------------------"
+    print("-------------------------------------------------------------------------------------------------------------------")
     '''download available mp3 in english inside audio with format 1.mp3, 2.mp3t etc'''
     create_folders(repo_path +'/audio')
-    print "mp3 file for the above urls will be downloaded at the path " + str(repo_path) + "/audio> "
+    print("mp3 file for the above urls will be downloaded at the path " + str(repo_path) + "/audio> ")
     for idx,url in enumerate(urls):
         strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en ' + url
         os.chdir(repo_path + '/audio')
@@ -138,7 +146,7 @@ def main(argv):
         #print strmp3
         os.system(strmp3)
    
-    print "-------------------------------------------------------------------------------------------------------------------"
+    print("-------------------------------------------------------------------------------------------------------------------")
 
     path = repo_path+"/subtitles"
     walktree(path, convertVTTtoSRT)
@@ -146,7 +154,7 @@ def main(argv):
     '''Convert mp3 to wav'''
     os.chdir(repo_path + '/audio')
     audio_files=os.listdir(repo_path + '/audio')
-    print audio_files
+    print(audio_files)
     for mp3_ in audio_files:
         name=mp3_.split('.')
         subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
