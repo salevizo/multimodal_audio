@@ -55,8 +55,12 @@ def vader_sentiment(text):
 
 
 
-
 def get_sentiment(file):
+    #exclude segmnets less than 2 secs, dont take in mind miliseconds
+    start="00:00:02,000"
+    start = datetime.datetime.strptime(start, '%H:%M:%S,%f')
+    start = datetime.time(start.hour, start.minute,start.second)
+    
     # Reading Subtitleget_sentiment
     subs = pysrt.open(file, encoding='iso-8859-1')
     n = len(subs)
@@ -73,22 +77,27 @@ def get_sentiment(file):
         if (bool(pattern.match(subs[j].text_without_tags))==False):
             # Finding all subtitle text in the each time interval
             segment=subs[j].end-subs[j].start
-            #print "end:" + str(subs[j].end)+ "strat:" +str(subs[j].start) + "segment:"+str(segment) + "segment.to_time:"+str(segment.to_time())
-            intervals.append(subs[j].start + segment)
-            subs_len=subs_len+1
-            #for example [0,4],[4,6]->4,6
-            if subs[j].end.to_time() <= (subs[j].start+ intervals[subs_len]).to_time():
-                text += subs[j].text_without_tags + " "
-            else:
-                break
-            # Sentiment Analysis with TextBlob
-            sentiment_blob=textblob_sentiment(text)
-            sentiments_text_blob.append(sentiment_blob)
+            tocompare = datetime.datetime.strptime(str(segment), '%H:%M:%S,%f')
+            tocompare = datetime.time(tocompare.hour, tocompare.minute, tocompare.second)
+           
+            if tocompare>=start:
+                #print "end:" + str(subs[j].end)+ "strat:" +str(subs[j].start) + "segment:"+str(segment) + "segment.to_time:"+str(segment.to_time())
+                intervals.append(subs[j].start + segment)
+                subs_len=subs_len+1
+                #for example [0,4],[4,6]->4,6
+                if subs[j].end.to_time() <= (subs[j].start+ intervals[subs_len]).to_time():
+                    text += subs[j].text_without_tags + " "
+                else:
+                    break
+                # Sentiment Analysis with TextBlob
+                sentiment_blob=textblob_sentiment(text)
+                sentiments_text_blob.append(sentiment_blob)
 
-            # Sentiment Analysis with Vader
-            sentiment_vader=vader_sentiment(text)
-            sentiments_vader.append(sentiment_vader)
-        
+                # Sentiment Analysis with Vader
+                sentiment_vader=vader_sentiment(text)
+                sentiments_vader.append(sentiment_vader)
+            #else:
+                #print "exclude this segment. It duration is too small: " + str(segment)
 
     #find the avrage of the 2 different sentiment analysis
     avg_sentiments=[(a_i + b_i)/float(2) for a_i, b_i in zip(sentiments_vader, sentiments_text_blob)]

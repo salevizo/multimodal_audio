@@ -41,7 +41,7 @@ ________________________________________________________________________________
 	
 Afer Run the script Parser_caption.py The functionality of this script is:
 _______________________________________________________________
-1.	Take each srt file. Remove tags, find: start and end for each sentence (caption are splitted in time segments)
+1.	Take each srt file. Remove tags, find: start and end for each sentence (caption are splitted in time segments, if segment is less than 2 secs exclude it)
 2. Find the polarity of each segment. Remove segments with no text, eg: [Laughing]
 3. text-blob and Vader are used for sentiment analysis. At the end, the average of these 2 classifiers used to characterize a segment as positive/negative/neutral
 5. Make a csv file for each srt file that contains (time segment, pollarity). The name of the file will be:pollarity_videoId.csv, eg:polarity_0.csv and will be saved at /polarity_csv subfolder
