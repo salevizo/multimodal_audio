@@ -36,7 +36,7 @@ def retrieveSubs(subsPath,repo_path):
     subtitles_pol = pickle.load(subtitles_pol_file)
     return subtitles_pol
 
-def wavSegmentationFromSubs(relPath,subtitles,repo_path):
+def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt):
     os.chdir(repo_path)
     audio_name= os.path.basename(os.path.normpath(relPath))
     dir_name=os.path.splitext(audio_name)[0]
@@ -63,9 +63,9 @@ def wavSegmentationFromSubs(relPath,subtitles,repo_path):
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-        mstr="ffmpeg -i {} -ss {} -t {} temp{}.wav -loglevel panic -y".format(filePath, t1, sec,i)
+        mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
         #print mstr
-        os.system("ffmpeg -i {} -ss {} -t {} temp{}.wav -loglevel panic -y".format(filePath, t1, sec,i))
+        os.system(mstr)
         
     print 'Done splitting wav file '+audio_name+'. Audio had '+str(countpos)+' positive segments, '+str(countneg)+ " negative segments and "+str(countneu)+"neutral segments. "
     
@@ -105,8 +105,7 @@ def main(argv):
     for k in range(0,len(dataset)):
         print dataset["Pickle"][k]
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
-        wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path)
-        break
+        wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k)
 
 
     aT.featureAndTrain([repo_path+"/audio/positive",repo_path+"/audio/neutral",repo_path+"/audio/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes")

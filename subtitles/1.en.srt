@@ -1,0 +1,334 @@
+WEBVTT
+Kind: captions
+Language: en
+Style:
+::cue(c.colorCCCCCC) { color: rgb(204,204,204);
+ }
+::cue(c.colorE5E5E5) { color: rgb(229,229,229);
+ }
+##
+
+00:00:00,140 --> 00:00:05,090 align:start position:0%
+ 
+why<00:00:01,140><c> do</c><00:00:01,199><c> you</c><00:00:01,410><c> want</c><00:00:01,589><c> to</c><c.colorE5E5E5><00:00:01,620><c> be</c><00:00:01,740><c> executed</c><00:00:03,110><c> I</c><00:00:04,110><c> have</c><00:00:04,859><c> to</c></c>
+
+00:00:05,090 --> 00:00:05,100 align:start position:0%
+why do you want to<c.colorE5E5E5> be executed I have to
+ </c>
+
+00:00:05,100 --> 00:00:07,160 align:start position:0%
+why do you want to<c.colorE5E5E5> be executed I have to
+be</c>
+
+00:00:07,160 --> 00:00:07,170 align:start position:0%
+be
+ 
+
+00:00:07,170 --> 00:00:09,500 align:start position:0%
+be
+there's<00:00:07,950><c> our</c><c.colorE5E5E5><00:00:08,069><c> world</c><00:00:08,309><c> kill</c><00:00:08,550><c> again</c></c><c.colorCCCCCC><00:00:08,880><c> no</c><00:00:09,240><c> I</c><00:00:09,269><c> would</c></c>
+
+00:00:09,500 --> 00:00:09,510 align:start position:0%
+there's our<c.colorE5E5E5> world kill again</c><c.colorCCCCCC> no I would
+ </c>
+
+00:00:09,510 --> 00:00:11,240 align:start position:0%
+there's our<c.colorE5E5E5> world kill again</c><c.colorCCCCCC> no I would
+do<00:00:09,599><c> it</c></c><c.colorE5E5E5><00:00:09,690><c> again</c><00:00:09,840><c> I've</c><00:00:09,990><c> been</c><00:00:10,099><c> molesting</c><00:00:11,099><c> kids</c></c>
+
+00:00:11,240 --> 00:00:11,250 align:start position:0%
+do it<c.colorE5E5E5> again I've been molesting kids
+ </c>
+
+00:00:11,250 --> 00:00:13,999 align:start position:0%
+do it<c.colorE5E5E5> again I've been molesting kids
+non-stop<00:00:11,880><c> since</c><00:00:12,179><c> I</c><00:00:12,360><c> was</c><00:00:12,480><c> 13</c><00:00:12,900><c> years</c><00:00:12,929><c> old</c></c><c.colorCCCCCC><00:00:13,349><c> over</c></c>
+
+00:00:13,999 --> 00:00:14,009 align:start position:0%
+non-stop since<c.colorE5E5E5> I was 13 years old</c><c.colorCCCCCC> over
+ </c>
+
+00:00:14,009 --> 00:00:18,890 align:start position:0%
+non-stop since<c.colorE5E5E5> I was 13 years old</c><c.colorCCCCCC> over
+half<00:00:14,190><c> my</c></c><c.colorE5E5E5><00:00:14,219><c> life</c><00:00:16,880><c> anything</c></c><c.colorCCCCCC><00:00:17,880><c> happened</c><00:00:18,480><c> I</c><00:00:18,600><c> can</c></c>
+
+00:00:18,890 --> 00:00:18,900 align:start position:0%
+half my<c.colorE5E5E5> life anything</c><c.colorCCCCCC> happened I can
+ </c>
+
+00:00:18,900 --> 00:00:20,660 align:start position:0%
+half my<c.colorE5E5E5> life anything</c><c.colorCCCCCC> happened I can</c>
+<c.colorE5E5E5>guarantee</c><c.colorCCCCCC><00:00:19,289><c> I</c></c><c.colorE5E5E5><00:00:19,410><c> do</c><00:00:19,590><c> it</c><00:00:19,830><c> again</c></c><c.colorCCCCCC><00:00:19,920><c> and</c><00:00:20,039><c> sooner</c><00:00:20,640><c> or</c></c>
+
+00:00:20,660 --> 00:00:20,670 align:start position:0%
+<c.colorE5E5E5>guarantee</c><c.colorCCCCCC> I</c><c.colorE5E5E5> do it again</c><c.colorCCCCCC> and sooner or
+ </c>
+
+00:00:20,670 --> 00:00:23,599 align:start position:0%
+<c.colorE5E5E5>guarantee</c><c.colorCCCCCC> I</c><c.colorE5E5E5> do it again</c><c.colorCCCCCC> and sooner or</c>
+<c.colorE5E5E5>later<00:00:20,730><c> I</c></c><c.colorCCCCCC><00:00:20,939><c> would</c><00:00:21,150><c> kill</c></c><c.colorE5E5E5><00:00:21,300><c> another</c><00:00:21,570><c> child</c><00:00:22,609><c> I've</c></c>
+
+00:00:23,599 --> 00:00:23,609 align:start position:0%
+<c.colorE5E5E5>later I</c><c.colorCCCCCC> would kill</c><c.colorE5E5E5> another child I've
+ </c>
+
+00:00:23,609 --> 00:00:25,730 align:start position:0%
+<c.colorE5E5E5>later I</c><c.colorCCCCCC> would kill</c><c.colorE5E5E5> another child I've
+done</c><c.colorCCCCCC><00:00:23,789><c> it</c></c><c.colorE5E5E5><00:00:23,880><c> before</c><00:00:24,000><c> and</c><00:00:24,449><c> at</c><00:00:25,050><c> the</c><00:00:25,140><c> time</c><00:00:25,350><c> I</c><00:00:25,380><c> liked</c></c>
+
+00:00:25,730 --> 00:00:25,740 align:start position:0%
+done<c.colorCCCCCC> it</c><c.colorE5E5E5> before and at the time I liked
+ </c>
+
+00:00:25,740 --> 00:00:26,120 align:start position:0%
+done<c.colorCCCCCC> it</c><c.colorE5E5E5> before and at the time I liked
+it</c>
+
+00:00:26,120 --> 00:00:26,130 align:start position:0%
+it
+ 
+
+00:00:26,130 --> 00:00:28,279 align:start position:0%
+it
+God<00:00:26,519><c> also</c><00:00:26,760><c> says</c><c.colorCCCCCC><00:00:27,180><c> that</c><00:00:27,420><c> if</c><00:00:27,539><c> he</c><00:00:27,660><c> ever</c><00:00:27,689><c> escapes</c></c>
+
+00:00:28,279 --> 00:00:28,289 align:start position:0%
+God also says<c.colorCCCCCC> that if he ever escapes
+ </c>
+
+00:00:28,289 --> 00:00:30,080 align:start position:0%
+God also says<c.colorCCCCCC> that if he ever escapes
+from<00:00:28,470><c> prison</c><00:00:29,099><c> there</c><00:00:29,279><c> is</c></c><c.colorE5E5E5><00:00:29,490><c> someone</c></c><c.colorCCCCCC><00:00:29,820><c> in</c></c>
+
+00:00:30,080 --> 00:00:30,090 align:start position:0%
+from prison there is<c.colorE5E5E5> someone</c><c.colorCCCCCC> in
+ </c>
+
+00:00:30,090 --> 00:00:31,939 align:start position:0%
+from prison there is<c.colorE5E5E5> someone</c><c.colorCCCCCC> in
+particular</c><c.colorE5E5E5><00:00:30,240><c> that</c><00:00:30,869><c> he</c><00:00:31,050><c> will</c><00:00:31,199><c> be</c><00:00:31,349><c> able</c><00:00:31,529><c> to</c><00:00:31,710><c> kill</c></c>
+
+00:00:31,939 --> 00:00:31,949 align:start position:0%
+particular<c.colorE5E5E5> that he will be able to kill
+ </c>
+
+00:00:31,949 --> 00:00:34,400 align:start position:0%
+particular<c.colorE5E5E5> that he will be able to kill
+I'm<00:00:32,940><c> not</c><00:00:33,210><c> gonna</c><00:00:33,390><c> say</c></c><c.colorCCCCCC><00:00:33,600><c> who</c><00:00:33,840><c> but</c><00:00:34,079><c> there</c><00:00:34,260><c> is</c></c>
+
+00:00:34,400 --> 00:00:34,410 align:start position:0%
+I'm not gonna say<c.colorCCCCCC> who but there is
+ </c>
+
+00:00:34,410 --> 00:00:36,020 align:start position:0%
+I'm not gonna say<c.colorCCCCCC> who but there is</c>
+<c.colorCCCCCC>somebody<00:00:34,800><c> out</c></c><c.colorE5E5E5><00:00:34,860><c> there</c></c><c.colorCCCCCC><00:00:35,040><c> there's</c><00:00:35,579><c> a</c><00:00:35,670><c> man</c><00:00:35,700><c> out</c></c>
+
+00:00:36,020 --> 00:00:36,030 align:start position:0%
+<c.colorCCCCCC>somebody out</c><c.colorE5E5E5> there</c><c.colorCCCCCC> there's a man out
+ </c>
+
+00:00:36,030 --> 00:00:41,060 align:start position:0%
+<c.colorCCCCCC>somebody out</c><c.colorE5E5E5> there</c><c.colorCCCCCC> there's a man out
+there<00:00:36,210><c> there's</c><00:00:37,079><c> a</c><00:00:37,170><c> man</c></c><c.colorE5E5E5><00:00:37,260><c> yeah</c><00:00:39,800><c> someone</c><00:00:40,800><c> related</c></c>
+
+00:00:41,060 --> 00:00:41,070 align:start position:0%
+<c.colorCCCCCC>there there's a man</c><c.colorE5E5E5> yeah someone related
+ </c>
+
+00:00:41,070 --> 00:00:43,670 align:start position:0%
+<c.colorCCCCCC>there there's a man</c><c.colorE5E5E5> yeah someone related</c>
+<c.colorCCCCCC>to</c><c.colorE5E5E5><00:00:41,250><c> the</c><00:00:41,520><c> case</c><00:00:41,730><c> that</c><00:00:42,149><c> got</c><00:00:42,960><c> you</c><00:00:43,140><c> in</c></c><c.colorCCCCCC><00:00:43,230><c> prison</c><00:00:43,559><c> in</c></c>
+
+00:00:43,670 --> 00:00:43,680 align:start position:0%
+<c.colorCCCCCC>to</c><c.colorE5E5E5> the case that got you in</c><c.colorCCCCCC> prison in
+ </c>
+
+00:00:43,680 --> 00:00:48,430 align:start position:0%
+<c.colorCCCCCC>to</c><c.colorE5E5E5> the case that got you in</c><c.colorCCCCCC> prison in
+the<00:00:43,770><c> first</c><00:00:43,980><c> place</c></c><c.colorE5E5E5><00:00:44,960><c> mmm</c></c><c.colorCCCCCC><00:00:45,960><c> not</c></c><c.colorE5E5E5><00:00:46,469><c> directly</c><00:00:46,920><c> no</c><00:00:47,039><c> but</c></c>
+
+00:00:48,430 --> 00:00:48,440 align:start position:0%
+the<c.colorCCCCCC> first place</c><c.colorE5E5E5> mmm</c><c.colorCCCCCC> not</c><c.colorE5E5E5> directly no but
+ </c>
+
+00:00:48,440 --> 00:00:51,319 align:start position:0%
+the<c.colorCCCCCC> first place</c><c.colorE5E5E5> mmm</c><c.colorCCCCCC> not</c><c.colorE5E5E5> directly no but</c>
+<c.colorCCCCCC>it's<00:00:49,440><c> something</c><00:00:49,620><c> that</c></c><c.colorE5E5E5><00:00:49,800><c> you</c><00:00:50,789><c> know</c><00:00:50,969><c> that</c><00:00:51,180><c> you're</c></c>
+
+00:00:51,319 --> 00:00:51,329 align:start position:0%
+<c.colorCCCCCC>it's something that</c><c.colorE5E5E5> you know that you're
+ </c>
+
+00:00:51,329 --> 00:00:53,389 align:start position:0%
+<c.colorCCCCCC>it's something that</c><c.colorE5E5E5> you know that you're
+going<00:00:51,539><c> to</c><00:00:51,600><c> do</c><00:00:51,780><c> or</c><00:00:51,960><c> you</c><00:00:52,079><c> plan</c><00:00:52,559><c> to</c><00:00:52,620><c> do</c><00:00:52,890><c> you</c><00:00:53,190><c> want</c></c>
+
+00:00:53,389 --> 00:00:53,399 align:start position:0%
+going to<c.colorE5E5E5> do or you plan to do you want
+ </c>
+
+00:00:53,399 --> 00:00:58,930 align:start position:0%
+going to<c.colorE5E5E5> do or you plan to do you want
+to<00:00:53,550><c> do</c><00:00:53,670><c> yeah</c><00:00:54,090><c> your</c><00:00:54,719><c> execution</c><00:00:55,460><c> do</c><00:00:56,460><c> any</c><00:00:56,640><c> good</c></c><c.colorCCCCCC><00:00:56,940><c> I</c></c>
+
+00:00:58,930 --> 00:00:58,940 align:start position:0%
+to do<c.colorE5E5E5> yeah your execution do any good</c><c.colorCCCCCC> I
+ </c>
+
+00:00:58,940 --> 00:01:04,640 align:start position:0%
+to do<c.colorE5E5E5> yeah your execution do any good</c><c.colorCCCCCC> I
+think<00:00:59,940><c> it</c><00:01:00,480><c> would</c><00:01:00,660><c> I</c><00:01:00,690><c> think</c></c><c.colorE5E5E5><00:01:00,930><c> a</c><00:01:03,290><c> few</c><00:01:04,290><c> child</c></c>
+
+00:01:04,640 --> 00:01:04,650 align:start position:0%
+think<c.colorCCCCCC> it would I think</c><c.colorE5E5E5> a few child
+ </c>
+
+00:01:04,650 --> 00:01:06,320 align:start position:0%
+think<c.colorCCCCCC> it would I think</c><c.colorE5E5E5> a few child
+molesters<00:01:05,339><c> anyway</c><00:01:05,640><c> are</c><00:01:05,760><c> going</c><00:01:05,970><c> to</c><00:01:06,090><c> think</c></c>
+
+00:01:06,320 --> 00:01:06,330 align:start position:0%
+molesters anyway are going to think
+ 
+
+00:01:06,330 --> 00:01:08,870 align:start position:0%
+molesters anyway are going to think
+twice<c.colorCCCCCC><00:01:06,510><c> before</c><00:01:06,810><c> they</c></c><c.colorE5E5E5><00:01:06,990><c> do</c></c><c.colorCCCCCC><00:01:07,200><c> anything</c><00:01:07,619><c> again</c></c><c.colorE5E5E5><00:01:07,920><c> how</c></c>
+
+00:01:08,870 --> 00:01:08,880 align:start position:0%
+twice<c.colorCCCCCC> before they</c><c.colorE5E5E5> do</c><c.colorCCCCCC> anything again</c><c.colorE5E5E5> how
+ </c>
+
+00:01:08,880 --> 00:01:09,859 align:start position:0%
+twice<c.colorCCCCCC> before they</c><c.colorE5E5E5> do</c><c.colorCCCCCC> anything again</c><c.colorE5E5E5> how
+do<00:01:08,939><c> you</c><00:01:09,030><c> live</c><00:01:09,180><c> with</c><00:01:09,330><c> yourself</c></c>
+
+00:01:09,859 --> 00:01:09,869 align:start position:0%
+do you live with yourself
+ 
+
+00:01:09,869 --> 00:01:17,030 align:start position:0%
+do you live with yourself
+daily<00:01:12,350><c> the</c><00:01:13,350><c> times</c><00:01:13,619><c> it's</c><00:01:13,860><c> not</c><00:01:14,010><c> easy</c><00:01:14,360><c> I</c><00:01:16,040><c> said</c>
+
+00:01:17,030 --> 00:01:17,040 align:start position:0%
+daily the times it's not easy I said
+ 
+
+00:01:17,040 --> 00:01:18,440 align:start position:0%
+daily the times it's not easy I said
+there's<00:01:17,220><c> times</c><c.colorE5E5E5><00:01:17,460><c> I</c><00:01:17,759><c> think</c><00:01:17,820><c> about</c></c><c.colorCCCCCC><00:01:18,060><c> what</c><00:01:18,330><c> I've</c></c>
+
+00:01:18,440 --> 00:01:18,450 align:start position:0%
+there's times<c.colorE5E5E5> I think about</c><c.colorCCCCCC> what I've
+ </c>
+
+00:01:18,450 --> 00:01:20,690 align:start position:0%
+there's times<c.colorE5E5E5> I think about</c><c.colorCCCCCC> what I've
+done<00:01:18,479><c> I</c><00:01:18,990><c> think</c><00:01:19,860><c> about</c><00:01:20,159><c> some</c></c><c.colorE5E5E5><00:01:20,369><c> of</c><00:01:20,430><c> the</c><00:01:20,520><c> things</c></c>
+
+00:01:20,690 --> 00:01:20,700 align:start position:0%
+done<c.colorCCCCCC> I think about some</c><c.colorE5E5E5> of the things
+ </c>
+
+00:01:20,700 --> 00:01:22,820 align:start position:0%
+done<c.colorCCCCCC> I think about some</c><c.colorE5E5E5> of the things
+the<00:01:20,820><c> boys</c><00:01:21,000><c> said</c><00:01:21,390><c> before</c><00:01:21,780><c> they</c><00:01:21,900><c> died</c></c><c.colorCCCCCC><00:01:22,080><c> and</c><00:01:22,470><c> and</c></c>
+
+00:01:22,820 --> 00:01:22,830 align:start position:0%
+the<c.colorE5E5E5> boys said before they died</c><c.colorCCCCCC> and and
+ </c>
+
+00:01:22,830 --> 00:01:28,700 align:start position:0%
+the<c.colorE5E5E5> boys said before they died</c><c.colorCCCCCC> and and
+that's<00:01:23,130><c> real</c><00:01:23,369><c> hard</c><00:01:23,580><c> to</c><00:01:23,729><c> think</c></c><c.colorE5E5E5><00:01:23,880><c> about</c></c><c.colorCCCCCC><00:01:27,560><c> at</c></c><c.colorE5E5E5><00:01:28,560><c> other</c></c>
+
+00:01:28,700 --> 00:01:28,710 align:start position:0%
+that's real hard to think<c.colorE5E5E5> about</c><c.colorCCCCCC> at</c><c.colorE5E5E5> other
+ </c>
+
+00:01:28,710 --> 00:01:29,870 align:start position:0%
+that's real hard to think<c.colorE5E5E5> about</c><c.colorCCCCCC> at</c><c.colorE5E5E5> other</c>
+<c.colorCCCCCC>times</c><c.colorE5E5E5><00:01:28,950><c> they</c><00:01:29,130><c> just</c><00:01:29,159><c> try</c><00:01:29,430><c> to</c><00:01:29,490><c> put</c><00:01:29,670><c> everything</c></c>
+
+00:01:29,870 --> 00:01:29,880 align:start position:0%
+<c.colorCCCCCC>times</c><c.colorE5E5E5> they just try to put everything
+ </c>
+
+00:01:29,880 --> 00:01:32,240 align:start position:0%
+<c.colorCCCCCC>times</c><c.colorE5E5E5> they just try to put everything
+out<00:01:30,090><c> of</c><00:01:30,150><c> my</c><00:01:30,360><c> mind</c><00:01:30,680><c> do</c><00:01:31,680><c> you</c><00:01:31,740><c> look</c><00:01:31,860><c> forward</c><00:01:32,159><c> to</c></c>
+
+00:01:32,240 --> 00:01:32,250 align:start position:0%
+out<c.colorE5E5E5> of my mind do you look forward to
+ </c>
+
+00:01:32,250 --> 00:01:36,040 align:start position:0%
+out<c.colorE5E5E5> of my mind do you look forward to</c>
+<c.colorCCCCCC>dying</c>
+
+00:01:36,040 --> 00:01:36,050 align:start position:0%
+ 
+ 
+
+00:01:36,050 --> 00:01:39,110 align:start position:0%
+ 
+in<00:01:37,050><c> a</c><00:01:37,110><c> way</c><00:01:37,380><c> yeah</c><00:01:37,740><c> I</c><00:01:37,920><c> could</c><00:01:38,250><c> be</c><00:01:38,340><c> a</c><00:01:38,370><c> relief</c><c.colorCCCCCC><00:01:38,730><c> I</c></c>
+
+00:01:39,110 --> 00:01:39,120 align:start position:0%
+in a way yeah I could be a relief<c.colorCCCCCC> I
+ </c>
+
+00:01:39,120 --> 00:01:40,790 align:start position:0%
+in a way yeah I could be a relief<c.colorCCCCCC> I
+don't<00:01:39,840><c> have</c><00:01:39,960><c> to</c><00:01:40,050><c> think</c></c><c.colorE5E5E5><00:01:40,170><c> about</c><00:01:40,290><c> all</c></c><c.colorCCCCCC><00:01:40,620><c> these</c></c>
+
+00:01:40,790 --> 00:01:40,800 align:start position:0%
+don't have to think<c.colorE5E5E5> about all</c><c.colorCCCCCC> these
+ </c>
+
+00:01:40,800 --> 00:01:46,700 align:start position:0%
+don't have to think<c.colorE5E5E5> about all</c><c.colorCCCCCC> these
+things<00:01:41,040><c> anymore</c></c><c.colorE5E5E5><00:01:42,530><c> I</c><00:01:45,260><c> know</c><00:01:46,260><c> that's</c><00:01:46,560><c> the</c></c><c.colorCCCCCC><00:01:46,620><c> only</c></c>
+
+00:01:46,700 --> 00:01:46,710 align:start position:0%
+<c.colorCCCCCC>things anymore</c><c.colorE5E5E5> I know that's the</c><c.colorCCCCCC> only
+ </c>
+
+00:01:46,710 --> 00:01:48,110 align:start position:0%
+<c.colorCCCCCC>things anymore</c><c.colorE5E5E5> I know that's the</c><c.colorCCCCCC> only</c>
+<c.colorE5E5E5>way<00:01:47,010><c> I</c><00:01:47,040><c> can</c><00:01:47,190><c> guarantee</c><00:01:47,400><c> I'm</c><00:01:47,670><c> not</c><00:01:47,820><c> gonna</c><00:01:47,970><c> hurt</c></c>
+
+00:01:48,110 --> 00:01:48,120 align:start position:0%
+<c.colorE5E5E5>way I can guarantee I'm not gonna hurt
+ </c>
+
+00:01:48,120 --> 00:01:51,520 align:start position:0%
+<c.colorE5E5E5>way I can guarantee I'm not gonna hurt</c>
+<c.colorE5E5E5>anybody<00:01:48,510><c> else</c></c>
+
+00:01:51,520 --> 00:01:51,530 align:start position:0%
+ 
+ 
+
+00:01:51,530 --> 00:01:53,900 align:start position:0%
+ 
+you<00:01:52,530><c> know</c><00:01:52,620><c> right</c><00:01:52,950><c> now</c><00:01:53,130><c> I</c><00:01:53,160><c> sit</c><c.colorE5E5E5><00:01:53,520><c> here</c><00:01:53,700><c> and</c><00:01:53,790><c> say</c><00:01:53,880><c> I</c></c>
+
+00:01:53,900 --> 00:01:53,910 align:start position:0%
+you know right now I sit<c.colorE5E5E5> here and say I
+ </c>
+
+00:01:53,910 --> 00:01:56,620 align:start position:0%
+you know right now I sit<c.colorE5E5E5> here and say I
+don't<00:01:54,060><c> want</c></c><c.colorCCCCCC><00:01:54,270><c> to</c><00:01:54,630><c> but</c><00:01:55,320><c> I</c><00:01:55,350><c> know</c></c><c.colorE5E5E5><00:01:55,470><c> it'll</c><00:01:55,890><c> happen</c></c>
+
+00:01:56,620 --> 00:01:56,630 align:start position:0%
+don't want<c.colorCCCCCC> to but I know</c><c.colorE5E5E5> it'll happen
+ </c>
+
+00:01:56,630 --> 00:02:01,160 align:start position:0%
+don't want<c.colorCCCCCC> to but I know</c><c.colorE5E5E5> it'll happen
+[Music]</c>
+

@@ -2,5 +2,10 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 1,https://www.youtube.com/watch?v=zkpelP3x0mw,Westley Allan Dodd - Last Interview before Execution,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
 2,https://www.youtube.com/watch?v=w3SXzjAfJLk,Confronts Serial Killer & Causes Him To Walk Out Of The Interview!,audio/2.wav,subtitles/2.srt,polarity_csv/polarity_2.csv,pickle_lists/polarity_2.p
 3,https://www.youtube.com/watch?v=QV9nArq7phA,Travis Scott Shows Off His Broadway Musical Abilities,audio/3.wav,subtitles/3.srt,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p
-4,https://www.youtube.com/watch?v=OtgLfXqBt1o,Highlights from Theresa May's LBC phone-in,audio/4.wav,subtitles/4.srt,polarity_csv/polarity_4.csv,pickle_listspolarity_4.p
+4,https://www.youtube.com/watch?v=OtgLfXqBt1o,Highlights from Theresa May's LBC phone-in,audio/4.wav,subtitles/4.srt,polarity_csv/polarity_4.csv,pickle_lists/polarity_4.p
 5,https://www.youtube.com/watch?v=FQ6PR2LsnZw,ISRAEL POLITICS: Interview with Seth Frantzman,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p
+6,https://www.youtube.com/watch?v=PDu9CvbrnlM,Ali G - Ice Cream Glove Business - Donald Trump,audio/6.wav,subtitles/6.srt,polarity_csv/polarity_6.csv,pickle_lists/polarity_6.p
+7,https://www.youtube.com/watch?v=y2Eu_fUjNig,Interview with Charles Manson,audio/7.wav,subtitles/7.srt,polarity_csv/polarity_7.csv,pickle_lists/polarity_7.p
+8,https://www.youtube.com/watch?v=dw3iE96IWVk,"Enes Kanter Interview with VICE NEWS",audio/8.wav,subtitles/8.srt,polarity_csv/polarity_8.csv,pickle_lists/polarity_8.p
+9,https://www.youtube.com/watch?v=dNs-sf4kqZc,"""I CAME TO MAKE HISTORY"" City 5-0 Fulham Yaya Toure post-match interview",audio/9.wav,subtitles/9.srt,polarity_csv/polarity_9.csv,pickle_lists/polarity_9.p
+10,https://www.youtube.com/watch?v=Ad-rx-ZP7IM,"Klay Thompson interview (21 Pts, 8 Reb, 2 Ast) | Pistons def Warroirs 111-102",audio/10.wav,subtitles/10.srt,polarity_csv/polarity_10.csv,pickle_lists/polarity_10.p
