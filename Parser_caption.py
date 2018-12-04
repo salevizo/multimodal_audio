@@ -20,6 +20,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import sentiwordnet as swn
 import sys
+
 import spacy
 from spacy.tokens import Doc
 
@@ -93,32 +94,45 @@ def get_sentiment(file):
            
             if tocompare>=start:
                 #print "end:" + str(subs[j].end)+ "strat:" +str(subs[j].start) + "segment:"+str(segment) + "segment.to_time:"+str(segment.to_time())
-                intervals.append(subs[j].start + segment)
+                interval=subs[j].start + segment
+               
+                
                 subs_len=subs_len+1
+               
+                
                 #for example [0,4],[4,6]->4,6
-                if subs[j].end.to_time() <= (subs[j].start+ intervals[subs_len]).to_time():
+                if subs[j].end.to_time() <= (subs[j].start+ subs[j].start + segment).to_time():
                     text += subs[j].text_without_tags + " "
                 else:
                     break
                 # Sentiment Analysis with TextBlob
                 sentiment_blob=textblob_sentiment(text)
-                sentiments_text_blob.append(sentiment_blob)
+               
 
                 # Sentiment Analysis with Vader
                 sentiment_vader=vader_sentiment(text)
-                sentiments_vader.append(sentiment_vader)
-
-                 # Sentiment Analysis with pattern
+                
                 sentiment_pattern=pattern_sentiment(text)
-                sentiments_pattern.append(sentiment_pattern)
+               
+              
+                if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
+                
+                    sentiments_text_blob.append(sentiment_blob)
+                    sentiments_vader.append(sentiment_vader)
+                    sentiments_pattern.append(sentiment_pattern)
+                    intervals.append(subs[j].start + segment)
+                    print ("sentiment_blob: " + str(sentiment_blob) + "sentiment_vader: " + str(sentiment_vader))
+                 # Sentiment Analysis with pattern
+               
             #else:
                 #print "exclude this segment. It duration is too small: " + str(segment)
 
     #find the avrage of the 2 different sentiment analysis
-    avg_sentiments=[(a_i + b_i + c_i)/float(2) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]
+    avg_sentiments=[(a_i + b_i + c_i)/float(3) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]
+ 
     print("Segments for file: "+file+" after removing segments without text are: " + str(len(avg_sentiments)))
     print("------------------------------------------------------------------------------------------------")
-    return (intervals, sentiments_text_blob)
+    return (intervals, avg_sentiments)
 
 
 
@@ -190,7 +204,7 @@ def main(argv):
 
     print(repo_path)
     '''vader lexicon'''
-    nltk.downloader.download('vader_lexicon')
+    #nltk.downloader.download('vader_lexicon')
     
     '''Remove segments at which only tags are writtesn as caption text'''
 
@@ -234,6 +248,5 @@ def main(argv):
     
 
 if __name__ == "__main__":
-   
     main(sys.argv[1:])
  
