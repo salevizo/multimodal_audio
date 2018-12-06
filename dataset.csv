@@ -6,6 +6,17 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 5,https://www.youtube.com/watch?v=FQ6PR2LsnZw,ISRAEL POLITICS: Interview with Seth Frantzman,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p
 6,https://www.youtube.com/watch?v=PDu9CvbrnlM,Ali G - Ice Cream Glove Business - Donald Trump,audio/6.wav,subtitles/6.srt,polarity_csv/polarity_6.csv,pickle_lists/polarity_6.p
 7,https://www.youtube.com/watch?v=y2Eu_fUjNig,Interview with Charles Manson,audio/7.wav,subtitles/7.srt,polarity_csv/polarity_7.csv,pickle_lists/polarity_7.p
-8,https://www.youtube.com/watch?v=dw3iE96IWVk,"Enes Kanter Interview with VICE NEWS",audio/8.wav,subtitles/8.srt,polarity_csv/polarity_8.csv,pickle_lists/polarity_8.p
-9,https://www.youtube.com/watch?v=dNs-sf4kqZc,"""I CAME TO MAKE HISTORY"" City 5-0 Fulham Yaya Toure post-match interview",audio/9.wav,subtitles/9.srt,polarity_csv/polarity_9.csv,pickle_lists/polarity_9.p
-10,https://www.youtube.com/watch?v=Ad-rx-ZP7IM,"Klay Thompson interview (21 Pts, 8 Reb, 2 Ast) | Pistons def Warroirs 111-102",audio/10.wav,subtitles/10.srt,polarity_csv/polarity_10.csv,pickle_lists/polarity_10.p
+8,https://www.youtube.com/watch?v=dw3iE96IWVk,Enes Kanter Interview with VICE NEWS,audio/8.wav,subtitles/8.srt,polarity_csv/polarity_8.csv,pickle_lists/polarity_8.p
+9,https://www.youtube.com/watch?v=dNs-sf4kqZc,I CAME TO MAKE HISTORY City 5-0 Fulham Yaya Toure post-match interview,audio/9.wav,subtitles/9.srt,polarity_csv/polarity_9.csv,pickle_lists/polarity_9.p
+10,https://www.youtube.com/watch?v=Ad-rx-ZP7IM,Klay Thompson interview (21 Pts, 8 Reb, 2 Ast) | Pistons def Warroirs 111-102,audio/10.wav,subtitles/10.srt,polarity_csv/polarity_10.csv,pickle_lists/polarity_10.p
+11,https://www.youtube.com/watch?v=WDSvfvfPCWY,Tom Cruise Attacks Psychiatry on Good Morning America with Matt Lauer,audio/11.wav,subtitles/11.srt,polarity_csv/polarity_11.csv,pickle_lists/polarity_11.p
+12,https://www.youtube.com/watch?v=4PebOKdmOCM,David Aldridge interviews on Allen Iverson (2013),audio/12.wav,subtitles/12.srt,polarity_csv/polarity_12.csv,pickle_lists/polarity_12.p
+13,https://www.youtube.com/watch?v=_HPGbuBjd3Q,Selena Gomez Talks Lupus, Body Shaming, Boyfriends & Taylor Swift With The Ellen DeGeneres Show,audio/13.wav,subtitles/13.srt,polarity_csv/polarity_13.csv,pickle_lists/polarity_13.p
+14,https://www.youtube.com/watch?v=zjLR8293jnY,Hurt Bae Asks: Why Did You Cheat? Exes Confront Each Other On Infidelity (#HurtBae Video),audio/14.wav,subtitles/14.srt,polarity_csv/polarity_14.csv,pickle_lists/polarity_14.p
+15,https://www.youtube.com/watch?v=Uuj39gHDakE,Mac Miller - Interview with Zane Lowe,audio/15.wav,subtitles/11.srt,polarity_csv/polarity_15.csv,pickle_lists/polarity_15.p
+16,https://www.youtube.com/watch?v=CVuj6MqoVUo,The Terrifying Moment That Taught Dwayne Johnson How Precious Life Is | Oprah’s Master Class | OWN,audio/16.wav,subtitles/16.srt,polarity_csv/polarity_16.csv,pickle_lists/polarity_16.p
+17,https://www.youtube.com/watch?v=zgjTq4p32gc,Nicki Minaj Is Shocked by a Heartwarming Surprise from Her Scholarship Students | TRL,audio/17.wav,subtitles/17.srt,polarity_csv/polarity_17.csv,pickle_lists/polarity_17.p
+18,https://www.youtube.com/watch?v=CA1EmLFi4OA,NOISEY Bompton: Growing up with Kendrick Lamar,audio/11.wav,subtitles/18.srt,polarity_csv/polarity_18.csv,pickle_lists/polarity_18.p
+19,https://www.youtube.com/watch?v=RWE2YwN7AGs,Tupac On The Prospect Of Going To Jail (1993) | MTV News | #TBMTV,audio/19.wav,subtitles/19.srt,polarity_csv/polarity_19.csv,pickle_lists/polarity_19.p
+20,https://www.youtube.com/watch?v=guc-8R1bYVg,Will Ferrell Hilarious Acceptance Speech At The Mark Twain Comedy Award 2011,audio/20.wav,subtitles/20.srt,polarity_csv/polarity_20.csv,pickle_lists/polarity_20.p
+
