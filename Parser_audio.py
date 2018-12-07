@@ -102,7 +102,7 @@ def main(argv):
     create_folders(repo_path)
     
     subs=[]
-    for k in range(0,len(dataset)):
+    for k in range(0,len(dataset["Pickle"])):
         print dataset["Pickle"][k]
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
         wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k)
