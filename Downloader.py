@@ -85,18 +85,9 @@ def create_folders(folder_path):
 
 def main(argv):
     global repo_path
-    if len(sys.argv)==2:
-        print("Write in user specified path...")
-        print('Number of arguments:', len(sys.argv), 'arguments.')
-        print('Argument List:', str(sys.argv))
-        #repo_path='/home/mscuser/multi/multimodal_audio'
-        repo_path=str(sys.argv[1])
-    else:
-        repo_path = str(os.getcwd()) #able to work withou path . default write in the same directory
-        print("Writing in the current path: ",repo_path)
-
+    repo_path = str(os.getcwd())
     os.chdir(repo_path)
-    '''urls of youtube videos'''
+    
     urls=[]
     ids=[]
     with open("dataset.csv", "rt") as f:
@@ -126,38 +117,48 @@ def main(argv):
     output.close()
 
     print("-------------------------------------------------------------------------------------------------------------------")
-    '''download available captions in english inside subtitles with format 1.en.vtt, 2.en.vtt etc'''
+    
     print("Vtt subtitles for the above urls will be downloaded at the path " +str(repo_path)+ "/subtitles> ")
     create_folders(repo_path +'/subtitles')
     for idx,url in enumerate(urls):
         strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en --output '+ids[idx]+".vtt " + url
         #print strcaption
-        os.chdir(repo_path +'/subtitles')
-        os.system(strcaption)
+        if os.path.isfile(ids[idx]+".en.vtt")==False:
+            os.chdir(repo_path +'/subtitles')
+            os.system(strcaption)
+        else:
+            print(str(ids[idx])+".vtt already exists.")
         
     print("-------------------------------------------------------------------------------------------------------------------")
-    '''download available mp3 in english inside audio with format 1.mp3, 2.mp3t etc'''
+
     create_folders(repo_path +'/audio')
     print("mp3 file for the above urls will be downloaded at the path " + str(repo_path) + "/audio> ")
     for idx,url in enumerate(urls):
-        strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en ' + url
-        os.chdir(repo_path + '/audio')
-        strmp3='youtube-dl --extract-audio --audio-format mp3  --output '+ids[idx]+".mp3 " + url
-        #print strmp3
-        os.system(strmp3)
+        if os.path.isfile(ids[idx]+".wav")==False:
+            strcaption='youtube-dl --write-auto-sub --skip-download --sub-lang=en ' + url
+            os.chdir(repo_path + '/audio')
+            strmp3='youtube-dl --extract-audio --audio-format mp3  --output '+ids[idx]+".mp3 " + url
+            #print strmp3
+            os.system(strmp3)
+        else:
+            print("Wav already exists,no need to download "+str(ids[idx])+".mp3 ")
    
     print("-------------------------------------------------------------------------------------------------------------------")
 
     path = repo_path+"/subtitles"
     walktree(path, convertVTTtoSRT)
     
-    '''Convert mp3 to wav'''
     os.chdir(repo_path + '/audio')
     audio_files=os.listdir(repo_path + '/audio')
     print(audio_files)
     for mp3_ in audio_files:
         name=mp3_.split('.')
-        subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
+        if os.path.isfile(ids[idx]+".wav")==False:
+            subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
+            if os.path.isfile(repo_path +"/audio/" + name[0] + ".mp3")==True:
+                os.remove(repo_path +"/audio/" + name[0] + ".mp3")
+        else:
+            print "File already exists,no need to download "+str(name[0]) + ".mp3"
 
 
 
