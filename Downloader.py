@@ -152,13 +152,16 @@ def main(argv):
     audio_files=os.listdir(repo_path + '/audio')
     print(audio_files)
     for mp3_ in audio_files:
-        name=mp3_.split('.')
-        if os.path.isfile(ids[idx]+".wav")==False:
-            subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
-            if os.path.isfile(repo_path +"/audio/" + name[0] + ".mp3")==True:
-                os.remove(repo_path +"/audio/" + name[0] + ".mp3")
+        if ".mp3" in mp3_ or ".wav" in mp3_:
+            name=mp3_.split('.')
+            if os.path.isfile(ids[idx]+".wav")==False:
+                subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
+                if os.path.isfile(repo_path +"/audio/" + name[0] + ".mp3")==True:
+                    os.remove(repo_path +"/audio/" + name[0] + ".mp3")
+            else:
+                print("File already exists,no need to convert to  "+str(name[0]) + ".wav")
         else:
-            print "File already exists,no need to download "+str(name[0]) + ".mp3"
+            print("Encountered folder "+mp3_)
 
 
 

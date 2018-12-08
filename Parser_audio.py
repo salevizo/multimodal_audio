@@ -64,7 +64,7 @@ def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt):
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-    if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav"):
+    if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav") is False:
         mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
         os.system(mstr)
     else:
@@ -107,7 +107,6 @@ def main(argv):
     
     subs=[]
     for k in range(0,len(dataset["Pickle"])):
-        print dataset["Pickle"][k]
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
         wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k)
 
