@@ -39,6 +39,7 @@ def retrieveSubs(subsPath,repo_path):
 def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt):
     os.chdir(repo_path)
     audio_name= os.path.basename(os.path.normpath(relPath))
+    print "Audio Name ="+audio_name
     dir_name=os.path.splitext(audio_name)[0]
     soundsPath=os.path.dirname(relPath)
     #load list
@@ -63,12 +64,12 @@ def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt):
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-	if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav"):
-        	mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
-	else:
-		print(str(audio_cnt)+"temp"+str(i)+".wav already exists.")
-        #print mstr
+    if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav"):
+        mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
         os.system(mstr)
+    else:
+		print(str(audio_cnt)+"temp"+str(i)+".wav already exists.")
+        
         
     print 'Done splitting wav file '+audio_name+'. Audio had '+str(countpos)+' positive segments, '+str(countneg)+ " negative segments and "+str(countneu)+"neutral segments. "
     
@@ -85,6 +86,7 @@ def sentiments(filepath):
 def main(argv):
 
     global repo_path
+    repo_path = str(os.getcwd())
     global pyaudioanalysis_path
     
     #pyaudioanalysis_path='/home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/'
@@ -93,8 +95,7 @@ def main(argv):
     print 'Number of arguments:', len(sys.argv), 'arguments.'
     print 'Argument List:', str(sys.argv)
     #repo_path='/home/mscuser/multi/multimodal_audio'
-    repo_path=str(sys.argv[1])
-    pyaudioanalysis_path=str(sys.argv[2])
+    pyaudioanalysis_path=str(sys.argv[1])
     os.chdir(repo_path)
 
     '''load the pickle file that contains info about the dataset'''
