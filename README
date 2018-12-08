@@ -74,3 +74,11 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 git clone https://github.com/tyiannak/pyAudioAnalysis.git
 pip install -e .
+
+
+
+##New file Parser.py , maybe replace parser_audio.py
+Instead of train and test with all segments I decided to select 90% of videos as train and rest for test.
+For each set I generate sentiments for the segments just like before. I also edited created audioTrainTest_prj ,replica of pyaudio's audioTrainTest,  in order to use  train and test segements.
+
+Please let me know if you want to change anything.
