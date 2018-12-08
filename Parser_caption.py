@@ -60,7 +60,7 @@ def vader_sentiment(text):
 
 def pattern_sentiment(text):
   
-    from pattern3.en import sentiment
+    from pattern.en import sentiment
     polarity=sentiment(text)[0]
     return polarity
 
