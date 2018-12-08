@@ -63,7 +63,10 @@ def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt):
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-        mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
+	if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav"):
+        	mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_cnt,i)
+	else:
+		print(str(audio_cnt)+"temp"+str(i)+".wav already exists.")
         #print mstr
         os.system(mstr)
         
@@ -94,7 +97,7 @@ def main(argv):
     pyaudioanalysis_path=str(sys.argv[2])
     os.chdir(repo_path)
 
-    '''load the pickle file that conatins info about the dataset'''
+    '''load the pickle file that contains info about the dataset'''
     pkl_file = open('dataset_list.p', 'rb')
     dataset = pickle.load(pkl_file)
     pkl_file.close()
@@ -102,7 +105,7 @@ def main(argv):
     create_folders(repo_path)
     
     subs=[]
-    for k in range(0,len(dataset)):
+    for k in range(0,len(dataset["Pickle"])):
         print dataset["Pickle"][k]
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
         wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k)
