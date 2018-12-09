@@ -240,6 +240,8 @@ def main(argv):
         context=[]
         pickle_name='polarity_'+str(dict[dicts+1]['Id']) +'.p'
         for j in range(len(dict[dicts+1]['intervals'])):
+
+            print(pickle_name+" with interval "+str(dict[dicts+1]['intervals'][j])+" and sentiment "+str(dict[dicts+1]['sentiments'][j]))
             context.append((dict[dicts+1]['intervals'][j],dict[dicts+1]['sentiments'][j]))
         pickle.dump( context, open( pickle_name, "wb" ) )
     
