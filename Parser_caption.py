@@ -126,15 +126,16 @@ def get_sentiment(file):
                 sentiment_vader=vader_sentiment(text_filtered)
                 
                 sentiment_pattern=pattern_sentiment(text_filtered)
-               
-              
+                print("for text: ",text)
+                print ("------------>sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
+
                 if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
                 
                     sentiments_text_blob.append(sentiment_blob)
                     sentiments_vader.append(sentiment_vader)
                     sentiments_pattern.append(sentiment_pattern)
                     intervals.append(subs[j].start + segment)
-                    print ("sentiment_blob: " + str(sentiment_blob) + "sentiment_vader: " + str(sentiment_vader))
+                    print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
                  # Sentiment Analysis with pattern
                
             #else:
