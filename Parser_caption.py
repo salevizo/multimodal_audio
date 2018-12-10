@@ -23,7 +23,9 @@ import sys
 
 import spacy
 from spacy.tokens import Doc
-
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize 
 
 
 
@@ -84,6 +86,10 @@ def get_sentiment(file):
     subs_len=-1
     pattern = re.compile("\[(.*?)\]|\-\[(.*?)\]")
     # Collect and combine all the text in each time interval
+      
+    stop_words = set(stopwords.words('english')) 
+  
+
     for j in range(n):
         text = ""
         if (bool(pattern.match(subs[j].text_without_tags))==False):
@@ -106,13 +112,20 @@ def get_sentiment(file):
                 else:
                     break
                 # Sentiment Analysis with TextBlob
-                sentiment_blob=textblob_sentiment(text)
+                
+                word_tokens = word_tokenize(text) 
+                filtered_sentence = []
+                filtered_sentence = [w for w in word_tokens if not w in stop_words]
+                text_filtered=' '.join(filtered_sentence)
                
+                
+                
+                sentiment_blob=textblob_sentiment(text_filtered)
 
                 # Sentiment Analysis with Vader
-                sentiment_vader=vader_sentiment(text)
+                sentiment_vader=vader_sentiment(text_filtered)
                 
-                sentiment_pattern=pattern_sentiment(text)
+                sentiment_pattern=pattern_sentiment(text_filtered)
                
               
                 if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
@@ -190,7 +203,7 @@ def create_folders(folder_path):
 
 
 def main(argv):
-
+    
     global repo_path
     if len(sys.argv)==2:
         print("Write in user specified path...")
