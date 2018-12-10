@@ -24,6 +24,9 @@ import sys
 import spacy
 from spacy.tokens import Doc
 import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
 
@@ -134,7 +137,7 @@ def get_sentiment(file):
                     sentiments_text_blob.append(sentiment_blob)
                     sentiments_vader.append(sentiment_vader)
                     sentiments_pattern.append(sentiment_pattern)
-                    intervals.append(subs[j].start + segment)
+                    intervals.append([subs[j].start,subs[j].end])
                     print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
                  # Sentiment Analysis with pattern
                

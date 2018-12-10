@@ -70,24 +70,19 @@ def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt,case):
             countpos+=1
         filePath=repo_path+"/"+soundsPath+"/"+audio_name
         audio_number=audio_name.split(".")[0]
-        if i==(len(subtitles)-1):
-            break
         #Problem with format of the time
         os.chdir(repo_path+"/"+soundsPath+"/"+dir_name)
-        t1=str(subtitles[i][0]).replace(',','.')
-        t2=str(subtitles[i+1][0]).replace(',','.')
+        t1=str(subtitles[i][0][0]).replace(',','.')
+        t2=str(subtitles[i][0][1]).replace(',','.')
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
-        if sec<3:
-            print("Segment is too small:"+str(audio_number)+"temp"+str(i)+",duration "+str(sec))
+        if os.path.isfile(str(audio_number)+"temp"+str(i)+".wav") is False:
+            mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_number,i)
+            print(mstr)
+            os.system(mstr)
         else:
-            if os.path.isfile(str(audio_number)+"temp"+str(i)+".wav") is False:
-                mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(filePath, t1, sec,audio_number,i)
-                print(mstr)
-                os.system(mstr)
-            else:
-		        print(str(audio_number)+"temp"+str(i)+".wav already exists.")
+	        print(str(audio_number)+"temp"+str(i)+".wav already exists.")
         
         
     print 'Done splitting wav file '+audio_name+'. Audio had '+str(countpos)+' positive segments, '+str(countneg)+ " negative segments and "+str(countneu)+"neutral segments. "
@@ -126,7 +121,7 @@ def main(argv):
     
     subs=[]
     import math
-    test_percentage=0.1
+    test_percentage=0.2
     test_size = int(math.ceil(len(dataset["Pickle"]) * test_percentage)) ## percentage of test
     subs=[]
     train_size = int(len(dataset["Pickle"]) - test_size)
