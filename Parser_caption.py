@@ -30,7 +30,7 @@ nltk.download('punkt')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
 
-
+import math
 
 dict={}
 i=interval_segments=sentiment_segments=0
@@ -123,7 +123,7 @@ def get_sentiment(file):
                 filtered_sentence = [w for w in word_tokens if not w in stop_words]
                 if len(filtered_sentence)>=4:
                     text_filtered=' '.join(filtered_sentence)
-                    print text_filtered
+                    #print (text_filtered)
                     sentiment_blob=textblob_sentiment(text_filtered)
 
                     # Sentiment Analysis with Vader
@@ -131,23 +131,28 @@ def get_sentiment(file):
                     
                     sentiment_pattern=pattern_sentiment(text_filtered)
                     #print("for text: ",text_filtered)
-                    print ("ELEOR: sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
+                    #print ("ELEOR: sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
 
                     if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
                     
-                        sentiments_text_blob.append(sentiment_blob)
-                        sentiments_vader.append(sentiment_vader)
-                        sentiments_pattern.append(sentiment_pattern)
-                        intervals.append([subs[j].start,subs[j].end])
-                        print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) +" for text "+ subs[j]+".")
-                     # Sentiment Analysis with pattern
+
+                        avg_polarity=(sentiment_blob + sentiment_vader + sentiment_pattern)/float(3)
+                        avg_polarity=math.fabs(avg_polarity)
+                        if (avg_polarity>0.25 or avg_polarity==0):
+                            sentiments_text_blob.append(sentiment_blob)
+                            sentiments_vader.append(sentiment_vader)
+                            sentiments_pattern.append(sentiment_pattern)
+
+                            intervals.append([subs[j].start,subs[j].end])
+                            print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) +" for text "+ text_filtered +".")
+                      
                    
             #else:
                 #print "exclude this segment. It duration is too small: " + str(segment)
 
     #find the avrage of the 2 different sentiment analysis
     avg_sentiments=[(a_i + b_i + c_i)/float(3) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]
- 
+   
     print("Segments for file: "+file+" after removing segments without text are: " + str(len(avg_sentiments)))
     print("------------------------------------------------------------------------------------------------")
     return (intervals, avg_sentiments)
