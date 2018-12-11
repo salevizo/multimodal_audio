@@ -119,28 +119,27 @@ def get_sentiment(file):
                 word_tokens = word_tokenize(text) 
                 filtered_sentence = []
                 filtered_sentence = [w for w in word_tokens if not w in stop_words]
-                text_filtered=' '.join(filtered_sentence)
-               
-                
-                
-                sentiment_blob=textblob_sentiment(text_filtered)
+                if len(filtered_sentence)>=4:
+                    text_filtered=' '.join(filtered_sentence)
+                    print text_filtered
+                    sentiment_blob=textblob_sentiment(text_filtered)
 
-                # Sentiment Analysis with Vader
-                sentiment_vader=vader_sentiment(text_filtered)
-                
-                sentiment_pattern=pattern_sentiment(text_filtered)
-                print("for text: ",text)
-                print ("------------>sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
+                    # Sentiment Analysis with Vader
+                    sentiment_vader=vader_sentiment(text_filtered)
+                    
+                    sentiment_pattern=pattern_sentiment(text_filtered)
+                    #print("for text: ",text_filtered)
+                    #print ("------------>sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
 
-                if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
-                
-                    sentiments_text_blob.append(sentiment_blob)
-                    sentiments_vader.append(sentiment_vader)
-                    sentiments_pattern.append(sentiment_pattern)
-                    intervals.append([subs[j].start,subs[j].end])
-                    print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
-                 # Sentiment Analysis with pattern
-               
+                    if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
+                    
+                        sentiments_text_blob.append(sentiment_blob)
+                        sentiments_vader.append(sentiment_vader)
+                        sentiments_pattern.append(sentiment_pattern)
+                        intervals.append([subs[j].start,subs[j].end])
+                        print ("BINGOOOOOO: sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) )
+                     # Sentiment Analysis with pattern
+                   
             #else:
                 #print "exclude this segment. It duration is too small: " + str(segment)
 
@@ -268,4 +267,10 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+    
+    
+    
+#removing stop words -->know right I sit say I n't want I know 'll happen
+#without removing stop words -->', u"you know right now I sit here and say I\ndon't want to but I know it'll happen ")
+
  
