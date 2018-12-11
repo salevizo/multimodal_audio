@@ -16,6 +16,12 @@ from datetime import datetime
 repo_path=''
 pyaudioanalysis_path=''
 
+def fit_and_resample():
+    #extract features from the folder containing the splitted
+    aF.dirsWavFeatureExtraction(list_of_dirs_train,mt_win,mt_step,st_win,st_step,compute_beat=compute_beat)
+    #resample the data
+    #preditct and return results.
+
 def svm_train_evaluate(X, y, k_folds, C=1, use_regressor=False):
     '''
     :param X: Feature matrix
@@ -31,14 +37,16 @@ def svm_train_evaluate(X, y, k_folds, C=1, use_regressor=False):
     # k-fold evaluation:
     kf = KFold(n_splits=k_folds, shuffle=True)
     f1s, accs, count_cm = [], [], 0
+    #for differenct values of c 
     for train, test in kf.split(X):
         x_train, x_test, y_train, y_test = X[train], X[test], y[train], y[test]
         if not use_regressor:
             cl = SVC(kernel='rbf', C=C)
         else:
             cl = SVR(kernel='rbf', C=C)
+        ##fit_and_resample()
         cl.fit(x_train, y_train)
-        y_pred = cl.predict(x_test)
+        
         if use_regressor:
             y_pred = np.round(y_pred)
         # update aggregated confusion matrix:
