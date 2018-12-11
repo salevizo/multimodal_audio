@@ -15,6 +15,8 @@ import sklearn.svm
 import sklearn.decomposition
 import sklearn.ensemble
 from sklearn.model_selection import train_test_split
+from imblearn.over_sampling import SMOTE
+
 
 def signal_handler(signal, frame):
     print('You pressed Ctrl+C! - EXIT')
@@ -306,6 +308,11 @@ def featureAndTrain(list_of_dirs_train,list_of_dirs_test,mt_win, mt_step, st_win
     [features_train, classNames_train, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_train,mt_win,mt_step,st_win,st_step,compute_beat=compute_beat)
 
     [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test,mt_win,mt_step,st_win,st_step,compute_beat=compute_beat)
+
+
+
+	sm = SMOTE(random_state=2)
+	features_train, classNames_train = sm.fit_sample(features_train, classNames_train.ravel())
 
     print(len(classNames_train),len(classNames_test))
 
@@ -642,7 +649,7 @@ def evaluateclassifier(features_train,features_test,class_names_train,class_name
     n_classes_test = len(features_test)
 
     print(n_classes_test,n_classes_train)
-
+    k_fold=5
     ac_all = []
     f1_all = []
     precision_classes_all = []
@@ -663,26 +670,32 @@ def evaluateclassifier(features_train,features_test,class_names_train,class_name
 
     for Ci, C in enumerate(Params):
         # for each param value
+        e=0 ## number of fold
         cm = numpy.zeros((n_classes_train, n_classes_train))
-        for e in range(n_exp):
+    	kf = KFold(n_splits=k_fold, shuffle=True)
             # for each cross-validation iteration:
+        for train, test in kf.split(X):
+        	x_train, x_test, y_train, y_test = features_norm_train[train], features_norm_test[test], n_classes_train[train], n_classes_test[test]
+
             print("Param = {0:.5f} - classifier Evaluation "
-                  "Experiment {1:d} of {2:d}".format(C, e+1, n_exp))
+                  "Experiment {1:d} of {2:d}".format(C, e+1, k_fold))
+           	
+            # for train, test in kf.split(n_classes_train):
             # split features:
             #X_train, f_test, y_train, y_test  = randSplitFeatures(features_norm, perTrain)
             # train multi-class svms:
             if classifier_name == "svm":
-                classifier = trainSVM(features_norm_train, C)
+                classifier = trainSVM(x_train, C)
             elif classifier_name == "svm_rbf":
-                classifier = trainSVM_RBF(features_norm_train, C)
+                classifier = trainSVM_RBF(x_train, C)
             elif classifier_name == "knn":
-                classifier = trainKNN(features_norm_train, C)
+                classifier = trainKNN(x_train, C)
             elif classifier_name == "randomforest":
-                classifier = trainRandomForest(features_norm_train, C)
+                classifier = trainRandomForest(x_train, C)
             elif classifier_name == "gradientboosting":
-                classifier = trainGradientBoosting(features_norm_train, C)
+                classifier = trainGradientBoosting(x_train, C)
             elif classifier_name == "extratrees":
-                classifier = trainExtraTrees(features_norm_train, C)
+                classifier = trainExtraTrees(x_train, C)
 
             cmt = numpy.zeros((n_classes_test, n_classes_test))
             for c1 in range(n_classes_test):
@@ -691,7 +704,7 @@ def evaluateclassifier(features_train,features_test,class_names_train,class_name
                 for ss in range(n_test_samples):
                     [res[ss], _] = classifierWrapper(classifier,
                                                      classifier_name,
-                                                     features_norm_test[c1][ss])
+                                                     y_test[c1][ss])
                 for c2 in range(n_classes_test):
                     cmt[c1][c2] = float(len(numpy.nonzero(res == c2)[0]))
             cm = cm + cmt
