@@ -32,6 +32,7 @@ def svm_train_evaluate(X, y, k_folds, C=1, use_regressor=False):
     :return: confusion matrix, average f1 measure and overall accuracy
     '''
     # normalize
+    os.chdir(repo_path)
     mean, std = X.mean(axis=0), np.std(X, axis=0)
     X = (X - mean) / std
     # k-fold evaluation:
