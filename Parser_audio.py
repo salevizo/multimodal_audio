@@ -23,52 +23,6 @@ from sklearn.model_selection import LeaveOneOut
 repo_path=''
 pyaudioanalysis_path=''
 
-def fit_and_resample():
-    #extract features from the folder containing the splitted
-    aF.dirsWavFeatureExtraction(list_of_dirs_train,mt_win,mt_step,st_win,st_step,compute_beat=compute_beat)
-    #resample the data
-    #preditct and return results.
-
-def svm_train_evaluate(X, y, k_folds, C=1, use_regressor=False):
-    '''
-    :param X: Feature matrix
-    :param y: Labels matrix
-    :param k_folds: Number of folds
-    :param C: SVM C param
-    :param use_regressor: use svm regression for training (not nominal classes)
-    :return: confusion matrix, average f1 measure and overall accuracy
-    '''
-    # normalize
-    os.chdir(repo_path)
-    mean, std = X.mean(axis=0), np.std(X, axis=0)
-    X = (X - mean) / std
-    # k-fold evaluation:
-    kf = KFold(n_splits=k_folds, shuffle=True)
-    f1s, accs, count_cm = [], [], 0
-    #for differenct values of c 
-    for train, test in kf.split(X):
-        x_train, x_test, y_train, y_test = X[train], X[test], y[train], y[test]
-        if not use_regressor:
-            cl = SVC(kernel='rbf', C=C)
-        else:
-            cl = SVR(kernel='rbf', C=C)
-        ##fit_and_resample()
-        cl.fit(x_train, y_train)
-        
-        if use_regressor:
-            y_pred = np.round(y_pred)
-        # update aggregated confusion matrix:
-        if count_cm == 0:
-            cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
-        else:
-            cm += (confusion_matrix(y_pred=y_pred, y_true=y_test))
-        count_cm += 1
-        f1s.append(f1_score(y_pred=y_pred, y_true=y_test, average='micro'))
-        accs.append(accuracy_score(y_pred=y_pred, y_true=y_test))
-    f1 = np.mean(f1s)
-    acc = np.mean(accs)
-    return cm, f1, acc
-
 
 def create_folders(repo_path):
     emotions=["positive","neutral","negative"]
