@@ -1,7 +1,8 @@
 Id,URL,Title,Audio,Captions,Polarity,Pickle
+0,https://www.youtube.com/watch?v=5_68e3j7MAE,Erasmus Interview,audio/0.wav,subtitles/0.srt,polarity_csv/polarity_0.csv,pickle_lists/polarity_0.p
 1,https://www.youtube.com/watch?v=zkpelP3x0mw,Westley Allan Dodd - Last Interview before Execution,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
 2,https://www.youtube.com/watch?v=w3SXzjAfJLk,Confronts Serial Killer & Causes Him To Walk Out Of The Interview!,audio/2.wav,subtitles/2.srt,polarity_csv/polarity_2.csv,pickle_lists/polarity_2.p
-3,https://www.youtube.com/watch?v=QV9nArq7phA,Travis Scott Shows Off His Broadway Musical Abilities,audio/3.wav,subtitles/3.srt,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p
+3,https://www.youtube.com/watch?v=yGgzZNJKcfk,Interview with Mark Radka Brand Chief Energy Climate and Technology UN Environment,audio/3.wav,subtitles/3.srt,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p
 4,https://www.youtube.com/watch?v=OtgLfXqBt1o,Highlights from Theresa May's LBC phone-in,audio/4.wav,subtitles/4.srt,polarity_csv/polarity_4.csv,pickle_lists/polarity_4.p
 5,https://www.youtube.com/watch?v=FQ6PR2LsnZw,ISRAEL POLITICS: Interview with Seth Frantzman,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p
 6,https://www.youtube.com/watch?v=PDu9CvbrnlM,Ali G - Ice Cream Glove Business - Donald Trump,audio/6.wav,subtitles/6.srt,polarity_csv/polarity_6.csv,pickle_lists/polarity_6.p
@@ -11,11 +12,24 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 10,https://www.youtube.com/watch?v=Ad-rx-ZP7IM,Klay Thompson interview (21 Pts-8 Reb-2 Ast) | Pistons def Warroirs 111-102,audio/10.wav,subtitles/10.srt,polarity_csv/polarity_10.csv,pickle_lists/polarity_10.p
 11,https://www.youtube.com/watch?v=WDSvfvfPCWY,Tom Cruise Attacks Psychiatry on Good Morning America with Matt Lauer,audio/11.wav,subtitles/11.srt,polarity_csv/polarity_11.csv,pickle_lists/polarity_11.p
 12,https://www.youtube.com/watch?v=4PebOKdmOCM,David Aldridge interviews on Allen Iverson (2013),audio/12.wav,subtitles/12.srt,polarity_csv/polarity_12.csv,pickle_lists/polarity_12.p
-13,https://www.youtube.com/watch?v=_HPGbuBjd3Q,Selena Gomez Talks Lupus - Body Shaming - Boyfriends & Taylor Swift With The Ellen DeGeneres Show,audio/13.wav,subtitles/13.srt,polarity_csv/polarity_13.csv,pickle_lists/polarity_13.p
+13,https://www.youtube.com/watch?v=qkjKrQVkVnY,The Startup adVANce Challenge – Q&A with Volker Mornhinweg,audio/13.wav,subtitles/13.srt,polarity_csv/polarity_13.csv,pickle_lists/polarity_13.p
 14,https://www.youtube.com/watch?v=zjLR8293jnY,Hurt Bae Asks: Why Did You Cheat? Exes Confront Each Other On Infidelity (#HurtBae Video),audio/14.wav,subtitles/14.srt,polarity_csv/polarity_14.csv,pickle_lists/polarity_14.p
 15,https://www.youtube.com/watch?v=3CdEd0pQt8Q,Kim Kardashian West Was Naked When Donald Trump Called,audio/15.wav,subtitles/15.srt,polarity_csv/polarity_15.csv,pickle_lists/polarity_15.p
 16,https://www.youtube.com/watch?v=CVuj6MqoVUo,The Terrifying Moment That Taught Dwayne Johnson How Precious Life Is | Oprah’s Master Class | OWN,audio/16.wav,subtitles/16.srt,polarity_csv/polarity_16.csv,pickle_lists/polarity_16.p
 17,https://www.youtube.com/watch?v=zgjTq4p32gc,Nicki Minaj Is Shocked by a Heartwarming Surprise from Her Scholarship Students | TRL,audio/17.wav,subtitles/17.srt,polarity_csv/polarity_17.csv,pickle_lists/polarity_17.p
-18,https://www.youtube.com/watch?v=CA1EmLFi4OA,NOISEY Bompton: Growing up with Kendrick Lamar,audio/11.wav,subtitles/18.srt,polarity_csv/polarity_18.csv,pickle_lists/polarity_18.p
-19,https://www.youtube.com/watch?v=RWE2YwN7AGs,Tupac On The Prospect Of Going To Jail (1993) | MTV News | #TBMTV,audio/19.wav,subtitles/19.srt,polarity_csv/polarity_19.csv,pickle_lists/polarity_19.p
+18,https://www.youtube.com/watch?v=CA1EmLFi4OA,NOISEY Bompton: Growing up with Kendrick Lamar,audio/18.wav,subtitles/18.srt,polarity_csv/polarity_18.csv,pickle_lists/polarity_18.p
+19,https://www.youtube.com/watch?v=5pJQYgVHQzA,Interview about Erasmus+,audio/19.wav,subtitles/19.srt,polarity_csv/polarity_19.csv,pickle_lists/polarity_19.p
 20,https://www.youtube.com/watch?v=guc-8R1bYVg,Will Ferrell Hilarious Acceptance Speech At The Mark Twain Comedy Award 2011,audio/20.wav,subtitles/20.srt,polarity_csv/polarity_20.csv,pickle_lists/polarity_20.p
+21,https://www.youtube.com/watch?v=sRje3pOMQK8,Katie Holmes on Her Daughter's Christmas List,audio/21.wav,subtitles/21.srt,polarity_csv/polarity_21.csv,pickle_lists/polarity_21.p
+22,https://www.youtube.com/watch?v=wXvO1cVy9fY, Refugees & Migrants: Interview with Foni Joyce,audio/22.wav,subtitles/22.srt,polarity_csv/polarity_22.csv,pickle_lists/polarity_22.p
+23,https://www.youtube.com/watch?v=rLTaTihwL2s, Mark Zuckerberg’s hearing: Seven questions that put the Facebook CEO in the hot seat,audio/23.wav,subtitles/23.srt,polarity_csv/polarity_23.csv,pickle_lists/polarity_23.p
+24,https://www.youtube.com/watch?v=CVjmvmLqLO8,  Lena Headey: Why I Stand With Refugees,audio/24.wav,subtitles/24.srt,polarity_csv/polarity_24.csv,pickle_lists/polarity_24.p
+25,https://www.youtube.com/watch?v=GrsgV80wjpg, Network operator initiatives in the Middle East and Africa,audio/25.wav,subtitles/25.srt,polarity_csv/polarity_25.csv,pickle_lists/polarity_25.p
+26,https://www.youtube.com/watch?v=jxoeZ4SELSM, Angelina Jolie interview: Ukraine, Syria and refugees,audio/26.wav,subtitles/26.srt,polarity_csv/polarity_26.csv,pickle_lists/polarity_26.p
+27,https://www.youtube.com/watch?v=SDmkU5E20Ok, Job interview questions and answers (Part 13): How to explain employment gaps,audio/27.wav,subtitles/27.srt,polarity_csv/polarity_27.csv,pickle_lists/polarity_27.p
+28,https://www.youtube.com/watch?v=xaimgvr0644, Kiefer Sutherland​ Explains His "Christmas Tree Tackling" Incident | The Big Interview on AXS TV,audio/28.wav,subtitles/28.srt,polarity_csv/polarity_28.csv,pickle_lists/polarity_28.p
+29,https://www.youtube.com/watch?v=ptD0T-ZcF2M, Steve Jobs Motivational Speech | Inspirational Video | Entrepreneur Motivation | Startup Stories,audio/29.wav,subtitles/29.srt,polarity_csv/polarity_29.csv,pickle_lists/polarity_29.p
+30,https://www.youtube.com/watch?v=jz284uVDKAE, Gaps in your CV: How to explain unemployment,audio/30.wav,subtitles/30.srt,polarity_csv/polarity_30.csv,pickle_lists/polarity_30.p
+
+
+
