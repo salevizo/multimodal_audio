@@ -120,6 +120,8 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
 
 
 def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,C=2):
+
+	
 	[features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
 
 	[features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
@@ -136,3 +138,24 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 	plotly_classification_results(cm, ["positve", "neutral", "negative"]) 
 	print(acc, f1)
 
+
+
+def featureAndTrain_perID(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,C=2):
+
+
+
+	[features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
+
+	[features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
+
+
+	[x_test, y_test] = listOfFeatures2Matrix(features_test)
+
+   	## for training SMOTE 
+	[X_train, Y_train] = listOfFeatures2Matrix(features_train)
+	sm = SMOTE(random_state=2)
+	X_train, Y_train = sm.fit_sample(X_train, Y_train)
+	cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,10, C) 
+    # visualize performance measures 
+	plotly_classification_results(cm, ["positve", "neutral", "negative"]) 
+	print(acc, f1)

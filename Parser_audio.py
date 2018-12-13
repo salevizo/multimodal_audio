@@ -17,7 +17,8 @@ from sklearn.model_selection import KFold
 import math
 from shutil import copyfile
 from pyAudioAnalysis import audioTrainTest as aT
-
+from sklearn.model_selection import LeaveOneOut 
+ from sklearn.model_selection import StratifiedShuffleSplit
 
 repo_path=''
 pyaudioanalysis_path=''
@@ -235,15 +236,15 @@ def searchVideo(TopMostPath,repo_path,case):
             searchVideo(pathname,repo_path,case)
         elif S_ISREG(mode):
             if "positive" in pathname:
-                print(pathname)
+                #print(pathname)
                 os.chdir(repo_path)
                 shutil.copy(pathname, repo_path+"/audio/"+case+"/positive")
             elif "neutral" in pathname:
-                print(pathname)
+                #print(pathname)
                 os.chdir(repo_path)
                 shutil.copy(pathname, "audio/"+case+"/neutral")
             elif "negative" in pathname:
-                print(pathname)
+                #print(pathname)
                 os.chdir(repo_path)
                 shutil.copy(pathname, repo_path+"/audio/"+case+"/negative")
 
@@ -278,55 +279,69 @@ def main(argv):
     #create_folders(repo_path)
     subs=[]
     
-    create_folders(repo_path)
+
+    
+    
     ##split for all IDs
     print(dataset["Pickle"])
-    for k in range(1,len(dataset["Pickle"])+1):
-        create_folders_perID(repo_path,str(k))  
+    # for k in range(1,len(dataset["Pickle"])+1):
+    #     create_folders_perID(repo_path,str(k))  
 
 
-
+    ## Wav segmentation of all
     for k in range(0,len(dataset["Pickle"])):
         create_folders_perID(repo_path,str(k))
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
         wavSegmentationFromSubs_perID(dataset["Audio"][k],subtitles,repo_path,str(k+1))
 
-
    
+    #same aproach as crossval
+    # #lvn = LeaveOneOut()
+    # for train_index, test_index in loo.split(X):
+    #     print("TRAIN:", train_index, "TEST:", test_index)
 
-    # kfold = KFold(3, True, 1)    
-    # for train, test in kfold.split(dataset["Pickle"]):
-    #     create_folders(repo_path)
-    #     for k in train:
-    #         path= repo_path + "/audio/"+str(k)
-    #         searchVideo(path,repo_path,"train")   
-    #     for k in test:
-    #         path= repo_path + "/audio/"+str(k)
-    #         searchVideo(path,repo_path,"test") 
 
-    #     ft.featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes")
-    #     remove_folders(repo_path)
-
-    kfold = KFold(3, True, 1)
+    ##Cross validation for all , get first ids for train and test. then copy all files to train(positive,neg,neu) or test(positive,neg,neu) then featuretrain as before.
+    kfold = KFold(n_splits=3,shuffle=True)
     for train, test in kfold.split(dataset["Pickle"]):
-        print("-----------------------------------------------------------")
-        print('FOR TRAIN : %s, FOR TEST: %s' % (train,test))
-
+        #create also train/test folders 
         create_folders(repo_path)
+        print("Train: ",train , "Test: ",test)
         for k in train:
-            print("For test: ",dataset["Pickle"][k])
-            subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
-            wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k,"train")
-
-
+            path= repo_path + "/audio/"+str(k)
+            #copy video in CASE(train/test) folder
+            searchVideo(path,repo_path,"train")   
         for k in test:
-            print("For train: ",dataset["Pickle"][k])
-            subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
-            wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k,"test")
+            path= repo_path + "/audio/"+str(k)  
+            searchVideo(path,repo_path,"test") 
 
         ft.featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes")
         remove_folders(repo_path)
-        print("-------------------------------------------")
+
+
+
+
+
+    # kfold = KFold(3, True, 1)
+    # for train, test in kfold.split(dataset["Pickle"]):
+    #     print("-----------------------------------------------------------")
+    #     print('FOR TRAIN : %s, FOR TEST: %s' % (train,test))
+
+    #     create_folders(repo_path)
+    #     for k in train:
+    #         print("For test: ",dataset["Pickle"][k])
+    #         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
+    #         wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k,"train")
+
+
+    #     for k in test:
+    #         print("For train: ",dataset["Pickle"][k])
+    #         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
+    #         wavSegmentationFromSubs(dataset["Audio"][k],subtitles,repo_path,k,"test")
+
+    #     ft.featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes")
+    #     remove_folders(repo_path)
+    #     print("-------------------------------------------")
 
 
 
