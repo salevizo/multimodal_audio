@@ -18,7 +18,7 @@ import math
 from shutil import copyfile
 from pyAudioAnalysis import audioTrainTest as aT
 from sklearn.model_selection import LeaveOneOut 
- from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.model_selection import StratifiedShuffleSplit
 
 repo_path=''
 pyaudioanalysis_path=''

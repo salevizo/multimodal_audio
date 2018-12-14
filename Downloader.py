@@ -154,7 +154,7 @@ def main(argv):
     for mp3_ in audio_files:
         if ".mp3" in mp3_ or ".wav" in mp3_:
             name=mp3_.split('.')
-            if os.path.isfile(ids[idx]+".wav")==False:
+            if os.path.isfile(name[0]+".wav")==False:
                 subprocess.call(['ffmpeg', '-i', repo_path + "/audio/" + name[0] + ".mp3",repo_path + "/audio/" + name[0] + ".wav"])
                 if os.path.isfile(repo_path +"/audio/" + name[0] + ".mp3")==True:
                     os.remove(repo_path +"/audio/" + name[0] + ".mp3")

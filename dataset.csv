@@ -30,6 +30,3 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 28,https://www.youtube.com/watch?v=xaimgvr0644, Kiefer Sutherland​ Explains His "Christmas Tree Tackling" Incident | The Big Interview on AXS TV,audio/28.wav,subtitles/28.srt,polarity_csv/polarity_28.csv,pickle_lists/polarity_28.p
 29,https://www.youtube.com/watch?v=ptD0T-ZcF2M, Steve Jobs Motivational Speech | Inspirational Video | Entrepreneur Motivation | Startup Stories,audio/29.wav,subtitles/29.srt,polarity_csv/polarity_29.csv,pickle_lists/polarity_29.p
 30,https://www.youtube.com/watch?v=jz284uVDKAE, Gaps in your CV: How to explain unemployment,audio/30.wav,subtitles/30.srt,polarity_csv/polarity_30.csv,pickle_lists/polarity_30.p
-
-
-
