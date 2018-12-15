@@ -13,6 +13,23 @@ from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
 
+def writeTrainDataToARFF(model_name, features, classNames, feature_names):
+    f = open(model_name + ".arff", 'w')
+    f.write('@RELATION ' + model_name + '\n')
+    for fn in feature_names:
+        f.write('@ATTRIBUTE ' + fn + ' NUMERIC\n')
+    f.write('@ATTRIBUTE class {')
+    for c in range(len(classNames) - 1):
+        f.write(classNames[c] + ',')
+    f.write(classNames[-1] + '}\n\n')
+    f.write('@DATA\n')
+    for c, fe in enumerate(features):
+        for i in range(fe.shape[0]):
+            for j in range(fe.shape[1]):
+                f.write("{0:f},".format(fe[i, j]))
+            f.write(classNames[c] + "\n")
+    f.close()
+
 
 def compute_class_rec_pre_f1(c_mat):
     '''
@@ -79,7 +96,7 @@ def plotly_classification_results(cm, class_names):
 
 
 
-def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
+def svm_train_evaluate(X, y,x_test,y_test,k_folds, params, use_regressor=False):
     '''
     :param X: Feature matrix
     :param y: Labels matrix
@@ -88,38 +105,46 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
     :param use_regressor: use svm regression for training (not nominal classes)
     :return: confusion matrix, average f1 measure and overall accuracy
     '''
+
+    params_list ={}
     # normalize
     mean, std = X.mean(axis=0), np.std(X, axis=0)
     X = (X - mean) / std
     # k-fold evaluation:
     f1s, accs, count_cm = [], [], 0
     #for differenct values of c 
-    if not use_regressor:
-        cl = SVC(kernel='rbf', C=C)
-    else:
-        cl = SVR(kernel='rbf', C=C)
-    ##fit_and_resample()
-    cl.fit(X, y)
-    y_pred = cl.predict(x_test)
-    if use_regressor:
-        y_pred = np.round(y_pred)
-    # update aggregated confusion matrix:
-    if count_cm == 0:
-        cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
-    else:
-        cm += (confusion_matrix(y_pred=y_pred, y_true=y_test))
-    count_cm += 1
-    f1s.append(f1_score(y_pred=y_pred, y_true=y_test, average='micro'))
-    accs.append(accuracy_score(y_pred=y_pred, y_true=y_test))
-    f1 = np.mean(f1s)
-    acc = np.mean(accs)
-    return cm, f1, acc
+    for C in params:
+        # for each cross-validation iteration:
+        if not use_regressor:
+            cl = SVC(kernel='rbf', C=C)
+        else:
+            cl = SVR(kernel='rbf', C=C)
+        ##fit_and_resample()
+        cl.fit(X, y)
+        y_pred = cl.predict(x_test)
+        if use_regressor:
+            y_pred = np.round(y_pred)
+        # update aggregated confusion matrix:
+        if count_cm == 0:
+            cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
+        else:
+            cm += (confusion_matrix(y_pred=y_pred, y_true=y_test))
+        count_cm += 1
+        f1s.append(f1_score(y_pred=y_pred, y_true=y_test, average='micro'))
+        accs.append(accuracy_score(y_pred=y_pred, y_true=y_test))
+        f1 = np.mean(f1s)
+        acc = np.mean(accs)
+        params_list['param']= C
+        params_list['scores']=[cm,f1,acc]
+        #return cm, f1, acc
+    return params_list
 
 
 
 
 
-def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,C=2):
+
+def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,k_folds=3):
 
 	
 	[features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
@@ -133,29 +158,20 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 	[X_train, Y_train] = listOfFeatures2Matrix(features_train)
 	sm = SMOTE(random_state=2)
 	X_train, Y_train = sm.fit_sample(X_train, Y_train)
-	cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,10, C) 
+
+
+    #feature_names_train = [" Train features" + str(d + 1) for d in range(X_train)]
+    #writeTrainDataToARFF(model_name, X_train, y_test-, feature_names_train)
+
+    ##classifier Parameter
+    if classifier_type == "svm" or classifier_type == "svm_rbf":
+        classifier_par = numpy.array([0.001, 0.01, 0.5, 1.0, 5.0, 10.0, 20.0])
+
+	cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, classifier_par) 
     # visualize performance measures 
 	plotly_classification_results(cm, ["positve", "neutral", "negative"]) 
 	print(acc, f1)
 
 
 
-def featureAndTrain_perID(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,C=2):
 
-
-
-	[features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
-
-	[features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
-
-
-	[x_test, y_test] = listOfFeatures2Matrix(features_test)
-
-   	## for training SMOTE 
-	[X_train, Y_train] = listOfFeatures2Matrix(features_train)
-	sm = SMOTE(random_state=2)
-	X_train, Y_train = sm.fit_sample(X_train, Y_train)
-	cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,10, C) 
-    # visualize performance measures 
-	plotly_classification_results(cm, ["positve", "neutral", "negative"]) 
-	print(acc, f1)
