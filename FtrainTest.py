@@ -12,6 +12,9 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
+import Parser_audio as ap
+import audioTrainTest_prj as aT
+
 
 def writeTrainDataToARFF(model_name, features, classNames, feature_names):
     f = open(model_name + ".arff", 'w')
@@ -96,7 +99,7 @@ def plotly_classification_results(cm, class_names):
 
 
 
-def svm_train_evaluate(X, y,x_test,y_test,k_folds, params, use_regressor=False):
+def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
     '''
     :param X: Feature matrix
     :param y: Labels matrix
@@ -113,65 +116,128 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, params, use_regressor=False):
     # k-fold evaluation:
     f1s, accs, count_cm = [], [], 0
     #for differenct values of c 
-    for C in params:
-        # for each cross-validation iteration:
-        if not use_regressor:
-            cl = SVC(kernel='rbf', C=C)
-        else:
-            cl = SVR(kernel='rbf', C=C)
-        ##fit_and_resample()
-        cl.fit(X, y)
-        y_pred = cl.predict(x_test)
-        if use_regressor:
-            y_pred = np.round(y_pred)
-        # update aggregated confusion matrix:
-        if count_cm == 0:
-            cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
-        else:
-            cm += (confusion_matrix(y_pred=y_pred, y_true=y_test))
-        count_cm += 1
-        f1s.append(f1_score(y_pred=y_pred, y_true=y_test, average='micro'))
-        accs.append(accuracy_score(y_pred=y_pred, y_true=y_test))
-        f1 = np.mean(f1s)
-        acc = np.mean(accs)
-        params_list['param']= C
-        params_list['scores']=[cm,f1,acc]
-        #return cm, f1, acc
-    return params_list
+
+    if not use_regressor:
+        cl = SVC(kernel='rbf', C=C)
+    else:
+        cl = SVR(kernel='rbf', C=C)
+    ##fit_and_resample()
+    cl.fit(X, y)
+    y_pred = cl.predict(x_test)
+    if use_regressor:
+        y_pred = np.round(y_pred)
+    # update aggregated confusion matrix:
+    if count_cm == 0:
+        cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
+    else:
+        cm += (confusion_matrix(y_pred=y_pred, y_true=y_test))
+    count_cm += 1
+    #f1s.append(f1_score(y_pred=y_pred, y_true=y_test, average='micro'))
+    #accs.append(accuracy_score(y_pred=y_pred, y_true=y_test))
+    f1 = f1_score(y_pred=y_pred, y_true=y_test, average='micro')
+    acc = accuracy_score(y_pred=y_pred, y_true=y_test)
+    print("KARIOLI -----> FOR C:",C,"F1: ",f1, "ACC:",acc)
+    return cm, f1, acc
 
 
 
 
 
 
-def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,compute_beat=False,k_folds=3):
 
-	
-	[features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
+def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,compute_beat=False,k_folds=3):
 
-	[features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
+	#feature extraction for train/test
+    [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
 
-
-	[x_test, y_test] = listOfFeatures2Matrix(features_test)
-
-   	## for training SMOTE 
-	[X_train, Y_train] = listOfFeatures2Matrix(features_train)
-	sm = SMOTE(random_state=2)
-	X_train, Y_train = sm.fit_sample(X_train, Y_train)
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
 
 
-    #feature_names_train = [" Train features" + str(d + 1) for d in range(X_train)]
-    #writeTrainDataToARFF(model_name, X_train, y_test-, feature_names_train)
+    [x_test, y_test] = listOfFeatures2Matrix(features_test)
 
-    ##classifier Parameter
-    if classifier_type == "svm" or classifier_type == "svm_rbf":
-        classifier_par = numpy.array([0.001, 0.01, 0.5, 1.0, 5.0, 10.0, 20.0])
+    ## for training SMOTE 
+    [X_train, Y_train] = listOfFeatures2Matrix(features_train)
+    sm = SMOTE(random_state=2)
+    X_train, Y_train = sm.fit_sample(X_train, Y_train)
 
-	cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, classifier_par) 
+    cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, C)
+
+   
+    return cm,acc,f1
+
+
+
+def f(repo_path,dataset):
+    best_scores = []
+    #find best params and crossvalidation
+    classifier_par = numpy.array([0.001, 0.01])
+    for C in classifier_par:
+        e=0
+        kfold = KFold(n_splits=3,shuffle=True)
+        for train, test in kfold.split(dataset["Pickle"]):
+            print("For C: ",C, "For Fold: ",e+1 )
+            #create also train/test folders 
+            ap.create_folders(repo_path)
+            print("Train: ",train , "Test: ",test)
+            for k in train:
+                path= repo_path + "/audio/"+str(k)
+                #copy video in CASE(train/test) folder
+                ap.searchVideo(path,repo_path,"train")   
+            for k in test:
+                path= repo_path + "/audio/"+str(k)  
+                ap.searchVideo(path,repo_path,"test") 
+
+            cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes",C)
+            best_scores.append([C,cm,acc,f1])
+            ap.remove_folders(repo_path)
+    print(best_scores)
+
+    ##find best f1 for optimal C
+    best_f1= []
+    for i in  range(len(best_scores)):
+        best_f1.append(best_scores[i][2])
+
+    m = max(best_f1)
+    best_c=[i for i, j in enumerate(best_f1) if j == m]
+
+    best_c=best_scores[best_c[0]]
+    print("best C in pos:",best_c)
+    ##visualise with the best score
     # visualize performance measures 
-	plotly_classification_results(cm, ["positve", "neutral", "negative"]) 
-	print(acc, f1)
+    #pos 1 is the cm matrix
+    plotly_classification_results(best_c[1], ["positve", "neutral", "negative"]) 
+    #print(acc, f1)
 
 
+    ##normalize again this time all dataset this time and fit with the best params 
+    # ap.create_folders(repo_path)
+    # for k in range(0,len(dataset["Pickle"])):
+    #     ap.searchVideo(path,repo_path,"train")
+    # [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
+    # [X_train, Y_train] = listOfFeatures2Matrix(features_train)
+    # sm = SMOTE(random_state=2)
+    # X, Y = sm.fit_sample(X_train, Y_train)
 
+    # MEAN, STD = X.mean(axis=0), np.std(X, axis=0)
+    # X = (X - mean) / std
+    # svm = sklearn.svm.SVC(C=best_c[0], kernel='linear', probability=True)
+    # svm.fit(X, Y)
+    # mt_win = 1.0
+    # mt_step= 1.0
+    # st_win = aT.shortTermWindow
+    # st_step=aT.shortTermStep
+    # compute_beat=False
+    # with open(model_name, 'wb') as fid:
+    #     cPickle.dump("svm", fid)
+    #     fo = open(model_name + "MEANS", "wb")
+    #     cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(classNames_train, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(mt_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(mt_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(st_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(st_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    #     fo.close()
 
+    # ap.remove_folders(repo_path)
