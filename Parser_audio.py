@@ -224,8 +224,7 @@ def main(argv):
     #pyaudioanalysis_path='/home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/'
     #repo_path='/home/mscuser/multi/multimodal_audio'
       #split for all IDs
-    for k in range(0,len(dataset["Pickle"])):
-        create_folders_perID(repo_path,str(k))  
+    
     print('Number of arguments:', len(sys.argv), 'arguments.')
     print('Argument List:', str(sys.argv))
     #repo_path='/home/mscuser/multi/multimodal_audio'
@@ -241,9 +240,9 @@ def main(argv):
     subs=[]
     
     
-    # #split for all IDs
-    # for k in range(0,len(dataset["Pickle"][25:])):
-    #     create_folders_perID(repo_path,str(k))  
+    #split for all IDs
+    for k in range(0,len(dataset["Pickle"])):
+        create_folders_perID(repo_path,str(k))  
 
 
     # Wav segmentation of all
