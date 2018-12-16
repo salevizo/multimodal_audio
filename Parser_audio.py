@@ -247,7 +247,6 @@ def main(argv):
 
     # Wav segmentation of all
     for k in range(0,len(dataset["Pickle"])):
-        create_folders_perID(repo_path,str(k))
         subtitles=retrieveSubs(dataset["Pickle"][k],repo_path)
         wavSegmentationFromSubs_perID(dataset["Audio"][k],subtitles,repo_path,str(k))
 

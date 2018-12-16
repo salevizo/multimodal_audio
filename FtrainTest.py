@@ -14,7 +14,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
 import Parser_audio as ap
 import audioTrainTest_prj as aT
-
+from statistics import *
+import pickle as cPickle
 
 def writeTrainDataToARFF(model_name, features, classNames, feature_names):
     f = open(model_name + ".arff", 'w')
@@ -170,7 +171,7 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 def f(repo_path,dataset):
     best_scores = []
     #find best params and crossvalidation
-    classifier_par = numpy.array([0.001, 0.01])
+    classifier_par = numpy.array([0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 5.0, 10.0])
     for C in classifier_par:
         e=0
         kfold = KFold(n_splits=3,shuffle=True)
@@ -201,7 +202,7 @@ def f(repo_path,dataset):
     best_c=[i for i, j in enumerate(best_f1) if j == m]
 
     best_c=best_scores[best_c[0]]
-    print("best C in pos:",best_c)
+    print("best Params ------->: ",best_c)
     ##visualise with the best score
     # visualize performance measures 
     #pos 1 is the cm matrix
@@ -210,34 +211,40 @@ def f(repo_path,dataset):
 
 
     ##normalize again this time all dataset this time and fit with the best params 
-    # ap.create_folders(repo_path)
-    # for k in range(0,len(dataset["Pickle"])):
-    #     ap.searchVideo(path,repo_path,"train")
-    # [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
-    # [X_train, Y_train] = listOfFeatures2Matrix(features_train)
-    # sm = SMOTE(random_state=2)
-    # X, Y = sm.fit_sample(X_train, Y_train)
+    ap.create_folders(repo_path)
+    for k in range(0,len(dataset["Pickle"])):
+        path= repo_path + "/audio/"+str(k)
+        ap.searchVideo(path,repo_path,"train")
 
-    # MEAN, STD = X.mean(axis=0), np.std(X, axis=0)
-    # X = (X - mean) / std
-    # svm = sklearn.svm.SVC(C=best_c[0], kernel='linear', probability=True)
-    # svm.fit(X, Y)
-    # mt_win = 1.0
-    # mt_step= 1.0
-    # st_win = aT.shortTermWindow
-    # st_step=aT.shortTermStep
-    # compute_beat=False
-    # with open(model_name, 'wb') as fid:
-    #     cPickle.dump("svm", fid)
-    #     fo = open(model_name + "MEANS", "wb")
-    #     cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(classNames_train, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(mt_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(mt_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(st_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(st_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-    #     fo.close()
 
-    # ap.remove_folders(repo_path)
+    [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
+    [X, Y] = listOfFeatures2Matrix(features_train)
+
+
+    sm = SMOTE(random_state=2)
+    ##if fails here check number of instances from each class.smote has neighbours=5 as init parameter. So if a class has below 5 instances smote fails. Try put more instaces or change k
+    x, y = sm.fit_sample(X, Y)
+
+    MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
+    X = (x - MEAN) / STD
+    cl = SVC(kernel='rbf', C=best_c[0])
+    cl.fit(X, y)
+    mt_win = 1.0
+    mt_step= 1.0
+    st_win = aT.shortTermWindow
+    st_step=aT.shortTermStep
+    compute_beat=False
+    with open("svm5Classes", 'wb') as fid:
+        cPickle.dump("svm", fid)
+        fo = open("svm5Classes" + "MEANS", "wb")
+        cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(classNames_train, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(mt_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(mt_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(st_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(st_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+        fo.close()
+
+    ap.remove_folders(repo_path)
