@@ -26,18 +26,16 @@ def readTextFile(strNameFile):
     else:
         return f.read().decode("windows-1252").encode('ascii', 'ignore') #----> python2
 
-def walktree(TopMostPath, callback,repo_path,test_folder=''):
-    '''recursively descend the directory tree rooted at TopMostPath,
-       calling the callback function for each regular file'''
-    for f in os.listdir(TopMostPath):
-        pathname = os.path.join(TopMostPath, f)
+def walktree( repo_path,callback,folder=''):
+    for f in os.listdir(repo_path+folder+"/subtitles"):
+        pathname = os.path.join(repo_path+folder+"/subtitles", f)
         mode = os.stat(pathname)[ST_MODE]
         if S_ISDIR(mode):
             # It's a directory, recurse into it
             walktree(pathname, callback)
         elif S_ISREG(mode):
             # It's a file, call the callback function
-            callback(pathname,repo_path,test_folder)
+            callback(pathname,repo_path,folder)
         else:
             # Unknown file type, print a message
             print('Skipping %s' % pathname)
@@ -66,7 +64,7 @@ def read_url_and_ids(fn):
                 print("Id:" + l[0] + " URL:" +str(l[1]))
     return (urls,ids)
 
-def read_csv(fn,test_folder=''):
+def read_csv(fn,folder=''):
     f=open(fn, "rt")
     reader=csv.reader(f)
     headers = next(reader, None)
@@ -76,7 +74,7 @@ def read_csv(fn,test_folder=''):
     for row in reader:
         for h, v in zip(headers, row):            
             dataset[h].append(v)
-    output = open(test_folder+fn.split('.')[0]+'.p', 'wb')
+    output = open(folder+fn.split('.')[0]+'.p', 'wb')
     pickle.dump(dataset, output)
     output.close()
     return dataset

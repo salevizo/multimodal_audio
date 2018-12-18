@@ -13,7 +13,12 @@ def main(argv):
     global repo_path
     repo_path = str(os.getcwd())
     os.chdir(repo_path)
-    
+    fad.create_folders(repo_path,repo_path +'/train')
+    fad.create_folders(repo_path,repo_path +'/test')
+    fad.create_folders(repo_path,repo_path +'/train/subtitles')
+    fad.create_folders(repo_path,repo_path +'/test/subtitles')
+    fad.create_folders(repo_path,repo_path +'/train/audio')
+    fad.create_folders(repo_path,repo_path +'/test/audio')
     fn_tr="dataset.csv"
     fn_te="dataset_test.csv"
 
@@ -28,27 +33,23 @@ def main(argv):
     print( "-------------------------test/dataset_test.p will contain: --------------------------------------"     )
     print(dataset_te)
 
-    d_subs.download_subs(repo_path,urls_tr,ids_tr)
-    d_subs.download_subs(repo_path,urls_te,ids_te,'/test/')
+    #d_subs.download_subs(repo_path,urls_tr,ids_tr,'/train/')
+    #d_subs.download_subs(repo_path,urls_te,ids_te,'/test/')
         
     print("-------------------------------------------------------------------------------------------------------------------")
-    d_aud.download_mp3(repo_path,urls_tr,ids_tr)
+    #d_aud.download_mp3(repo_path,urls_tr,ids_tr,'/train')
     #d_aud.download_mp3(repo_path,urls_te,ids_te,'/test')
 
-    path = repo_path+"/subtitles"
-    fad.walktree(path, d_subs.convertVTTtoSRT,repo_path)
-    path = repo_path+"/test/subtitles"
-    fad.walktree(path, d_subs.convertVTTtoSRT,repo_path,'/test')
+    fad.walktree(repo_path,d_subs.convertVTTtoSRT,'/train')
+    fad.walktree(repo_path,d_subs.convertVTTtoSRT,'/test')
     
-    os.chdir(repo_path + '/audio')
-    audio_files_tr=os.listdir(repo_path + '/audio')
-    os.chdir(repo_path + '/test/audio')
+    audio_files_tr=os.listdir(repo_path + '/train'+'/audio')
     audio_files_te=os.listdir(repo_path + '/test'+'/audio')
 
     print('Training files:'+str(audio_files_tr))
     print('Test files:'+str(audio_files_te))
-    os.chdir(repo_path+'/audio')
-    d_aud.mp3_to_wav_and_remove_mp3(repo_path,audio_files_tr)
+    os.chdir(repo_path+'/train/audio')
+    d_aud.mp3_to_wav_and_remove_mp3(repo_path,audio_files_tr,'/train')
     os.chdir(repo_path+'/test/audio')
     d_aud.mp3_to_wav_and_remove_mp3(repo_path,audio_files_te,'/test')
     
