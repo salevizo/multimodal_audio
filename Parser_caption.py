@@ -27,8 +27,8 @@ def main():
     dict_te=ff.walktree(repo_path+'/test/subtitles/', sen.sentiment,'test')
     ff.create_csv(repo_path+'/train/',dict_tr,'train')
     ff.create_csv(repo_path+'/test/',dict_te,'test')
-    ff.create_pickle(repo_path,dict_tr,'train')
-    ff.create_pickle(repo_path,dict_tr,'test')
+    ff.create_pickle(repo_path+'/train/',dict_tr,'train')
+    ff.create_pickle(repo_path+'/test/',dict_tr,'test')
 
 
                 

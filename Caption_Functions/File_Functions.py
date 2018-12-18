@@ -1,6 +1,9 @@
 import os, re, sys
 import csv
 from stat import *
+import pickle
+
+
 def create_folders(repo_path,folder_path):
     os.chdir(repo_path)
     if (os.path.exists(folder_path))==False:
@@ -70,12 +73,12 @@ def create_csv(repo_path,dic_ids,case):
 
 
 def create_pickle(repo_path,dic_ids,case):
-    create_folders(repo_path +'/pickle_lists')
-    os.chdir(repo_path + '/pickle_lists')
+    create_folders(repo_path,'pickle_lists')
+    os.chdir(repo_path + 'pickle_lists')
     for dicts in dic_ids.keys():
         context=[]
         pickle_name='polarity_'+str(dic_ids[dicts]['Id']) +'.p'
-        for j in range(len(dic_ids[dic_ids]['intervals'])):
+        for j in range(len(dic_ids[dicts]['intervals'])):
             #print(pickle_name+" with interval "+str(dic_ids[dicts]['intervals'][j])+" and sentiment "+str(dic_ids[dicts]['sentiments'][j]))
             if case is 'train':
                 context.append((dic_ids[dicts]['intervals'][j],dic_ids[dicts]['sentiments'][j]))
