@@ -81,6 +81,7 @@ def create_pickle(repo_path,dic_ids,case):
         for j in range(len(dic_ids[dicts]['intervals'])):
             #print(pickle_name+" with interval "+str(dic_ids[dicts]['intervals'][j])+" and sentiment "+str(dic_ids[dicts]['sentiments'][j]))
             if case is 'train':
+                
                 context.append((dic_ids[dicts]['intervals'][j],dic_ids[dicts]['sentiments'][j]))
             else:
                 context.append((dic_ids[dicts]['intervals'][j]))

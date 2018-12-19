@@ -12,10 +12,15 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
+import sys
 import Parser_audio as ap
 import audioTrainTest_prj as aT
-from statistics import *
 import pickle as cPickle
+sys.path.append('Audio_Functions')
+import File_Functions as ff
+import Parse_Functions as pf
+
+
 
 def writeTrainDataToARFF(model_name, features, classNames, feature_names):
     f = open(model_name + ".arff", 'w')
@@ -175,22 +180,23 @@ def f(repo_path,dataset):
     for C in classifier_par:
         e=0
         kfold = KFold(n_splits=3,shuffle=True)
-        for train, test in kfold.split(dataset["Pickle"]):
+        for train, test in kfold.split(np.array(dataset["Id"])):
             print("For C: ",C, "For Fold: ",e+1 )
             #create also train/test folders 
-            ap.create_folders(repo_path)
+            ff.create_folders(repo_path)
             print("Train: ",train , "Test: ",test)
             for k in train:
-                path= repo_path + "/audio/"+str(k)
+                
+                path= repo_path + "/audio/"+str(dataset['Id'][k])
                 #copy video in CASE(train/test) folder
-                ap.searchVideo(path,repo_path,"train")   
+                pf.searchVideo(path,repo_path,"train")   
             for k in test:
-                path= repo_path + "/audio/"+str(k)  
-                ap.searchVideo(path,repo_path,"test") 
+                path= repo_path + "/audio/"+str(dataset['Id'][k])  
+                pf.searchVideo(path,repo_path,"test") 
 
             cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes",C)
             best_scores.append([C,cm,acc,f1])
-            ap.remove_folders(repo_path)
+            ff.remove_folders(repo_path)
     print(best_scores)
 
     ##find best f1 for optimal C
@@ -211,8 +217,8 @@ def f(repo_path,dataset):
 
 
     ##normalize again this time all dataset this time and fit with the best params 
-    ap.create_folders(repo_path)
-    for k in range(0,len(dataset["Pickle"])):
+    ff.create_folders(repo_path)
+    for k in dataset["Id"]:
         path= repo_path + "/audio/"+str(k)
         ap.searchVideo(path,repo_path,"train")
 
