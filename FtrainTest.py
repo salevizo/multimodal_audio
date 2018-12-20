@@ -19,7 +19,7 @@ import pickle as cPickle
 sys.path.append('Audio_Functions')
 import File_Functions as ff
 import Parse_Functions as pf
-
+import time
 
 
 def writeTrainDataToARFF(model_name, features, classNames, feature_names):
@@ -48,9 +48,18 @@ def compute_class_rec_pre_f1(c_mat):
     n_class = c_mat.shape[0]
     rec, pre, f1 = [], [], []
     for i in range(n_class):
-        rec.append(float(c_mat[i, i]) / np.sum(c_mat[i, :]))
-        pre.append(float(c_mat[i, i]) / np.sum(c_mat[:, i]))
-        f1.append(2 * rec[-1] * pre[-1] / (rec[-1] + pre[-1]))
+        if np.sum(c_mat[i, :])==0:
+            rec.append(0)
+        else:
+            rec.append(float(c_mat[i, i]) / np.sum(c_mat[i, :]))
+        if np.sum(c_mat[:, i])==0:
+            pre.append(0)
+        else:
+            pre.append(float(c_mat[i, i]) / np.sum(c_mat[:, i]))
+        if(rec[-1] + pre[-1])==0:
+            f1.append(0)        
+        else:
+            f1.append(2 * rec[-1] * pre[-1] / (rec[-1] + pre[-1]))
     return rec,  pre, f1
 
 
@@ -70,13 +79,19 @@ def listOfFeatures2Matrix(features):
 
     X = numpy.array([])
     Y = numpy.array([])
+    
     for i, f in enumerate(features):
+        size=0
+        if numpy.array(f).ndim==1:
+            size=1
+        else:
+            size=len(f)
         if i == 0:
             X = f
-            Y = i * numpy.ones((len(f), 1))
+            Y = i * numpy.ones((size, 1))
         else:
             X = numpy.vstack((X, f))
-            Y = numpy.append(Y, i * numpy.ones((len(f), 1)))
+            Y = numpy.append(Y, i * numpy.ones((size, 1)))
     return (X, Y)
 
 
@@ -158,14 +173,20 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 
     [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
 
-
+    
     [x_test, y_test] = listOfFeatures2Matrix(features_test)
 
     ## for training SMOTE 
     [X_train, Y_train] = listOfFeatures2Matrix(features_train)
+    time.sleep(5)
+    print("!="+str(features_train))
+    print("x="+str(X_train))
+    print("y="+str(Y_train))
+    print("lx="+str(len(X_train)))
+    print("lx="+str(len(Y_train)))
+    time.sleep(5)
     sm = SMOTE(random_state=2)
     X_train, Y_train = sm.fit_sample(X_train, Y_train)
-
     cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, C)
 
    
@@ -176,27 +197,27 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 def f(repo_path,dataset):
     best_scores = []
     #find best params and crossvalidation
-    classifier_par = numpy.array([0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 5.0, 10.0])
-    for C in classifier_par:
-        e=0
-        kfold = KFold(n_splits=3,shuffle=True)
-        for train, test in kfold.split(np.array(dataset["Id"])):
-            print("For C: ",C, "For Fold: ",e+1 )
-            #create also train/test folders 
-            ff.create_folders(repo_path)
-            print("Train: ",train , "Test: ",test)
-            for k in train:
-                
-                path= repo_path + "/audio/"+str(dataset['Id'][k])
-                #copy video in CASE(train/test) folder
-                pf.searchVideo(path,repo_path,"train")   
-            for k in test:
-                path= repo_path + "/audio/"+str(dataset['Id'][k])  
-                pf.searchVideo(path,repo_path,"test") 
-
+    #0.001, 0.005,
+    classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25]) #0.5, 1.0, 5.0, 10.0])
+    e=0
+    kfold = KFold(n_splits=2,shuffle=True)
+    for train, test in kfold.split(np.array(dataset["Id"])):
+        #create also train/test folders 
+        ff.create_folders(repo_path)
+        print("Train: ",train , "Test: ",test)
+        for k in train:
+            path= repo_path + "/audio/"+str(dataset['Id'][k])
+            #copy video in CASE(train/test) folder
+            pf.searchVideo(path,repo_path,"train")   
+        for k in test:
+            path= repo_path + "/audio/"+str(dataset['Id'][k])  
+            pf.searchVideo(path,repo_path,"test")
+        for C in classifier_par:
+            print("For C: ",C, "For Fold: ",e )
             cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes",C)
             best_scores.append([C,cm,acc,f1])
-            ff.remove_folders(repo_path)
+        e=e+1
+        ff.remove_folders(repo_path)
     print(best_scores)
 
     ##find best f1 for optimal C
@@ -212,7 +233,8 @@ def f(repo_path,dataset):
     ##visualise with the best score
     # visualize performance measures 
     #pos 1 is the cm matrix
-    plotly_classification_results(best_c[1], ["positve", "neutral", "negative"]) 
+    print best_c[1]
+    plotly_classification_results(best_c[1], ["positive", "neutral", "negative"]) 
     #print(acc, f1)
 
 
@@ -225,10 +247,13 @@ def f(repo_path,dataset):
 
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
     [X, Y] = listOfFeatures2Matrix(features_train)
-
+    
 
     sm = SMOTE(random_state=2)
     ##if fails here check number of instances from each class.smote has neighbours=5 as init parameter. So if a class has below 5 instances smote fails. Try put more instaces or change k
+    print("!="+str(features_train))
+    print("x="+str(X))
+    print("y="+str(Y))
     x, y = sm.fit_sample(X, Y)
 
     MEAN, STD = x.mean(axis=0), np.std(x, axis=0)

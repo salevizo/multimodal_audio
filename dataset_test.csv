@@ -1,10 +1,10 @@
 Id,URL,Title,Audio,Captions,Polarity,Pickle
 0,https://www.youtube.com/watch?v=zSClSIGL_5E,James Markey Interview on Erasmus for Young Entrepreneurs (English),audio/0.wav,subtitles/0.srt,polarity_csv/polarity_0.csv,pickle_lists/polarity_0.p
-1,https://www.youtube.com/watch?v=iVNctypZdQA,Interview // Food, Culture, and the Environment,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
+1,https://www.youtube.com/watch?v=iVNctypZdQA,Interview // Food- Culture  and the Environment,audio/1.wav,subtitles/1.srt,polarity_csv/polarity_1.csv,pickle_lists/polarity_1.p
 2,https://www.youtube.com/watch?v=RYiDM0LZ5pM,Claiming Refugee Status in Canada: What You Need to Know,audio/2.wav,subtitles/2.srt,polarity_csv/polarity_2.csv,pickle_lists/polarity_2.p
 3,https://www.youtube.com/watch?v=g0Pvw6uj3l8,Johnny Depp hospital visit - the interview!,audio/3.wav,subtitles/3.srt,polarity_csv/polarity_3.csv,pickle_lists/polarity_3.p
 4,https://www.youtube.com/watch?v=X_qKLAjyHsU,Interview weirdness with the cast of Hercules,audio/4.wav,subtitles/4.srt,polarity_csv/polarity_4.csv,pickle_lists/polarity_4.p
-5,https://www.youtube.com/watch?v=1fimxZPu9O4,F10 FinTech - Demo day 2017, startup interviews,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p
+5,https://www.youtube.com/watch?v=1fimxZPu9O4,F10 FinTech - Demo day 2017- startup interviews,audio/5.wav,subtitles/5.srt,polarity_csv/polarity_5.csv,pickle_lists/polarity_5.p
 6,https://www.youtube.com/watch?v=RWE2YwN7AGs,Tupac On The Prospect Of Going To Jail (1993) | MTV News | #TBMTV,audio/6.wav,subtitles/6.srt,polarity_csv/polarity_6.csv,pickle_lists/polarity_6.p
 7,https://www.youtube.com/watch?v=_HPGbuBjd3Q,Selena Gomez Talks Lupus - Body Shaming - Boyfriends & Taylor Swift With The Ellen DeGeneres Show,audio/7.wav,subtitles/7.srt,polarity_csv/polarity_7.csv,pickle_lists/polarity_7.p
 8,https://www.youtube.com/watch?v=mFBqxFJf8II,THE RIOT CLUB: The cast interview each other!,audio/8.wav,subtitles/8.srt,polarity_csv/polarity_8.csv,pickle_lists/polarity_8.p

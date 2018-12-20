@@ -3,7 +3,7 @@ import shutil
 from stat import *
 #import datetime
 from datetime import datetime
-
+from decimal import Decimal
 def wavSegmentationFromSubs(relPath,subtitles,repo_path,audio_cnt,case):
     os.chdir(repo_path)
     audio_name= os.path.basename(os.path.normpath(relPath))
@@ -71,6 +71,15 @@ def searchVideo(TopMostPath,repo_path,case):
             # Unknown file type, print a message
             print('Skipping %s' % pathname)
 
+def datetime_to_secs(t):
+    times=t.split(":")
+    print 'mytime='+times[0]
+    print 'mytime1='+times[1]
+    print 'mytime2='+times[2]
+    f=float(times[2])
+    f=Decimal(f)
+    return float(int(times[0])*3600+int(times[1])*60+round(f,3))
+
 def wavSegmentationFromSubs_perID(folder,subtitles,repo_path,audio_cnt):
     soundsPath=repo_path+"/"+folder+"/audio"
     os.chdir(soundsPath)
@@ -94,13 +103,14 @@ def wavSegmentationFromSubs_perID(folder,subtitles,repo_path,audio_cnt):
             t2=str(subtitles[i][0][1]).replace(',','.')
         else:
             t1=str(subtitles[i][0]).replace(',','.')
-            t2=str(subtitles[i][0]).replace(',','.')
+            t2=str(subtitles[i][1]).replace(',','.')
+        start=datetime_to_secs(t1)
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
         if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav") is False:
             audio=repo_path+"/"+folder+"/audio/"+audio_cnt+'.wav'
-            mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(audio, t1, sec,audio_cnt,i)
+            mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(audio, start, sec,audio_cnt,i)
             print(mstr)
             os.system(mstr)
         else:

@@ -23,7 +23,9 @@ def mp3_to_wav_and_remove_mp3(repo_path,audio_files,folder=''):
             if os.path.isfile(name[0]+".wav")==False:
                 print mp3_
                 print folder+name[0]+".wav"
-                subprocess.call(['ffmpeg', '-i', repo_path +folder+ "/audio/" + name[0] + ".mp3",repo_path +folder+"/audio/" + name[0] + ".wav"])
+                command='ffmpeg'+' -i '+repo_path +folder+ "/audio/" + name[0] + ".mp3 "+repo_path +folder+"/audio/" + name[0] + ".wav"
+                print command
+                os.system(command)
                 if os.path.isfile(repo_path +folder+"/audio/" + name[0] + ".mp3")==True:
                     os.remove(repo_path +folder+"/audio/" + name[0] + ".mp3")
             else:

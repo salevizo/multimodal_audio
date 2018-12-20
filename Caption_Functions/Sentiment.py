@@ -22,7 +22,11 @@ def sentiment(file,case):
     name=name.split('.')
     name=name[0]
     #print name
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    print(str(case)+"-"+str(name))
     interval_segments, sentiment_segments = get_sentiment(file,case)
+    print(str(case)+"-"+str(name))
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     #DICTIONARY PATH,INTERVALS,SENTIMENTS
     if case is 'train':
         return (int(name),interval_segments,sentiment_segments)
@@ -56,7 +60,8 @@ def get_sentiment(file,case):
     #exclude segmnets less than 2 secs, dont take in mind miliseconds
     start="00:00:02,000"
     start = datetime.datetime.strptime(start, '%H:%M:%S,%f')
-    start = datetime.time(start.hour, start.minute,start.second)
+    
+    start = datetime.time(start.hour, start.minute,start.second,start.microsecond)
     
     # Reading Subtitleget_sentiment
     subs = pysrt.open(file, encoding='iso-8859-1')
@@ -75,10 +80,9 @@ def get_sentiment(file,case):
         text = ""
         if (bool(pattern.match(subs[j].text_without_tags))==False):
             segment=subs[j].end-subs[j].start
-            # Finding all subtitle text in the each time interval
+            # Finding all subtitle text in the each time interva
             tocompare = datetime.datetime.strptime(str(segment), '%H:%M:%S,%f')
-            tocompare = datetime.time(tocompare.hour, tocompare.minute, tocompare.second)
-            
+            tocompare = datetime.time(tocompare.hour, tocompare.minute, tocompare.second,tocompare.microsecond)
             if tocompare>=start:
                 if case is 'train':
                     interval=subs[j].start + segment
@@ -104,10 +108,11 @@ def get_sentiment(file,case):
                                 sentiments_text_blob.append(sentiment_blob)
                                 sentiments_vader.append(sentiment_vader)
                                 sentiments_pattern.append(sentiment_pattern)
-
+                                print("TRAIN:"+str(subs[j].start)+"-"+str(subs[j].end))
                                 intervals.append([subs[j].start,subs[j].end])
                                 #print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) +" for text "+ text_filtered +".")
                 else:
+                    print("TEST:"+str(subs[j].start)+"-"+str(subs[j].end))
                     intervals.append([subs[j].start,subs[j].end])
     if case is 'train':
         avg_sentiments=[(a_i + b_i + c_i)/float(3) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]

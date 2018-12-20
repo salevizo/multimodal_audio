@@ -43,7 +43,7 @@ def main(argv):
         p=[x for x in dataset_tr['Pickle'] if '_'+k+'.p' in x][0]
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/train')
-        pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(id_))
+        pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
     print 'Subs are '+str(len(subtitles))
     for k in dataset_te['Id']:
         p=[x for x in dataset_te['Pickle'] if '_'+k+'.p' in x][0]
