@@ -21,6 +21,79 @@ import File_Functions as ff
 import Parse_Functions as pf
 import time
 
+def normalizeFeatures(features):
+    '''
+    This function normalizes a feature set to 0-mean and 1-std.
+    Used in most classifier trainning cases.
+
+    ARGUMENTS:
+        - features:    list of feature matrices (each one of them is a numpy matrix)
+    RETURNS:
+        - features_norm:    list of NORMALIZED feature matrices
+        - MEAN:        mean vector
+        - STD:        std vector
+    '''
+    X = numpy.array([])
+
+    for count, f in enumerate(features):
+        if f.shape[0] > 0:
+            if count == 0:
+                X = f
+            else:
+                X = numpy.vstack((X, f))
+            count += 1
+
+    MEAN = numpy.mean(X, axis=0) + 0.00000000000001;
+    STD = numpy.std(X, axis=0) + 0.00000000000001;
+
+    features_norm = []
+    for f in features:
+        ft = f.copy()
+        for n_samples in range(f.shape[0]):
+            ft[n_samples, :] = (ft[n_samples, :] - MEAN) / STD
+        features_norm.append(ft)
+    return (features_norm, MEAN, STD)
+
+
+def load_model(model_name, is_regression=False):
+    '''
+    This function loads an SVM model either for classification or training.
+    ARGMUMENTS:
+        - SVMmodel_name:     the path of the model to be loaded
+        - is_regression:     a flag indigating whereas this model is regression or not
+    '''
+    try:
+        fo = open(model_name + "MEANS", "rb")
+    except IOerror:
+        print("Load SVM model: Didn't find file")
+        return
+    try:
+        MEAN = cPickle.load(fo)
+        STD = cPickle.load(fo)
+        if not is_regression:
+            classNames = cPickle.load(fo)
+        mt_win = cPickle.load(fo)
+        mt_step = cPickle.load(fo)
+        st_win = cPickle.load(fo)
+        st_step = cPickle.load(fo)
+        compute_beat = cPickle.load(fo)
+
+    except:
+        fo.close()
+    fo.close()
+
+    MEAN = numpy.array(MEAN)
+    STD = numpy.array(STD)
+
+    with open(model_name, 'rb') as fid:
+        SVM = cPickle.load(fid)
+
+    if is_regression:
+        return (SVM, MEAN, STD, mt_win, mt_step, st_win, st_step, compute_beat)
+    else:
+        return (SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat)
+
+
 
 def writeTrainDataToARFF(model_name, features, classNames, feature_names):
     f = open(model_name + ".arff", 'w')
@@ -131,15 +204,10 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
     '''
 
     params_list ={}
-    # normalize
-    mean, std = X.mean(axis=0), np.std(X, axis=0)
-    X = (X - mean) / std
-    # k-fold evaluation:
     f1s, accs, count_cm = [], [], 0
-    #for differenct values of c 
-
+    # probability=True
     if not use_regressor:
-        cl = SVC(kernel='rbf', C=C)
+        cl = SVC(kernel='linear', C=C)
     else:
         cl = SVR(kernel='rbf', C=C)
     ##fit_and_resample()
@@ -173,20 +241,61 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 
     [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
 
-    
-    [x_test, y_test] = listOfFeatures2Matrix(features_test)
+  
+    features2 = []
+    for f in features_train:
+        fTemp = []
+        for i in range(f.shape[0]):
+            temp = f[i, :]
+            if (not numpy.isnan(temp).any()) and (not numpy.isinf(temp).any()):
+                fTemp.append(temp.tolist())
+            else:
+                print("NaN Found! Feature vector not used for training")
+        features2.append(numpy.array(fTemp))
+    features_train = features2
 
-    ## for training SMOTE 
-    [X_train, Y_train] = listOfFeatures2Matrix(features_train)
+    features3 = []
+    for f in features_test:
+        fTemp = []
+        for i in range(f.shape[0]):
+            temp = f[i, :]
+            if (not numpy.isnan(temp).any()) and (not numpy.isinf(temp).any()):
+                fTemp.append(temp.tolist())
+            else:
+                print("NaN Found! Feature vector not used for testing")
+        features3.append(numpy.array(fTemp))
+    features_test = features3
+
+    # MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
+    # X = (x - MEAN) / STD
+    (features_norm_train, MEAN, STD) = normalizeFeatures(features_train)
+    n_classes_train = len(features_train)
+
+    (features_norm_test, MEAN_test, STD_test) = normalizeFeatures(features_test)
+    n_classes_test = len(features_test)
+
+    [x_test, y_test] = listOfFeatures2Matrix(features_norm_test)
+    print("TEST:",x_test,y_test)
+
+    ## for training SMOTE
+
+    [X_train, Y_train] = listOfFeatures2Matrix(features_norm_train)
+    print("Before OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+    print("Before OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+    print("Before OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
+
+    sm = SMOTE(random_state=2,kind='svm')
+    X_train, Y_train = sm.fit_sample(X_train, Y_train)
+    print("A OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+    print("A OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+    print("A OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
     time.sleep(5)
     print("!="+str(features_train))
     print("x="+str(X_train))
     print("y="+str(Y_train))
     print("lx="+str(len(X_train)))
     print("lx="+str(len(Y_train)))
-    time.sleep(5)
-    sm = SMOTE(random_state=2)
-    X_train, Y_train = sm.fit_sample(X_train, Y_train)
+    # time.sleep(5)
     cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, C)
 
    
@@ -246,36 +355,83 @@ def f(repo_path,dataset):
 
 
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
-    [X, Y] = listOfFeatures2Matrix(features_train)
+    [features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
+    # MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
+    # X = (x - MEAN) / STD
+    MEAN = MEAN.tolist()
+    STD = STD.tolist()
+    featuresNew = features_norm
+    [X, Y] = listOfFeatures2Matrix(featuresNew)
     
+    ##if fails here check number of instances from each class.smote has neighbours=5 as init parameter. So if a class has below 5 instances smote fails. Try put more instaces or change k
 
     sm = SMOTE(random_state=2)
-    ##if fails here check number of instances from each class.smote has neighbours=5 as init parameter. So if a class has below 5 instances smote fails. Try put more instaces or change k
-    print("!="+str(features_train))
-    print("x="+str(X))
-    print("y="+str(Y))
+    # print("!="+str(features_train))
+    # print("x="+str(X))
+    # print("y="+str(Y))
     x, y = sm.fit_sample(X, Y)
 
-    MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
-    X = (x - MEAN) / STD
+   
     cl = SVC(kernel='rbf', C=best_c[0])
-    cl.fit(X, y)
+    classifier=cl.fit(x, y)
     mt_win = 1.0
-    mt_step= 1.0
+    mt_step = 1.0
     st_win = aT.shortTermWindow
-    st_step=aT.shortTermStep
-    compute_beat=False
+    st_step = aT.shortTermStep
+    compute_beat = False
     with open("svm5Classes", 'wb') as fid:
-        cPickle.dump("svm", fid)
-        fo = open("svm5Classes" + "MEANS", "wb")
-        cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(classNames_train, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(mt_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(mt_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(st_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(st_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
-        fo.close()
+        cPickle.dump(classifier, fid)
+    fo = open("svm5Classes" + "MEANS", "wb")
+    cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(classNames, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(mt_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(mt_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(st_win, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(st_step, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
+    fo.close()
 
     ap.remove_folders(repo_path)
+
+
+def ff(repo_path, dataset):
+
+	video_dict={}
+	for i in range(len(dataset["Pickle"][:25])):
+		print(i)
+		print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
+		[features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
+        1.0, aT.shortTermWindow, aT.shortTermStep, compute_beat=False)
+		print([features_train, classNames, filenames])
+		[features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
+		video_dict[i] = [features_norm, MEAN, STD]
+
+
+	for train, test in kfold.split(dataset["Pickle"][:25]):
+		video_test = []
+		video_train = []
+		for t in train:
+			video_train = np.concatenate((video_test,video_dict[t][0]),axis=0)
+		for te in test:
+			video_test = np.concatenate((video_test,video_dict[te][0]),axis=0)
+
+
+		[X_train, Y_train] = listOfFeatures2Matrix(video_train)
+		[x_test, y_test] = listOfFeatures2Matrix(video_test)
+
+		print("Before OverSampling, counts of label '1': {}".format(sum(Y_train==1)))
+		print("Before OverSampling, counts of label '0': {} \n".format(sum(Y_train==0)))
+		print("Before OverSampling, counts of label '2': {} \n".format(sum(Y_train==2)))
+
+		sm = SMOTE(random_state=2,kind='svm')
+		X_train, Y_train = sm.fit_sample(X_train, Y_train)
+		print("A OverSampling, counts of label '1': {}".format(sum(Y_train==1)))
+		print("A OverSampling, counts of label '0': {} \n".format(sum(Y_train==0)))
+		print("A OverSampling, counts of label '2': {} \n".format(sum(Y_train==2)))
+
+
+		print("X:",X_train)
+		print("Y:",Y_train)
+		cm, acc, f1 = svm_train_evaluate(X_train, Y_train, x_test, y_test, k_folds, C)
+
