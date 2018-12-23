@@ -1,3 +1,5 @@
+
+import time
 from pyAudioAnalysis import audioFeatureExtraction as aF
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import KFold
@@ -12,14 +14,13 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
-import sys
 import Parser_audio as ap
 import audioTrainTest_prj as aT
 import pickle as cPickle
-sys.path.append('Audio_Functions')
+import sys
+sys.path.append("Audio_Functions")
 import File_Functions as ff
 import Parse_Functions as pf
-import time
 
 def normalizeFeatures(features):
     '''
@@ -342,7 +343,7 @@ def f(repo_path,dataset):
     ##visualise with the best score
     # visualize performance measures 
     #pos 1 is the cm matrix
-    print best_c[1]
+    print(best_c[1])
     plotly_classification_results(best_c[1], ["positive", "neutral", "negative"]) 
     #print(acc, f1)
 
@@ -395,10 +396,10 @@ def f(repo_path,dataset):
     ap.remove_folders(repo_path)
 
 
-def ff(repo_path, dataset):
+def fff(repo_path, dataset):
 
 	video_dict={}
-	for i in range(len(dataset["Pickle"][:25])):
+	for i in range(len(dataset["Pickle"])):
 		print(i)
 		print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
 		[features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
