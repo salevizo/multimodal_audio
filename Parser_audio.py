@@ -44,16 +44,17 @@ def main(argv):
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/train')
         pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
-    print 'Subs are '+str(len(subtitles))
+    print('Subs are '+str(len(subtitles)))
     for k in dataset_te['Id']:
         p=[x for x in dataset_te['Pickle'] if '_'+k+'.p' in x][0]
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/test')
         pf.wavSegmentationFromSubs_perID('test',subtitles,repo_path,str(id_))
-    print len(subtitles)
-    print dataset_tr['Id']
+    print(len(subtitles))
+    print(dataset_tr['Id'])
+    ##for training
     ft.f(repo_path+'/train',dataset_tr)
-
-
+    ##for testing 
+    ft.final(repo_path+'/train')
 if __name__ == "__main__":
     main(sys.argv[1:])

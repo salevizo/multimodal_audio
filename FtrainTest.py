@@ -216,6 +216,7 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
     y_pred = cl.predict(x_test)
     if use_regressor:
         y_pred = np.round(y_pred)
+    print("y_pred:",y_pred)
     # update aggregated confusion matrix:
     if count_cm == 0:
         cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
@@ -241,6 +242,7 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
 
     [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
+
 
   
     features2 = []
@@ -276,7 +278,7 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
     n_classes_test = len(features_test)
 
     [x_test, y_test] = listOfFeatures2Matrix(features_norm_test)
-    print("TEST:",x_test,y_test)
+    
 
     ## for training SMOTE
 
@@ -307,7 +309,6 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 def f(repo_path,dataset):
     best_scores = []
     #find best params and crossvalidation
-    #0.001, 0.005,
     classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25]) #0.5, 1.0, 5.0, 10.0])
     e=0
     kfold = KFold(n_splits=2,shuffle=True)
@@ -352,11 +353,11 @@ def f(repo_path,dataset):
     ff.create_folders(repo_path)
     for k in dataset["Id"]:
         path= repo_path + "/audio/"+str(k)
-        ap.searchVideo(path,repo_path,"train")
+        pf.searchVideo(path,repo_path,"train")
 
 
-    [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
-    [features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
+    [features, classNames, filenames] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
+    [features_norm, MEAN, STD] = normalizeFeatures(features)        # normalize features
     # MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
     # X = (x - MEAN) / STD
     MEAN = MEAN.tolist()
@@ -380,9 +381,9 @@ def f(repo_path,dataset):
     st_win = aT.shortTermWindow
     st_step = aT.shortTermStep
     compute_beat = False
-    with open("svm5Classes", 'wb') as fid:
+    with open("svm3Classes", 'wb') as fid:
         cPickle.dump(classifier, fid)
-    fo = open("svm5Classes" + "MEANS", "wb")
+    fo = open("svm3Classes" + "MEANS", "wb")
     cPickle.dump(MEAN, fo, protocol=cPickle.HIGHEST_PROTOCOL)
     cPickle.dump(STD, fo, protocol=cPickle.HIGHEST_PROTOCOL)
     cPickle.dump(classNames, fo, protocol=cPickle.HIGHEST_PROTOCOL)
@@ -393,11 +394,11 @@ def f(repo_path,dataset):
     cPickle.dump(compute_beat, fo, protocol=cPickle.HIGHEST_PROTOCOL)
     fo.close()
 
-    ap.remove_folders(repo_path)
+    ff.remove_folders(repo_path)
 
 
 def fff(repo_path, dataset):
-
+    ## normalize each video id and then put train. Select each one from the corresponding position in dict 
 	video_dict={}
 	for i in range(len(dataset["Pickle"])):
 		print(i)
@@ -435,4 +436,13 @@ def fff(repo_path, dataset):
 		print("X:",X_train)
 		print("Y:",Y_train)
 		cm, acc, f1 = svm_train_evaluate(X_train, Y_train, x_test, y_test, k_folds, C)
+
+def ff_all(repo_path, dataset):
+    #norm all and then..
+    pass
+
+def final(repo_path_to_test):
+    ##load model
+    [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
+    ##load test,split X,y
 
