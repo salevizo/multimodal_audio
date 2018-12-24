@@ -49,12 +49,13 @@ def main(argv):
         p=[x for x in dataset_te['Pickle'] if '_'+k+'.p' in x][0]
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/test')
-        pf.wavSegmentationFromSubs_perID('test',subtitles,repo_path,str(id_))
+        pf.wavSegmentationFromSubs_perID('test',subtitles,repo_path,str(k))
+    print("test:",dataset_te['Id'])
     print(len(subtitles))
-    print(dataset_tr['Id'])
-    ##for training
+    print("train:",dataset_tr['Id'])
+    #for the train set
     ft.f(repo_path+'/train',dataset_tr)
-    ##for testing 
-    ft.final(repo_path+'/train')
+    #for the test set 
+    ft.final(repo_path+'/test')
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -15,12 +15,17 @@ from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import shutil
 import Parser_audio as ap
-import audioTrainTest_prj as aT
 import pickle as cPickle
 import sys
 sys.path.append("Audio_Functions")
 import File_Functions as ff
 import Parse_Functions as pf
+
+shortTermWindow = 0.050
+shortTermStep = 0.050
+eps = 0.00000001
+
+
 
 def normalizeFeatures(features):
     '''
@@ -325,7 +330,7 @@ def f(repo_path,dataset):
             pf.searchVideo(path,repo_path,"test")
         for C in classifier_par:
             print("For C: ",C, "For Fold: ",e )
-            cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,aT.shortTermWindow,aT.shortTermStep,"svm","svm5Classes",C)
+            cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,shortTermWindow,shortTermStep,"svm","svm5Classes",C)
             best_scores.append([C,cm,acc,f1])
         e=e+1
         ff.remove_folders(repo_path)
@@ -356,10 +361,12 @@ def f(repo_path,dataset):
         pf.searchVideo(path,repo_path,"train")
 
 
-    [features, classNames, filenames] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,aT.shortTermWindow,aT.shortTermStep,compute_beat=False)
+    [features, classNames, filenames] = aF.dirsWavFeatureExtraction([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"], 1.0,1.0,shortTermWindow,shortTermStep,compute_beat=False)
     [features_norm, MEAN, STD] = normalizeFeatures(features)        # normalize features
     # MEAN, STD = x.mean(axis=0), np.std(x, axis=0)
     # X = (x - MEAN) / STD
+
+    os.chdir("../") ##one folder back
     MEAN = MEAN.tolist()
     STD = STD.tolist()
     featuresNew = features_norm
@@ -378,8 +385,8 @@ def f(repo_path,dataset):
     classifier=cl.fit(x, y)
     mt_win = 1.0
     mt_step = 1.0
-    st_win = aT.shortTermWindow
-    st_step = aT.shortTermStep
+    st_win = shortTermWindow
+    st_step = shortTermStep
     compute_beat = False
     with open("svm3Classes", 'wb') as fid:
         cPickle.dump(classifier, fid)
@@ -397,14 +404,14 @@ def f(repo_path,dataset):
     ff.remove_folders(repo_path)
 
 
-def fff(repo_path, dataset):
+def ff_one(repo_path, dataset):
     ## normalize each video id and then put train. Select each one from the corresponding position in dict 
 	video_dict={}
-	for i in range(len(dataset["Pickle"])):
+	for i in range(np.array(dataset["Id"])):
 		print(i)
 		print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
 		[features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
-        1.0, aT.shortTermWindow, aT.shortTermStep, compute_beat=False)
+        1.0, shortTermWindow, shortTermStep, compute_beat=False)
 		print([features_train, classNames, filenames])
 		[features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
 		video_dict[i] = [features_norm, MEAN, STD]
@@ -422,19 +429,19 @@ def fff(repo_path, dataset):
 		[X_train, Y_train] = listOfFeatures2Matrix(video_train)
 		[x_test, y_test] = listOfFeatures2Matrix(video_test)
 
-		print("Before OverSampling, counts of label '1': {}".format(sum(Y_train==1)))
-		print("Before OverSampling, counts of label '0': {} \n".format(sum(Y_train==0)))
-		print("Before OverSampling, counts of label '2': {} \n".format(sum(Y_train==2)))
+		print("Before OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+		print("Before OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+		print("Before OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
 
 		sm = SMOTE(random_state=2,kind='svm')
 		X_train, Y_train = sm.fit_sample(X_train, Y_train)
-		print("A OverSampling, counts of label '1': {}".format(sum(Y_train==1)))
-		print("A OverSampling, counts of label '0': {} \n".format(sum(Y_train==0)))
-		print("A OverSampling, counts of label '2': {} \n".format(sum(Y_train==2)))
+		print("A OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+		print("A OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+		print("A OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
 
 
-		print("X:",X_train)
-		print("Y:",Y_train)
+		# print("X:",X_train)
+		# print("Y:",Y_train)
 		cm, acc, f1 = svm_train_evaluate(X_train, Y_train, x_test, y_test, k_folds, C)
 
 def ff_all(repo_path, dataset):
@@ -445,4 +452,11 @@ def final(repo_path_to_test):
     ##load model
     [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
     ##load test,split X,y
-
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
+    [x_test, y_test] = listOfFeatures2Matrix(features_test)
+    SVM.predict(x_test)
+    cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
+    f1 = f1_score(y_pred=y_pred, y_true=y_test, average='micro')
+    acc = accuracy_score(y_pred=y_pred, y_true=y_test)
+    plotly_classification_results(cm, ["positive", "neutral", "negative"])
+    print("FINAL -----> FOR C:",C,"F1: ",f1, "ACC:",acc)
