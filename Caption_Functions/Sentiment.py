@@ -112,8 +112,19 @@ def get_sentiment(file,case):
                                 intervals.append([subs[j].start,subs[j].end])
                                 #print ("sentiment_blob: " + str(sentiment_blob) + " sentiment_vader: " + str(sentiment_vader) + " sentiment_pattern:" + str(sentiment_pattern) +" for text "+ text_filtered +".")
                 else:
-                    print("TEST:"+str(subs[j].start)+"-"+str(subs[j].end))
-                    intervals.append([subs[j].start,subs[j].end])
+                    interval=subs[j].start + segment
+                    subs_len=subs_len+1
+                    if subs[j].end.to_time() <= (subs[j].start+ subs[j].start + segment).to_time():
+                        text += subs[j].text_without_tags + " "
+                    else:
+                        break
+                    word_tokens = word_tokenize(text) 
+                    filtered_sentence = []
+                    filtered_sentence = [w for w in word_tokens if not w in stop_words]
+                    if len(filtered_sentence)>=4:
+                        print("FOR TEST:",filtered_sentence)
+                        print("TEST:"+str(subs[j].start)+"-"+str(subs[j].end))
+                        intervals.append([subs[j].start,subs[j].end])
     if case is 'train':
         avg_sentiments=[(a_i + b_i + c_i)/float(3) for a_i, b_i, c_i in zip(sentiments_vader, sentiments_text_blob,sentiments_pattern)]
     else:
