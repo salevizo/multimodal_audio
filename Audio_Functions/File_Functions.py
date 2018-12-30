@@ -30,6 +30,7 @@ def create_folders(repo_path):
 def create_folders_perID(repo_path,id,case):
     emotions=["positive","neutral","negative"]
     os.chdir(repo_path)
+    print(id)
     if (os.path.exists("audio/"+id+"/"))==False:
         os.mkdir("audio/"+id+"/")
         os.chmod("audio/"+id+"/",511)
