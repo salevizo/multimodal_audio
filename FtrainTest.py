@@ -452,11 +452,14 @@ def final(repo_path_to_test):
     ##load model
     [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
     ##load test,split X,y
-    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
-    [x_test, y_test] = listOfFeatures2Matrix(features_test)
-    SVM.predict(x_test)
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/audio/positive",repo_path_to_test+"/audio/neutral",repo_path_to_test+"/audio/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
+    [features_norm, MEAN, STD] = normalizeFeatures(features_test)
+    [x_test, y_test] = listOfFeatures2Matrix(features_norm)
+    print(len(x_test),len(y_test))
+    y_pred=SVM.predict(x_test)
     cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
     f1 = f1_score(y_pred=y_pred, y_true=y_test, average='micro')
-    acc = accuracy_score(y_pred=y_pred, y_true=y_test)
+    acc = accuracy_score(y_pred=y_pred, y_true=y_test) 
+    print("FINAL -----> F1: ",f1, "ACC:",acc)
+    
     plotly_classification_results(cm, ["positive", "neutral", "negative"])
-    print("FINAL -----> FOR C:",C,"F1: ",f1, "ACC:",acc)
