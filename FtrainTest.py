@@ -381,7 +381,7 @@ def f(repo_path,dataset):
     x, y = sm.fit_sample(X, Y)
 
    
-    cl = SVC(kernel='rbf', C=best_c[0])
+    cl = SVC(kernel='linear', C=best_c[0])
     classifier=cl.fit(x, y)
     mt_win = 1.0
     mt_step = 1.0

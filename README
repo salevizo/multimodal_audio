@@ -11,18 +11,10 @@ We have defined a unique Id for each video. Mp3, wav, srt and vtt files will be 
 	*************************************************************************************************
 ******************************COMMANDS TO RUN THE SCRIPTS:******************************
 
-python Downloader.py <repo_path>
-python Parser_caption.py <repo_path>
-python Parser_audio.py <repo_path> <pyaudioanalysis_path>
+python Downloader.py 
+python Parser_caption.py 
+python Parser_audio.py <pyaudioanalysis_path>
 
-
-Eg:
-python Downloader.py /home/mscuser/multi/multimodal_audio 
-python Parser_caption.py /home/mscuser/multi/multimodal_audio 
-python Parser_audio.py /home/mscuser/multi/multimodal_audio /home/mscuser/pyaudio/pyAudioAnalysis/pyAudioAnalysis/data/speechEmotion/
-
-
-Define the variable repo_path, the local path of your repo
 Define the variable pyaudioanalysis_path, the local path of the pyaudio analysis repo
 	*************************************************************************************************	
 	
@@ -41,7 +33,7 @@ ________________________________________________________________________________
 	
 Afer Run the script Parser_caption.py The functionality of this script is:
 _______________________________________________________________
-1.	Take each srt file. Remove tags, find: start and end for each sentence (caption are splitted in time segments, if segment is less than 2 secs exclude it)
+1. Take each srt file. Remove tags, find: start and end for each sentence (caption are splitted in time segments, if segment is less than 2 secs exclude it)
 2. Find the polarity of each segment. Remove segments with no text, eg: [Laughing]
 3. text-blob and Vader are used for sentiment analysis. At the end, the average of these 2 classifiers used to characterize a segment as positive/negative/neutral
 5. Make a csv file for each srt file that contains (time segment, pollarity). The name of the file will be:pollarity_videoId.csv, eg:polarity_0.csv and will be saved at /polarity_csv subfolder
@@ -76,9 +68,6 @@ git clone https://github.com/tyiannak/pyAudioAnalysis.git
 pip install -e .
 
 
+NOTE
+ audioTrainTest_prj folder is created,replica of pyaudio's audioTrainTest,  in order to use  train and test segements.
 
-##New file Parser.py , maybe replace parser_audio.py
-Instead of train and test with all segments I decided to select 90% of videos as train and rest for test.
-For each set I generate sentiments for the segments just like before. I also edited created audioTrainTest_prj ,replica of pyaudio's audioTrainTest,  in order to use  train and test segements.
-
-Please let me know if you want to change anything.
