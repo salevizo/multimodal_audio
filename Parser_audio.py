@@ -50,7 +50,8 @@ def main(argv):
         pf.wavSegmentationFromSubs_perID('test',subtitles,repo_path,str(k))
     #for the train set
     '''
-    ft.f(repo_path+'/train',dataset_tr)
+    os.chdir(repo_path)
+    #ft.f(repo_path+'/train',dataset_tr)
     ft.final(repo_path+'/test')
 
 if __name__ == "__main__":
