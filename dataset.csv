@@ -9,6 +9,7 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 7,https://www.youtube.com/watch?v=y2Eu_fUjNig,Interview with Charles Manson,audio/7.wav,subtitles/7.srt,polarity_csv/polarity_7.csv,pickle_lists/polarity_7.p
 8,https://www.youtube.com/watch?v=dw3iE96IWVk,Enes Kanter Interview with VICE NEWS,audio/8.wav,subtitles/8.srt,polarity_csv/polarity_8.csv,pickle_lists/polarity_8.p
 9,https://www.youtube.com/watch?v=3Edw-ftS2Jo,Mass Murderer Charles Manson's 1987 Interview In San Quentin Prison | TODAY,audio/9.wav,subtitles/9.srt,polarity_csv/polarity_9.csv,pickle_lists/polarity_9.p
+10,https://www.youtube.com/watch?v=FonBwwDBxN4,I Quit,audio/10.wav,subtitles/10.srt,polarity_csv/polarity_10.csv,pickle_lists/polarity_10.p
 11,https://www.youtube.com/watch?v=WDSvfvfPCWY,Tom Cruise Attacks Psychiatry on Good Morning America with Matt Lauer,audio/11.wav,subtitles/11.srt,polarity_csv/polarity_11.csv,pickle_lists/polarity_11.p
 12,https://www.youtube.com/watch?v=4PebOKdmOCM,David Aldridge interviews on Allen Iverson (2013),audio/12.wav,subtitles/12.srt,polarity_csv/polarity_12.csv,pickle_lists/polarity_12.p
 13,https://www.youtube.com/watch?v=qkjKrQVkVnY,The Startup adVANce Challenge – Q&A with Volker Mornhinweg,audio/13.wav,subtitles/13.srt,polarity_csv/polarity_13.csv,pickle_lists/polarity_13.p
