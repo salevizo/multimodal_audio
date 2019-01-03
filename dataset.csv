@@ -55,3 +55,4 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 55,https://www.youtube.com/watch?v=R3GYI-Kpf5M,Street Interview w/ Cocaine Addict,subtitles/55.srt,polarity_csv/polarity_55.csv,pickle_lists/polarity_55.p
 56,https://www.youtube.com/watch?v=56AEEYdBIfU,Ozzy Osbourne on Health- Drugs, and the Age of Computers - Back & Forth (Part 1/3),subtitles/56.srt,polarity_csv/polarity_56.csv,pickle_lists/polarity_56.p
 57,https://www.youtube.com/watch?v=JmyWvjszBOw,Boots Riley - How Capitalism Needed Racism To Operate (247HH Exclusive),subtitles/57.srt,polarity_csv/polarity_57.csv,pickle_lists/polarity_57.p
+58,https://www.youtube.com/watch?v=59MO1X8dLLQ,Teen Convicted Of Murdering Mom With Sledgehammer Speaks Out,subtitles/58.srt,polarity_csv/polarity_58.csv,pickle_lists/polarity_58.p
