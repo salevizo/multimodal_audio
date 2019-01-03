@@ -57,3 +57,4 @@ Id,URL,Title,Audio,Captions,Polarity,Pickle
 57,https://www.youtube.com/watch?v=JmyWvjszBOw,Boots Riley - How Capitalism Needed Racism To Operate (247HH Exclusive),subtitles/57.srt,polarity_csv/polarity_57.csv,pickle_lists/polarity_57.p
 58,https://www.youtube.com/watch?v=59MO1X8dLLQ,Teen Convicted Of Murdering Mom With Sledgehammer Speaks Out,subtitles/58.srt,polarity_csv/polarity_58.csv,pickle_lists/polarity_58.p
 59,https://www.youtube.com/watch?v=1c-3FQap7iw,Steve Carell: Between Two Ferns with Zach Galifianakis,subtitles/59.srt,polarity_csv/polarity_59.csv,pickle_lists/polarity_59.p
+60,https://www.youtube.com/watch?v=6dwsYWF7TXI,Jordan Peterson Shares His Thoughts on Hitler,subtitles/60.srt,polarity_csv/polarity_60.csv,pickle_lists/polarity_60.p
