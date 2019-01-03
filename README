@@ -67,7 +67,3 @@ pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 git clone https://github.com/tyiannak/pyAudioAnalysis.git
 pip install -e .
 
-
-NOTE
- audioTrainTest_prj folder is created,replica of pyaudio's audioTrainTest,  in order to use  train and test segements.
-
