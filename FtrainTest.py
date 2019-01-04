@@ -68,24 +68,18 @@ def load_model(model_name, is_regression=False):
         - SVMmodel_name:     the path of the model to be loaded
         - is_regression:     a flag indigating whereas this model is regression or not
     '''
-    try:
-        fo = open(model_name + "MEANS", "rb")
-    except IOerror:
-        print("Load SVM model: Didn't find file")
-        return
-    try:
-        MEAN = cPickle.load(fo)
-        STD = cPickle.load(fo)
-        if not is_regression:
-            classNames = cPickle.load(fo)
-        mt_win = cPickle.load(fo)
-        mt_step = cPickle.load(fo)
-        st_win = cPickle.load(fo)
-        st_step = cPickle.load(fo)
-        compute_beat = cPickle.load(fo)
+    print(os.getcwd())
+    fo = open(model_name + "MEANS", "rb")
 
-    except:
-        fo.close()
+    MEAN = cPickle.load(fo)
+    STD = cPickle.load(fo)
+    if not is_regression:
+        classNames = cPickle.load(fo)
+    mt_win = cPickle.load(fo)
+    mt_step = cPickle.load(fo)
+    st_win = cPickle.load(fo)
+    st_step = cPickle.load(fo)
+    compute_beat = cPickle.load(fo)
     fo.close()
 
     MEAN = numpy.array(MEAN)
@@ -314,7 +308,7 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 def f(repo_path,dataset):
     best_scores = []
     #find best params and crossvalidation
-    classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25]) #0.5, 1.0, 5.0, 10.0])
+    classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25,0.5,1.0,5.0,10.0]) #0.5, 1.0, 5.0, 10.0])
     e=0
     kfold = KFold(n_splits=2,shuffle=True)
     for train, test in kfold.split(np.array(dataset["Id"])):
@@ -457,6 +451,11 @@ def final(repo_path_to_test):
     [x_test, y_test] = listOfFeatures2Matrix(features_norm)
     print(len(x_test),len(y_test))
     y_pred=SVM.predict(x_test)
+    print('--------------------------------------')
+    flat_list = [item for sublist in filenames_test for item in sublist]
+    for i,x in enumerate(y_pred):
+        print(flat_list[i],'<---->',classNames_test[int(x)])
+    print('--------------------------------------')
     cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
     f1 = f1_score(y_pred=y_pred, y_true=y_test, average='micro')
     acc = accuracy_score(y_pred=y_pred, y_true=y_test) 

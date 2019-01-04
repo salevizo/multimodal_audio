@@ -100,7 +100,7 @@ def get_sentiment(file,case):
                         sentiment_blob=textblob_sentiment(text_filtered)
                         sentiment_vader=vader_sentiment(text_filtered)
                         sentiment_pattern=pattern_sentiment(text_filtered)
-
+                        
                         if ((sentiment_blob>0 and sentiment_vader>0 and sentiment_pattern>0) or (sentiment_blob<0 and sentiment_vader<0 and sentiment_pattern<0) or (sentiment_blob==0 and sentiment_vader==0 and sentiment_pattern==0)):
                             avg_polarity=(sentiment_blob + sentiment_vader + sentiment_pattern)/float(3)
                             avg_polarity=math.fabs(avg_polarity)

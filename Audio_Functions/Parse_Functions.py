@@ -73,9 +73,6 @@ def searchVideo(TopMostPath,repo_path,case):
 
 def datetime_to_secs(t):
     times=t.split(":")
-    print 'mytime='+times[0]
-    print 'mytime1='+times[1]
-    print 'mytime2='+times[2]
     f=float(times[2])
     f=Decimal(f)
     return float(int(times[0])*3600+int(times[1])*60+round(f,3))
@@ -83,6 +80,8 @@ def datetime_to_secs(t):
 def wavSegmentationFromSubs_perID(folder,subtitles,repo_path,audio_cnt):
     soundsPath=repo_path+"/"+folder+"/audio"
     os.chdir(soundsPath)
+    
+    
     #load list
     countpos=countneg=countneu=0
     for i, val in enumerate(subtitles):
@@ -108,15 +107,18 @@ def wavSegmentationFromSubs_perID(folder,subtitles,repo_path,audio_cnt):
         d1 = datetime.strptime(str(t1), "%H:%M:%S.%f")
         d2 = datetime.strptime(str(t2), "%H:%M:%S.%f")
         sec=(d2-d1).total_seconds()
+        audio=repo_path+"/"+folder+"/audio/"+audio_cnt+'.wav'
+        mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(audio, start, sec,audio_cnt,i)
+        print(mstr)
         if os.path.isfile(str(audio_cnt)+"temp"+str(i)+".wav") is False:
-            audio=repo_path+"/"+folder+"/audio/"+audio_cnt+'.wav'
-            mstr="ffmpeg -i {} -ss {} -t {} {}temp{}.wav -loglevel panic -y".format(audio, start, sec,audio_cnt,i)
+            
+            
             print(mstr)
             os.system(mstr)
         else:
             print(str(audio_cnt)+"temp"+str(i)+".wav already exists.")
         
-        
+       
     print('Done splitting wav file '+audio_cnt+'. Audio had '+str(countpos)+' positive segments, '+str(countneg)+ " negative segments and "+str(countneu)+"neutral segments. ")
     
 
