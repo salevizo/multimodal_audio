@@ -9,10 +9,10 @@ import math
 from shutil import copyfile
 from sklearn.model_selection import LeaveOneOut 
 from sklearn.model_selection import StratifiedShuffleSplit
-import audioTrainTest_prj as aT
 sys.path.append('Audio_Functions')
 import File_Functions as ff
 import Parse_Functions as pf
+import time
 
 def main(argv):
     repo_path = str(os.getcwd())
@@ -41,7 +41,12 @@ def main(argv):
         p=[x for x in dataset_tr['Pickle'] if '_'+k+'.p' in x][0]
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/train')
-        pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
+        if subtitles:
+            pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
+        else:
+            print("Pickle file with ID ---> ",k," not exist")
+            time.sleep(3)
+
     '''
     for k in dataset_te['Id']:
         p=[x for x in dataset_te['Pickle'] if '_'+k+'.p' in x][0]
