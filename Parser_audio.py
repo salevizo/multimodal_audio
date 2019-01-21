@@ -41,11 +41,8 @@ def main(argv):
         p=[x for x in dataset_tr['Pickle'] if '_'+k+'.p' in x][0]
         id_=p.split('.')[0][-1]
         subtitles=ff.retrieveSubs(p,repo_path+'/train')
-        if subtitles:
-            pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
-        else:
-            print("Pickle file with ID ---> ",k," not exist")
-            time.sleep(3)
+        pf.wavSegmentationFromSubs_perID('train',subtitles,repo_path,str(k))
+        
 
     '''
     for k in dataset_te['Id']:
@@ -56,7 +53,8 @@ def main(argv):
     #for the train set
     '''
     os.chdir(repo_path)
-    #ft.f(repo_path+'/train',dataset_tr)
+    #ft.f(repo_path+'/train',dataset_tr)  ## svm
+    #ft.f_model(repo_path+'/train',dataset_tr) #blstm
     ft.final(repo_path+'/test')
 
 if __name__ == "__main__":
