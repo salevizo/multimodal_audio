@@ -36,7 +36,7 @@ from hyperas import optim
 from hyperopt import Trials, tpe
 from hyperopt import STATUS_OK
 from hyperas.distributions import choice
-
+import math
 
 globalVar = 0
 max_len = 1024
@@ -269,7 +269,7 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
 
 
 
-def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,compute_beat=False,k_folds=3,model):
+def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,model,compute_beat=False,k_folds=3):
 
     #feature extraction for train/test
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
@@ -340,8 +340,8 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 
 def f_model(repo_path,dataset):
     perm = np.random.permutation(np.array(dataset["Id"]))
-    train = perm[:(int(len(perm) * 70))]
-    test = perm[(int(len(perm) * 30)):]
+    train = perm[:(int(len(perm) * 0.7))]
+    test = perm[(math.ceil(len(perm) * 0.3)):]
     ff.create_folders(repo_path)
     print("Train: ",train , "Test: ",test)
     for k in train:
@@ -455,7 +455,7 @@ def ff_one(repo_path, dataset):
         print(i)
         print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
         [features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
-        1.0, shortTermWindow, shortTermStep, compute_beat=False,0)
+        1.0, shortTermWindow, shortTermStep, 0,compute_beat=False)
         print([features_train, classNames, filenames])
         [features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
         video_dict[i] = [features_norm, MEAN, STD]
@@ -496,7 +496,7 @@ def final(repo_path_to_test):
     ##load model
     [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
     ##load test,split X,y
-    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False,0)
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep,compute_beat=False)
     [x_test, y_test] = listOfFeatures2Matrix(features_test)
     SVM.predict(x_test)
     cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
