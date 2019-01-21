@@ -269,7 +269,7 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
 
 
 
-def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,compute_beat=False,k_folds=3):
+def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,compute_beat=False,k_folds=3,model):
 
     #feature extraction for train/test
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
@@ -332,10 +332,26 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
     print("lx="+str(len(X_train)))
     print("lx="+str(len(Y_train)))
     # time.sleep(5)
-    cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, C)
+    if model ==0:
+        cm, acc, f1 = svm_train_evaluate(X_train, Y_train,x_test,y_test,k_folds, C)
+        return cm,acc,f1
+    else:
+        create_model(X_train, Y_train,x_test,y_test)
 
-   
-    return cm,acc,f1
+def f_model(repo_path,dataset):
+    perm = np.random.permutation(np.array(dataset["Id"]))
+    train = perm[:(int(len(perm) * 70))]
+    test = perm[(int(len(perm) * 30)):]
+    ff.create_folders(repo_path)
+    print("Train: ",train , "Test: ",test)
+    for k in train:
+        path= repo_path + "/audio/"+str(dataset['Id'][k])
+        #copy video in CASE(train/test) folder
+        pf.searchVideo(path,repo_path,"train")   
+    for k in test:
+        path= repo_path + "/audio/"+str(dataset['Id'][k])  
+        pf.searchVideo(path,repo_path,"test")
+    featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,shortTermWindow,shortTermStep,"svm","svm5Classes",C,1)
 
 
 
@@ -358,7 +374,7 @@ def f(repo_path,dataset):
             pf.searchVideo(path,repo_path,"test")
         for C in classifier_par:
             print("For C: ",C, "For Fold: ",e )
-            cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,shortTermWindow,shortTermStep,"svm","svm5Classes",C)
+            cm,acc,f1 = featureAndTrain([repo_path+"/audio/train/positive",repo_path+"/audio/train/neutral",repo_path+"/audio/train/negative"],[repo_path+"/audio/test/positive",repo_path+"/audio/test/neutral",repo_path+"/audio/test/negative"],1.0,1.0,shortTermWindow,shortTermStep,"svm","svm5Classes",C,0)
             best_scores.append([C,cm,acc,f1])
         e=e+1
         ff.remove_folders(repo_path)
@@ -439,7 +455,7 @@ def ff_one(repo_path, dataset):
         print(i)
         print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
         [features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
-        1.0, shortTermWindow, shortTermStep, compute_beat=False)
+        1.0, shortTermWindow, shortTermStep, compute_beat=False,0)
         print([features_train, classNames, filenames])
         [features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
         video_dict[i] = [features_norm, MEAN, STD]
@@ -480,7 +496,7 @@ def final(repo_path_to_test):
     ##load model
     [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
     ##load test,split X,y
-    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False,0)
     [x_test, y_test] = listOfFeatures2Matrix(features_test)
     SVM.predict(x_test)
     cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
