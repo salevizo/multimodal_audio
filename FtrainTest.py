@@ -24,7 +24,35 @@ import os
 shortTermWindow = 0.050
 shortTermStep = 0.050
 eps = 0.00000001
+from keras.layers import Input, Dense, Masking, Dropout, LSTM, Bidirectional, Activation
+from keras.layers.merge import dot
+from keras.models import Model, load_model
+from keras.utils import to_categorical
+from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
+from keras import optimizers
+from keras import backend as k
+from hyperas import optim
+from hyperopt import Trials, tpe
+from hyperopt import STATUS_OK
+from hyperas.distributions import choice
 
+
+globalVar = 0
+max_len = 1024
+nb_features = 36
+
+nb_attention_param = 256
+attention_init_value = 1.0 / 256
+nb_hidden_units = 512   # number of hidden layer units
+dropout_rate = 0.5
+nb_lstm_cells = 128
+nb_classes = 3
+
+masking_value = -100.0
+
+frame_size = 0.025  # 25 msec segments
+step = 0.01     # 10 msec time step
 
 
 def normalizeFeatures(features):
@@ -68,18 +96,24 @@ def load_model(model_name, is_regression=False):
         - SVMmodel_name:     the path of the model to be loaded
         - is_regression:     a flag indigating whereas this model is regression or not
     '''
-    print(os.getcwd())
-    fo = open(model_name + "MEANS", "rb")
+    try:
+        fo = open(model_name + "MEANS", "rb")
+    except IOerror:
+        print("Load SVM model: Didn't find file")
+        return
+    try:
+        MEAN = cPickle.load(fo)
+        STD = cPickle.load(fo)
+        if not is_regression:
+            classNames = cPickle.load(fo)
+        mt_win = cPickle.load(fo)
+        mt_step = cPickle.load(fo)
+        st_win = cPickle.load(fo)
+        st_step = cPickle.load(fo)
+        compute_beat = cPickle.load(fo)
 
-    MEAN = cPickle.load(fo)
-    STD = cPickle.load(fo)
-    if not is_regression:
-        classNames = cPickle.load(fo)
-    mt_win = cPickle.load(fo)
-    mt_step = cPickle.load(fo)
-    st_win = cPickle.load(fo)
-    st_step = cPickle.load(fo)
-    compute_beat = cPickle.load(fo)
+    except:
+        fo.close()
     fo.close()
 
     MEAN = numpy.array(MEAN)
@@ -237,7 +271,7 @@ def svm_train_evaluate(X, y,x_test,y_test,k_folds, C, use_regressor=False):
 
 def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_win, st_step,classifier_type, model_name,C,compute_beat=False,k_folds=3):
 
-	#feature extraction for train/test
+    #feature extraction for train/test
     [features_train, classNames_train, filenames_train] = aF.dirsWavFeatureExtraction(list_of_dirs_train, mt_win,mt_step, st_win, st_step,compute_beat=compute_beat)
 
     [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction(list_of_dirs_test, mt_win, mt_step,st_win, st_step,compute_beat=compute_beat)
@@ -308,7 +342,7 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
 def f(repo_path,dataset):
     best_scores = []
     #find best params and crossvalidation
-    classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25,0.5,1.0,5.0,10.0]) #0.5, 1.0, 5.0, 10.0])
+    classifier_par = numpy.array([0.01, 0.05, 0.1, 0.25]) #0.5, 1.0, 5.0, 10.0])
     e=0
     kfold = KFold(n_splits=2,shuffle=True)
     for train, test in kfold.split(np.array(dataset["Id"])):
@@ -400,43 +434,43 @@ def f(repo_path,dataset):
 
 def ff_one(repo_path, dataset):
     ## normalize each video id and then put train. Select each one from the corresponding position in dict 
-	video_dict={}
-	for i in range(np.array(dataset["Id"])):
-		print(i)
-		print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
-		[features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
+    video_dict={}
+    for i in range(np.array(dataset["Id"])):
+        print(i)
+        print([repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"])
+        [features_train, classNames, filenames] = aF.dirsWavFeatureExtraction( [repo_path + "/audio/"+str(i) +"/positive", repo_path + "/audio/"+str(i) +"/neutral", repo_path +"/audio/"+str(i) +"/negative"], 1.0,
         1.0, shortTermWindow, shortTermStep, compute_beat=False)
-		print([features_train, classNames, filenames])
-		[features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
-		video_dict[i] = [features_norm, MEAN, STD]
+        print([features_train, classNames, filenames])
+        [features_norm, MEAN, STD] = normalizeFeatures(features_train)        # normalize features
+        video_dict[i] = [features_norm, MEAN, STD]
 
 
-	for train, test in kfold.split(dataset["Pickle"][:25]):
-		video_test = []
-		video_train = []
-		for t in train:
-			video_train = np.concatenate((video_test,video_dict[t][0]),axis=0)
-		for te in test:
-			video_test = np.concatenate((video_test,video_dict[te][0]),axis=0)
+    for train, test in kfold.split(dataset["Pickle"][:25]):
+        video_test = []
+        video_train = []
+        for t in train:
+            video_train = np.concatenate((video_test,video_dict[t][0]),axis=0)
+        for te in test:
+            video_test = np.concatenate((video_test,video_dict[te][0]),axis=0)
 
 
-		[X_train, Y_train] = listOfFeatures2Matrix(video_train)
-		[x_test, y_test] = listOfFeatures2Matrix(video_test)
+        [X_train, Y_train] = listOfFeatures2Matrix(video_train)
+        [x_test, y_test] = listOfFeatures2Matrix(video_test)
 
-		print("Before OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
-		print("Before OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
-		print("Before OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
+        print("Before OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+        print("Before OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+        print("Before OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
 
-		sm = SMOTE(random_state=2,kind='svm')
-		X_train, Y_train = sm.fit_sample(X_train, Y_train)
-		print("A OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
-		print("A OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
-		print("A OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
+        sm = SMOTE(random_state=2,kind='svm')
+        X_train, Y_train = sm.fit_sample(X_train, Y_train)
+        print("A OverSampling, counts of label 'positive': {}".format(sum(Y_train==1)))
+        print("A OverSampling, counts of label 'neutral': {} \n".format(sum(Y_train==0)))
+        print("A OverSampling, counts of label 'negative': {} \n".format(sum(Y_train==2)))
 
 
-		# print("X:",X_train)
-		# print("Y:",Y_train)
-		cm, acc, f1 = svm_train_evaluate(X_train, Y_train, x_test, y_test, k_folds, C)
+        # print("X:",X_train)
+        # print("Y:",Y_train)
+        cm, acc, f1 = svm_train_evaluate(X_train, Y_train, x_test, y_test, k_folds, C)
 
 def ff_all(repo_path, dataset):
     #norm all and then..
@@ -446,19 +480,94 @@ def final(repo_path_to_test):
     ##load model
     [SVM, MEAN, STD, classNames, mt_win, mt_step, st_win, st_step, compute_beat]=load_model("svm3Classes")
     ##load test,split X,y
-    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/audio/positive",repo_path_to_test+"/audio/neutral",repo_path_to_test+"/audio/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
-    [features_norm, MEAN, STD] = normalizeFeatures(features_test)
-    [x_test, y_test] = listOfFeatures2Matrix(features_norm)
-    print(len(x_test),len(y_test))
-    y_pred=SVM.predict(x_test)
-    print('--------------------------------------')
-    flat_list = [item for sublist in filenames_test for item in sublist]
-    for i,x in enumerate(y_pred):
-        print(flat_list[i],'<---->',classNames_test[int(x)])
-    print('--------------------------------------')
+    [features_test, classNames_test, filenames_test] = aF.dirsWavFeatureExtraction([repo_path_to_test+"/positive",repo_path_to_test+"/neutral",repo_path_to_test+"/negative"],1.0,1.0, shortTermWindow, shortTermStep, compute_beat=False)
+    [x_test, y_test] = listOfFeatures2Matrix(features_test)
+    SVM.predict(x_test)
     cm = confusion_matrix(y_pred=y_pred, y_true=y_test)
     f1 = f1_score(y_pred=y_pred, y_true=y_test, average='micro')
-    acc = accuracy_score(y_pred=y_pred, y_true=y_test) 
-    print("FINAL -----> F1: ",f1, "ACC:",acc)
-    
+    acc = accuracy_score(y_pred=y_pred, y_true=y_test)
     plotly_classification_results(cm, ["positive", "neutral", "negative"])
+    print("FINAL -----> FOR C:",C,"F1: ",f1, "ACC:",acc)
+
+
+def create_model(x_train, y_train, x_test, y_test):
+
+    u_train = np.full((x_train.shape[0], nb_attention_param),
+                      attention_init_value, dtype=np.float32)
+    u_test = np.full((x_test.shape[0], nb_attention_param),
+                     attention_init_value, dtype=np.float32)
+
+    with k.name_scope('BLSTMLayer'):
+        # Bi-directional Long Short-Term Memory for learning the temporal aggregation
+        input_feature = Input(shape=(max_len, nb_features))
+        x = Masking(mask_value=masking_value)(input_feature)
+        x = Dense(nb_hidden_units, activation='relu')(x)
+        x = Dropout(0.5)(x)
+        x = Dense(nb_hidden_units, activation='relu')(x)
+        x = Dropout(0.5)(x)
+        y = Bidirectional(LSTM(nb_lstm_cells, return_sequences=True, dropout=0.5))(x)
+
+    with k.name_scope('AttentionLayer'):
+        # Logistic regression for learning the attention parameters with a standalone feature as input
+        input_attention = Input(shape=(nb_lstm_cells * 2,))
+        u = Dense(nb_lstm_cells * 2, activation='softmax')(input_attention)
+
+        # To compute the final weights for the frames which sum to unity
+        alpha = dot([u, y], axes=-1)  # inner prod.
+        alpha = Activation('softmax')(alpha)
+
+    with k.name_scope('WeightedPooling'):
+        # Weighted pooling to get the utterance-level representation
+        z = dot([alpha, y], axes=1)
+
+    # Get posterior probability for each emotional class
+    output = Dense(nb_classes, activation='softmax')(z)
+
+    model = Model(inputs=[input_attention, input_feature], outputs=output)
+
+    choice_val = {{choice(['adam', 'rmsprop', 'sgd'])}}
+    if choice_val == 'adam':
+        optimizer = optimizers.Adam()
+    elif choice_val == 'rmsprop':
+        optimizer = optimizers.RMSprop()
+    else:
+        optimizer = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+
+    model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer=optimizer)
+
+    globalVar += 1
+
+    file_path = 'weights_blstm_hyperas_' + str(globalVar) + '.h5'
+    callback_list = [
+        EarlyStopping(
+            monitor='val_loss',
+            patience=10,
+            verbose=1,
+            mode='auto'
+        ),
+        ModelCheckpoint(
+            filepath=file_path,
+            monitor='val_acc',
+            save_best_only='True',
+            verbose=1,
+            mode='max'
+        )
+    ]
+
+    hist = model.fit([u_train, x_train], y_train, batch_size=128, epochs={{choice([100, 150, 200])}}, verbose=2,
+                     callbacks=callback_list, validation_data=([u_test, x_test], y_test))
+    h = hist.history
+    acc = np.asarray(h['acc'])
+    loss = np.asarray(h['loss'])
+    val_loss = np.asarray(h['val_loss'])
+    val_acc = np.asarray(h['val_acc'])
+
+    acc_and_loss = np.column_stack((acc, loss, val_acc, val_loss))
+    save_file_blstm = 'blstm_run_' + str(globalVar) + '.txt'
+    with open(save_file_blstm, 'w'):
+        np.savetxt(save_file_blstm, acc_and_loss)
+
+    score, accuracy = model.evaluate([u_test, x_test], y_test, batch_size=128, verbose=1)
+    print("Final validation accuracy: %s" % accuracy)
+
+    return {'loss': -accuracy, 'status': STATUS_OK, 'model': model}
