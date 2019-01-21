@@ -69,14 +69,10 @@ def remove_folders(repo_path):
 
 def retrieveSubs(subsPath,repo_path):
     os.chdir(repo_path)
-    try:
-        subtitles_pol_file=open(subsPath, 'rb')
-        # Loading the Subtitle
-        subtitles_pol = pickle.load(subtitles_pol_file)
-        return subtitles_pol
-    except FileNotFoundError:
-        print("FileNotFoundError")
-        return 0 
+    subtitles_pol_file=open(subsPath, 'rb')
+    # Loading the Subtitle
+    subtitles_pol = pickle.load(subtitles_pol_file)
+    return subtitles_pol
 
 
 
