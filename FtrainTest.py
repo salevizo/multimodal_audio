@@ -24,18 +24,7 @@ import os
 shortTermWindow = 0.050
 shortTermStep = 0.050
 eps = 0.00000001
-from keras.layers import Input, Dense, Masking, Dropout, LSTM, Bidirectional, Activation
-from keras.layers.merge import dot
-from keras.models import Model, load_model
-from keras.utils import to_categorical
-from keras.callbacks import EarlyStopping
-from keras.callbacks import ModelCheckpoint
-from keras import optimizers
-from keras import backend as k
-from hyperas import optim
-from hyperopt import Trials, tpe
-from hyperopt import STATUS_OK
-from hyperas.distributions import choice
+
 import math
 
 globalVar = 0
@@ -339,6 +328,18 @@ def featureAndTrain(list_of_dirs_train, list_of_dirs_test, mt_win, mt_step, st_w
         create_model(X_train, Y_train,x_test,y_test)
 
 def f_model(repo_path,dataset):
+	from keras.layers import Input, Dense, Masking, Dropout, LSTM, Bidirectional, Activation
+	from keras.layers.merge import dot
+	from keras.models import Model, load_model
+	from keras.utils import to_categorical
+	from keras.callbacks import EarlyStopping
+	from keras.callbacks import ModelCheckpoint
+	from keras import optimizers
+	from keras import backend as k
+	from hyperas import optim
+	from hyperopt import Trials, tpe
+	from hyperopt import STATUS_OK
+	from hyperas.distributions import choice
     perm = np.random.permutation(np.array(dataset["Id"]))
     train = perm[:(int(len(perm) * 0.7))]
     test = perm[(math.ceil(len(perm) * 0.3)):]
