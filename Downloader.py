@@ -16,7 +16,7 @@ def main(argv):
     fad.create_folders(repo_path,repo_path +'/test/subtitles')
     fad.create_folders(repo_path,repo_path +'/train/audio')
     fad.create_folders(repo_path,repo_path +'/test/audio')
-    fn_tr="dataset.csv"
+    fn_tr="dataset_train.csv"
     fn_te="dataset_test.csv"
 
     (urls_tr,ids_tr)=fad.read_url_and_ids(fn_tr)
